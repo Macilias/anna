@@ -1,0 +1,47 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<persistence version="1.0" xmlns="http://java.sun.com/xml/ns/persistence" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://java.sun.com/xml/ns/persistence http://java.sun.com/xml/ns/persistence/persistence_1_0.xsd">
+  <persistence-unit name="AnaylsePUMNGerman" transaction-type="RESOURCE_LOCAL">
+    <class>annalyse.grammatik.wortarten.Adjektiv</class>
+    <class>annalyse.grammatik.wortarten.Adverb</class>
+    <class>annalyse.grammatik.wortarten.Artikel</class>
+    <class>annalyse.grammatik.wortarten.Interjektion</class>
+    <class>annalyse.grammatik.wortarten.Interpunktion</class>
+    <class>annalyse.grammatik.wortarten.Konjunktion</class>
+    <class>annalyse.grammatik.wortarten.Nomen</class>
+    <class>annalyse.grammatik.wortarten.Numeral</class>
+    <class>annalyse.grammatik.wortarten.Pronomen</class>
+    <class>annalyse.grammatik.wortarten.Verb</class>
+    <class>annalyse.grammatik.wortarten.Präposition</class>
+    <class>annalyse.grammatik.wortarten.Postposition</class>
+    <class>annalyse.grammatik.wortarten.Zirkumposition</class>
+    <provider>org.eclipse.persistence.jpa.PersistenceProvider</provider>
+    <properties>
+      <property name="eclipselink.jdbc.password" value="mac@mysql"/>
+      <property name="eclipselink.jdbc.user" value="root"/>
+      <property name="eclipselink.jdbc.driver" value="com.mysql.jdbc.Driver"/>
+      <property name="eclipselink.jdbc.url" value="jdbc:mysql://127.0.0.1:3306/MNGermanWords?useUnicode=true&amp;characterEncoding=UTF-8"/>
+    </properties>
+  </persistence-unit>
+  <persistence-unit name="AnaylsePUMNPolish" transaction-type="RESOURCE_LOCAL">
+    <class>annalyse.grammatik.wortarten.Adjektiv</class>
+    <class>annalyse.grammatik.wortarten.Adverb</class>
+    <class>annalyse.grammatik.wortarten.Artikel</class>
+    <class>annalyse.grammatik.wortarten.Interjektion</class>
+    <class>annalyse.grammatik.wortarten.Interpunktion</class>
+    <class>annalyse.grammatik.wortarten.Konjunktion</class>
+    <class>annalyse.grammatik.wortarten.Nomen</class>
+    <class>annalyse.grammatik.wortarten.Numeral</class>
+    <class>annalyse.grammatik.wortarten.Pronomen</class>
+    <class>annalyse.grammatik.wortarten.Verb</class>
+    <class>annalyse.grammatik.wortarten.Präposition</class>
+    <class>annalyse.grammatik.wortarten.Postposition</class>
+    <class>annalyse.grammatik.wortarten.Zirkumposition</class>
+    <provider>org.eclipse.persistence.jpa.PersistenceProvider</provider>
+    <properties>
+      <property name="eclipselink.jdbc.password" value="mac@mysql"/>
+      <property name="eclipselink.jdbc.user" value="root"/>
+      <property name="eclipselink.jdbc.driver" value="com.mysql.jdbc.Driver"/>
+      <property name="eclipselink.jdbc.url" value="jdbc:mysql://127.0.0.1:3306/MNPolishWords?useUnicode=true&amp;characterEncoding=UTF-8"/>
+    </properties>
+  </persistence-unit>
+</persistence>
