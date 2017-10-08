@@ -11,7 +11,7 @@ import annalyse.grammatik.wortarten.*;
  *
  * @author Maciej Niemczyk
  */
-public class NP extends Phrase{
+public class NP extends Phrase {
     private Nomen head;
 
     /**

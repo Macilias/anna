@@ -16,8 +16,8 @@
     <class>annalyse.grammatik.wortarten.Zirkumposition</class>
     <provider>org.eclipse.persistence.jpa.PersistenceProvider</provider>
     <properties>
-      <property name="eclipselink.jdbc.password" value="mac@mysql"/>
-      <property name="eclipselink.jdbc.user" value="root"/>
+      <property name="eclipselink.jdbc.password" value="!QAYse4rfv"/>
+      <property name="eclipselink.jdbc.user" value="mac"/>
       <property name="eclipselink.jdbc.driver" value="com.mysql.jdbc.Driver"/>
       <property name="eclipselink.jdbc.url" value="jdbc:mysql://127.0.0.1:3306/MNGermanWords?useUnicode=true&amp;characterEncoding=UTF-8"/>
     </properties>
@@ -38,8 +38,8 @@
     <class>annalyse.grammatik.wortarten.Zirkumposition</class>
     <provider>org.eclipse.persistence.jpa.PersistenceProvider</provider>
     <properties>
-      <property name="eclipselink.jdbc.password" value="mac@mysql"/>
-      <property name="eclipselink.jdbc.user" value="root"/>
+      <property name="eclipselink.jdbc.password" value="!QAYse4rfv"/>
+      <property name="eclipselink.jdbc.user" value="mac"/>
       <property name="eclipselink.jdbc.driver" value="com.mysql.jdbc.Driver"/>
       <property name="eclipselink.jdbc.url" value="jdbc:mysql://127.0.0.1:3306/MNPolishWords?useUnicode=true&amp;characterEncoding=UTF-8"/>
     </properties>

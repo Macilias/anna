@@ -16,21 +16,32 @@
   </properties>
 
   <dependencies>
+
     <dependency>
       <groupId>org.apache.commons</groupId>
       <artifactId>commons-lang3</artifactId>
       <version>${commons-lang3.version}</version>
     </dependency>
+
     <dependency>
       <groupId>org.slf4j</groupId>
       <artifactId>slf4j-log4j12</artifactId>
       <version>${slf4j-log4j12.version}</version>
     </dependency>
+
     <dependency>
       <groupId>org.hibernate</groupId>
       <artifactId>hibernate-annotations</artifactId>
       <version>3.5.6-Final</version>
     </dependency>
+
+    <dependency>
+      <groupId>mysql</groupId>
+      <artifactId>mysql-connector-java</artifactId>
+      <version>5.1.21</version>
+      <scope>runtime</scope>
+    </dependency>
+
     <dependency>
       <groupId>org.eclipse.persistence</groupId>
       <artifactId>eclipselink</artifactId>
@@ -42,16 +53,19 @@
         </exclusion>
       </exclusions>
     </dependency>
+
     <dependency>
       <groupId>org.jdesktop</groupId>
       <artifactId>appframework</artifactId>
       <version>1.0.3</version>
     </dependency>
+
     <dependency>
       <groupId>org.jdesktop.layout</groupId>
       <artifactId>swing-layout</artifactId>
       <version>1.0</version>
     </dependency>
+
     <dependency>
       <groupId>de.tuebingen.uni.sfs.germanet</groupId>
       <artifactId>germanet-api</artifactId>

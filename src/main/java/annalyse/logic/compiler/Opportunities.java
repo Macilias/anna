@@ -1,8 +1,3 @@
-/*
- * To change this template, choose Tools | Templates
- * and open the template in the editor.
- */
-
 package annalyse.logic.compiler;
 
 import annalyse.grammatik.wortarten.Wort;
@@ -15,6 +10,7 @@ import java.util.List;
  * @author Maciej Niemczyk
  */
 public class Opportunities {
+
     private LinkedList<Wort> opportunities;
 
     public Opportunities(){
