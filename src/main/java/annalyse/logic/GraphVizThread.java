@@ -6,7 +6,7 @@
 package annalyse.logic;
 
 import java.util.StringTokenizer;
-import germanet.HyperonymGraph;
+//import germanet.HyperonymGraph;
 import org.jdesktop.application.Task;
 import org.jdesktop.application.Application;
 
@@ -44,7 +44,7 @@ class GraphVizThread extends Task {
                 while (st.hasMoreTokens()&&!cancelled) {
                     count ++;
                     String dateipfad = new String("out"+count+".dot");
-                    out = HyperonymGraph.apiWork(st.nextToken(),depth,dateipfad);
+//                    out = HyperonymGraph.apiWork(st.nextToken(),depth,dateipfad);
                     //System.out.println(out);
                     this.caller.answer(out);
                 }

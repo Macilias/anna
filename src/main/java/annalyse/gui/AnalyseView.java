@@ -17,7 +17,8 @@ import javax.swing.Timer;
 import javax.swing.Icon;
 import javax.swing.JDialog;
 import javax.swing.JFrame;
-import owl2prefuse.Demo;
+//FIXME
+//import owl2prefuse.Demo;
 
 /**
  * The application's main frame.
@@ -54,8 +55,9 @@ public class AnalyseView extends FrameView {
         statusAnimationLabel.setIcon(idleIcon);
         progressBar.setVisible(false);
         outprints = new LinkedList<String>();
-        ontologieView = new Demo(AnalyseApp.getApplication().getAnna().getModel(),
-                AnalyseApp.getApplication().getAnna().getBrain());
+//        FIXME
+//        ontologieView = new Demo(AnalyseApp.getApplication().getAnna().getModel(),
+//                AnalyseApp.getApplication().getAnna().getBrain());
         //NUR TEMPORAIR:
         outprints.add("scanner");
         outprints.add("parser");
@@ -162,19 +164,20 @@ public class AnalyseView extends FrameView {
         AnalyseApp.getApplication().show(optionView);
     }
 
-    /**
-     *
-     */
-    @Action
-    public void showOntologieView() {
-        if (!ontologieView.isVisible()) {   
-            ontologieView.refreshModel();
-            ontologieView.setVisible(true);
-        }
-        else{
-            ontologieView.setVisible(false);
-        }
-    }
+//FIXME
+//    /**
+//     *
+//     */
+//    @Action
+//    public void showOntologieView() {
+//        if (!ontologieView.isVisible()) {
+//            ontologieView.refreshModel();
+//            ontologieView.setVisible(true);
+//        }
+//        else{
+//            ontologieView.setVisible(false);
+//        }
+//    }
 
     @Action
     public void showAboutBox() {
@@ -519,6 +522,7 @@ public class AnalyseView extends FrameView {
     private JDialog wordEditor;
     private JDialog aboutBox;
     private FrameView optionView;
-    private Demo ontologieView;
+//    FIXME
+//    private Demo ontologieView;
 
 }

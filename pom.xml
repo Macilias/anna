@@ -42,6 +42,71 @@
         </exclusion>
       </exclusions>
     </dependency>
+    <dependency>
+      <groupId>org.jdesktop</groupId>
+      <artifactId>appframework</artifactId>
+      <version>1.0.3</version>
+    </dependency>
+    <dependency>
+      <groupId>org.jdesktop.layout</groupId>
+      <artifactId>swing-layout</artifactId>
+      <version>1.0</version>
+    </dependency>
+    <dependency>
+      <groupId>de.tuebingen.uni.sfs.germanet</groupId>
+      <artifactId>germanet-api</artifactId>
+      <version>9.0.3</version>
+    </dependency>
+
+    <!--JENA jena-core, jena-arq, jena-tdb and jena-iri -->
+
+    <!--<dependency>-->
+      <!--<groupId>org.apache.jena</groupId>-->
+      <!--<artifactId>apache-jena-libs</artifactId>-->
+      <!--<version>3.4.0</version>-->
+    <!--</dependency>-->
+
+    <dependency>
+      <groupId>com.hp.hpl.jena</groupId>
+      <artifactId>jena</artifactId>
+      <version>2.6.4</version>
+    </dependency>
+
   </dependencies>
+
+  <repositories>
+
+    <repository>
+      <id>Apache Nexus</id>
+      <url>https://repository.apache.org/content/repositories/snapshots/</url>
+      <releases>
+        <enabled>false</enabled>
+      </releases>
+      <snapshots>
+        <enabled>true</enabled>
+      </snapshots>
+    </repository>
+
+    <repository>
+      <id>Collide</id>
+      <url>http://mvn.collide.info/content/repositories/releases/</url>
+      <releases>
+        <enabled>true</enabled>
+      </releases>
+      <snapshots>
+        <enabled>true</enabled>
+      </snapshots>
+    </repository>
+
+    <repository>
+      <id>sonatype-snapshots</id>
+      <name>Sonatype Snapshots Repository</name>
+      <url>https://oss.sonatype.org/content/repositories/snapshots/</url>
+      <snapshots>
+        <enabled>true</enabled>
+      </snapshots>
+    </repository>
+
+  </repositories>
 
 </project>

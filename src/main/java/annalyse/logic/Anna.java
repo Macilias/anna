@@ -49,9 +49,6 @@ public class Anna{
     public String NS = SOURCE + "#";
     public String BrainNS = "http://www.analisa.eu/brain.owl#";
 
-
-
-
     LinkedList<ThinkThread> thinkThreads = new LinkedList<ThinkThread>();
     AnalyseView caller;
     AnalyseApp app;
@@ -71,7 +68,8 @@ public class Anna{
             base.read(in,SOURCE);
             base.setNsPrefix("brain", BrainNS ).setNsPrefix("g", NS);
             FBRuleReasoner reasoner = (FBRuleReasoner) m.getReasoner();
-            reasoner.loadAdditionalRules("g", NS, "Ontologie/grammatik.rules");
+            // FIXME
+//            reasoner.loadAdditionalRules("g", NS, "Ontologie/grammatik.rules");
         }
         catch(Exception e){
             System.out.println("UPS, DA GING WAS SCHIEFF");
