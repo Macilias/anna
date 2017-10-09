@@ -1,0 +1,3711 @@
+Namespace(=<http://www.w3.org/TR/2003/PR-owl-guide-20031209/wine#>)
+Namespace(wine=<http://www.w3.org/TR/2003/PR-owl-guide-20031209/wine#>)
+Namespace(rdfs=<http://www.w3.org/2000/01/rdf-schema#>)
+Namespace(owl2xml=<http://www.w3.org/2006/12/owl2-xml#>)
+Namespace(food=<http://www.w3.org/TR/2003/PR-owl-guide-20031209/food#>)
+Namespace(CR-owl-guide-20030818=<http://www.w3.org/TR/2003/CR-owl-guide-20030818/>)
+Namespace(owl=<http://www.w3.org/2002/07/owl#>)
+Namespace(xsd=<http://www.w3.org/2001/XMLSchema#>)
+Namespace(rdf=<http://www.w3.org/1999/02/22-rdf-syntax-ns#>)
+
+
+Ontology(<http://www.w3.org/TR/2003/PR-owl-guide-20031209/wine>
+          Comment("Derived from the DAML Wine ontology at 
+      http://ontolingua.stanford.edu/doc/chimaera/ontologies/wines.daml
+      Substantially changed, in particular the Region based relations.")
+          Label("Wine Ontology")
+          Annotation(owl:priorVersion CR-owl-guide-20030818:wine)
+          Comment("An example OWL ontology")
+
+
+Import(<http://www.w3.org/TR/2003/PR-owl-guide-20031209/food>)
+
+// Class: http://www.w3.org/TR/2003/PR-owl-guide-20031209/wine#Vintage
+
+SubClassOf(Vintage ObjectExactCardinality(1 hasVintageYear))
+
+
+
+// Class: http://www.w3.org/TR/2003/PR-owl-guide-20031209/wine#CheninBlanc
+
+EquivalentClasses(CheninBlanc ObjectIntersectionOf(Wine
+                                                   ObjectHasValue(madeFromGrape CheninBlancGrape)
+                                                   ObjectMaxCardinality(1 madeFromGrape)))
+SubClassOf(CheninBlanc ObjectAllValuesFrom(hasBody ObjectOneOf(Medium Full)))
+SubClassOf(CheninBlanc ObjectHasValue(hasFlavor Moderate))
+SubClassOf(CheninBlanc ObjectAllValuesFrom(hasSugar ObjectOneOf(Dry OffDry)))
+SubClassOf(CheninBlanc ObjectHasValue(hasColor White))
+
+
+
+// Class: http://www.w3.org/TR/2003/PR-owl-guide-20031209/wine#WhiteLoire
+
+EquivalentClasses(WhiteLoire ObjectIntersectionOf(WhiteWine Loire))
+SubClassOf(WhiteLoire ObjectAllValuesFrom(madeFromGrape ObjectOneOf(PinotBlancGrape
+                                                                    CheninBlancGrape
+                                                                    SauvignonBlancGrape)))
+
+
+
+// Class: http://www.w3.org/TR/2003/PR-owl-guide-20031209/wine#Region
+
+
+
+
+// Class: http://www.w3.org/TR/2003/PR-owl-guide-20031209/wine#Bordeaux
+
+EquivalentClasses(Bordeaux ObjectIntersectionOf(ObjectHasValue(locatedIn BordeauxRegion) Wine))
+
+
+
+// Class: http://www.w3.org/TR/2003/PR-owl-guide-20031209/wine#WhiteWine
+
+EquivalentClasses(WhiteWine ObjectIntersectionOf(ObjectHasValue(hasColor White) Wine))
+
+
+
+// Class: http://www.w3.org/TR/2003/PR-owl-guide-20031209/wine#Muscadet
+
+EquivalentClasses(Muscadet ObjectIntersectionOf(ObjectHasValue(locatedIn MuscadetRegion) Loire))
+SubClassOf(Muscadet ObjectHasValue(hasFlavor Delicate))
+SubClassOf(Muscadet ObjectHasValue(hasSugar Dry))
+SubClassOf(Muscadet ObjectHasValue(madeFromGrape PinotBlancGrape))
+SubClassOf(Muscadet ObjectMaxCardinality(1 madeFromGrape))
+SubClassOf(Muscadet ObjectHasValue(hasBody Light))
+
+
+
+// Class: http://www.w3.org/TR/2003/PR-owl-guide-20031209/wine#Medoc
+
+EquivalentClasses(Medoc ObjectIntersectionOf(ObjectHasValue(locatedIn MedocRegion) Bordeaux))
+SubClassOf(Medoc ObjectHasValue(hasSugar Dry))
+SubClassOf(Medoc ObjectHasValue(hasColor Red))
+
+
+
+// Class: http://www.w3.org/TR/2003/PR-owl-guide-20031209/wine#Riesling
+
+EquivalentClasses(Riesling ObjectIntersectionOf(Wine
+                                                ObjectHasValue(madeFromGrape RieslingGrape)
+                                                ObjectMaxCardinality(1 madeFromGrape)))
+SubClassOf(Riesling ObjectHasValue(hasColor White))
+
+
+
+// Class: http://www.w3.org/TR/2003/PR-owl-guide-20031209/wine#DryWhiteWine
+
+EquivalentClasses(DryWhiteWine ObjectIntersectionOf(WhiteWine DryWine))
+
+
+
+// Class: http://www.w3.org/TR/2003/PR-owl-guide-20031209/wine#DryRedWine
+
+EquivalentClasses(DryRedWine ObjectIntersectionOf(RedWine DryWine))
+
+
+
+// Class: http://www.w3.org/TR/2003/PR-owl-guide-20031209/wine#DryRiesling
+
+EquivalentClasses(DryRiesling ObjectIntersectionOf(ObjectHasValue(hasSugar Dry) Riesling))
+SubClassOf(DryRiesling ObjectHasValue(hasFlavor Delicate))
+SubClassOf(DryRiesling ObjectAllValuesFrom(hasBody ObjectOneOf(Light Medium)))
+SubClassOf(DryRiesling ObjectHasValue(hasColor White))
+
+
+
+// Class: http://www.w3.org/TR/2003/PR-owl-guide-20031209/wine#WhiteTableWine
+
+EquivalentClasses(WhiteTableWine ObjectIntersectionOf(ObjectHasValue(hasColor White) TableWine))
+
+
+
+// Class: http://www.w3.org/TR/2003/PR-owl-guide-20031209/wine#WhiteBordeaux
+
+EquivalentClasses(WhiteBordeaux ObjectIntersectionOf(WhiteWine Bordeaux))
+SubClassOf(WhiteBordeaux ObjectAllValuesFrom(madeFromGrape ObjectOneOf(SauvignonBlancGrape SemillonGrape)))
+
+
+
+// Class: http://www.w3.org/TR/2003/PR-owl-guide-20031209/food#PotableLiquid
+
+
+
+
+// Class: http://www.w3.org/TR/2003/PR-owl-guide-20031209/wine#Loire
+
+EquivalentClasses(Loire ObjectIntersectionOf(ObjectHasValue(locatedIn LoireRegion) Wine))
+
+
+
+// Class: http://www.w3.org/TR/2003/PR-owl-guide-20031209/wine#DryWine
+
+EquivalentClasses(DryWine ObjectIntersectionOf(ObjectHasValue(hasSugar Dry) Wine))
+
+
+
+// Class: http://www.w3.org/TR/2003/PR-owl-guide-20031209/wine#TexasWine
+
+EquivalentClasses(TexasWine ObjectIntersectionOf(ObjectHasValue(locatedIn TexasRegion) Wine))
+
+
+
+// Class: http://www.w3.org/TR/2003/PR-owl-guide-20031209/wine#Burgundy
+
+EquivalentClasses(Burgundy ObjectIntersectionOf(ObjectHasValue(locatedIn BourgogneRegion) Wine))
+SubClassOf(Burgundy ObjectHasValue(hasSugar Dry))
+
+
+
+// Class: http://www.w3.org/TR/2003/PR-owl-guide-20031209/wine#CotesDOr
+
+EquivalentClasses(CotesDOr ObjectIntersectionOf(ObjectHasValue(locatedIn CotesDOrRegion) RedBurgundy))
+SubClassOf(CotesDOr ObjectHasValue(hasFlavor Moderate))
+
+
+
+// Class: http://www.w3.org/TR/2003/PR-owl-guide-20031209/wine#Port
+
+SubClassOf(Port ObjectHasValue(hasFlavor Strong))
+SubClassOf(Port ObjectHasValue(locatedIn PortugalRegion))
+SubClassOf(Port RedWine)
+SubClassOf(Port ObjectHasValue(hasSugar Sweet))
+SubClassOf(Port ObjectHasValue(hasBody Full))
+
+
+
+// Class: http://www.w3.org/TR/2003/PR-owl-guide-20031209/food#Grape
+
+
+
+
+// Class: http://www.w3.org/TR/2003/PR-owl-guide-20031209/wine#Merlot
+
+EquivalentClasses(Merlot ObjectIntersectionOf(Wine
+                                              ObjectHasValue(madeFromGrape MerlotGrape)
+                                              ObjectMaxCardinality(1 madeFromGrape)))
+SubClassOf(Merlot ObjectAllValuesFrom(hasBody ObjectOneOf(Light Medium)))
+SubClassOf(Merlot ObjectHasValue(hasColor Red))
+SubClassOf(Merlot ObjectAllValuesFrom(hasFlavor ObjectOneOf(Delicate Moderate)))
+SubClassOf(Merlot ObjectHasValue(hasSugar Dry))
+
+
+
+// Class: http://www.w3.org/TR/2003/PR-owl-guide-20031209/wine#SweetWine
+
+EquivalentClasses(SweetWine ObjectIntersectionOf(ObjectHasValue(hasSugar Sweet) Wine))
+
+
+
+// Class: http://www.w3.org/TR/2003/PR-owl-guide-20031209/wine#RoseWine
+
+EquivalentClasses(RoseWine ObjectIntersectionOf(ObjectHasValue(hasColor Rose) Wine))
+
+
+
+// Class: http://www.w3.org/TR/2003/PR-owl-guide-20031209/wine#VintageYear
+
+
+
+
+// Class: http://www.w3.org/TR/2003/PR-owl-guide-20031209/wine#AmericanWine
+
+EquivalentClasses(AmericanWine ObjectIntersectionOf(ObjectHasValue(locatedIn USRegion) Wine))
+
+
+
+// Class: http://www.w3.org/TR/2003/PR-owl-guide-20031209/wine#WineBody
+
+EquivalentClasses(WineBody ObjectOneOf(Full
+                                       Medium
+                                       Light))
+SubClassOf(WineBody WineTaste)
+
+
+
+// Class: http://www.w3.org/TR/2003/PR-owl-guide-20031209/wine#FullBodiedWine
+
+EquivalentClasses(FullBodiedWine ObjectIntersectionOf(ObjectHasValue(hasBody Full) Wine))
+
+
+
+// Class: http://www.w3.org/TR/2003/PR-owl-guide-20031209/wine#Meritage
+
+EquivalentClasses(Meritage ObjectIntersectionOf(Wine
+                                                ObjectAllValuesFrom(madeFromGrape ObjectOneOf(CabernetSauvignonGrape
+                                                                                              CabernetFrancGrape
+                                                                                              PetiteVerdotGrape
+                                                                                              MalbecGrape
+                                                                                              MerlotGrape))
+                                                ObjectMinCardinality(2 madeFromGrape)))
+SubClassOf(Meritage ObjectHasValue(hasColor Red))
+
+
+
+// Class: http://www.w3.org/TR/2003/PR-owl-guide-20031209/wine#DessertWine
+
+SubClassOf(DessertWine Wine)
+SubClassOf(DessertWine ObjectAllValuesFrom(hasSugar ObjectOneOf(Sweet OffDry)))
+
+
+
+// Class: http://www.w3.org/TR/2003/PR-owl-guide-20031209/wine#Semillon
+
+EquivalentClasses(Semillon ObjectIntersectionOf(SemillonOrSauvignonBlanc
+                                                ObjectHasValue(madeFromGrape SemillonGrape)
+                                                ObjectMaxCardinality(1 madeFromGrape)))
+
+
+
+// Class: http://www.w3.org/TR/2003/PR-owl-guide-20031209/wine#WineColor
+
+EquivalentClasses(WineColor ObjectOneOf(Rose
+                                        White
+                                        Red))
+SubClassOf(WineColor WineDescriptor)
+
+
+
+// Class: http://www.w3.org/TR/2003/PR-owl-guide-20031209/wine#Tours
+
+EquivalentClasses(Tours ObjectIntersectionOf(ObjectHasValue(locatedIn ToursRegion) Loire))
+SubClassOf(Tours ObjectHasValue(madeFromGrape CheninBlancGrape))
+SubClassOf(Tours ObjectMaxCardinality(1 madeFromGrape))
+
+
+
+// Class: http://www.w3.org/TR/2003/PR-owl-guide-20031209/wine#PetiteSyrah
+
+EquivalentClasses(PetiteSyrah ObjectIntersectionOf(Wine
+                                                   ObjectHasValue(madeFromGrape PetiteSyrahGrape)
+                                                   ObjectMaxCardinality(1 madeFromGrape)))
+SubClassOf(PetiteSyrah ObjectHasValue(hasColor Red))
+SubClassOf(PetiteSyrah ObjectAllValuesFrom(hasBody ObjectOneOf(Medium Full)))
+SubClassOf(PetiteSyrah ObjectHasValue(hasSugar Dry))
+SubClassOf(PetiteSyrah ObjectAllValuesFrom(hasFlavor ObjectOneOf(Strong Moderate)))
+
+
+
+// Class: http://www.w3.org/TR/2003/PR-owl-guide-20031209/wine#FrenchWine
+
+EquivalentClasses(FrenchWine ObjectIntersectionOf(ObjectHasValue(locatedIn FrenchRegion) Wine))
+
+
+
+// Class: http://www.w3.org/TR/2003/PR-owl-guide-20031209/wine#Chardonnay
+
+EquivalentClasses(Chardonnay ObjectIntersectionOf(Wine
+                                                  ObjectHasValue(madeFromGrape ChardonnayGrape)
+                                                  ObjectMaxCardinality(1 madeFromGrape)))
+SubClassOf(Chardonnay ObjectAllValuesFrom(hasBody ObjectOneOf(Medium Full)))
+SubClassOf(Chardonnay ObjectAllValuesFrom(hasFlavor ObjectOneOf(Strong Moderate)))
+SubClassOf(Chardonnay ObjectHasValue(hasColor White))
+
+
+
+// Class: http://www.w3.org/TR/2003/PR-owl-guide-20031209/wine#Anjou
+
+EquivalentClasses(Anjou ObjectIntersectionOf(ObjectHasValue(locatedIn AnjouRegion) Loire))
+SubClassOf(Anjou ObjectHasValue(hasSugar OffDry))
+SubClassOf(Anjou ObjectHasValue(hasFlavor Delicate))
+SubClassOf(Anjou ObjectHasValue(hasBody Light))
+SubClassOf(Anjou ObjectHasValue(hasColor Rose))
+
+
+
+// Class: http://www.w3.org/TR/2003/PR-owl-guide-20031209/wine#AlsatianWine
+
+EquivalentClasses(AlsatianWine ObjectIntersectionOf(ObjectHasValue(locatedIn AlsaceRegion) Wine))
+
+
+
+// Class: http://www.w3.org/TR/2003/PR-owl-guide-20031209/wine#Pauillac
+
+EquivalentClasses(Pauillac ObjectIntersectionOf(ObjectHasValue(locatedIn PauillacRegion) Medoc))
+SubClassOf(Pauillac ObjectHasValue(hasBody Full))
+SubClassOf(Pauillac ObjectHasValue(madeFromGrape CabernetSauvignonGrape))
+SubClassOf(Pauillac ObjectMaxCardinality(1 madeFromGrape))
+SubClassOf(Pauillac ObjectHasValue(hasFlavor Strong))
+
+
+
+// Class: http://www.w3.org/TR/2003/PR-owl-guide-20031209/wine#RedBordeaux
+
+EquivalentClasses(RedBordeaux ObjectIntersectionOf(RedWine Bordeaux))
+SubClassOf(RedBordeaux ObjectAllValuesFrom(madeFromGrape ObjectOneOf(MerlotGrape CabernetSauvignonGrape)))
+
+
+
+// Class: http://www.w3.org/TR/2003/PR-owl-guide-20031209/wine#CaliforniaWine
+
+EquivalentClasses(CaliforniaWine ObjectIntersectionOf(ObjectHasValue(locatedIn CaliforniaRegion) Wine))
+
+
+
+// Class: http://www.w3.org/TR/2003/PR-owl-guide-20031209/wine#Chianti
+
+SubClassOf(Chianti ObjectHasValue(hasColor Red))
+SubClassOf(Chianti ObjectHasValue(hasFlavor Moderate))
+SubClassOf(Chianti ObjectAllValuesFrom(hasBody ObjectOneOf(Light Medium)))
+SubClassOf(Chianti ItalianWine)
+SubClassOf(Chianti ObjectHasValue(madeFromGrape SangioveseGrape))
+SubClassOf(Chianti ObjectHasValue(locatedIn ChiantiRegion))
+SubClassOf(Chianti ObjectHasValue(hasSugar Dry))
+
+
+
+// Class: http://www.w3.org/TR/2003/PR-owl-guide-20031209/wine#GermanWine
+
+EquivalentClasses(GermanWine ObjectIntersectionOf(ObjectHasValue(locatedIn GermanyRegion) Wine))
+
+
+
+// Class: http://www.w3.org/TR/2003/PR-owl-guide-20031209/wine#RedTableWine
+
+EquivalentClasses(RedTableWine ObjectIntersectionOf(ObjectHasValue(hasColor Red) TableWine))
+
+
+
+// Class: http://www.w3.org/TR/2003/PR-owl-guide-20031209/wine#Zinfandel
+
+EquivalentClasses(Zinfandel ObjectIntersectionOf(Wine
+                                                 ObjectHasValue(madeFromGrape ZinfandelGrape)
+                                                 ObjectMaxCardinality(1 madeFromGrape)))
+SubClassOf(Zinfandel ObjectAllValuesFrom(hasFlavor ObjectOneOf(Strong Moderate)))
+SubClassOf(Zinfandel ObjectHasValue(hasSugar Dry))
+SubClassOf(Zinfandel ObjectHasValue(hasColor Red))
+SubClassOf(Zinfandel ObjectAllValuesFrom(hasBody ObjectOneOf(Medium Full)))
+
+
+
+// Class: http://www.w3.org/TR/2003/PR-owl-guide-20031209/wine#RedWine
+
+EquivalentClasses(RedWine ObjectIntersectionOf(ObjectHasValue(hasColor Red) Wine))
+
+
+
+// Class: http://www.w3.org/TR/2003/PR-owl-guide-20031209/wine#TableWine
+
+EquivalentClasses(TableWine ObjectIntersectionOf(ObjectHasValue(hasSugar Dry) Wine))
+
+
+
+// Class: http://www.w3.org/TR/2003/PR-owl-guide-20031209/wine#Margaux
+
+EquivalentClasses(Margaux ObjectIntersectionOf(ObjectHasValue(locatedIn MargauxRegion) Medoc))
+SubClassOf(Margaux ObjectMaxCardinality(1 madeFromGrape))
+SubClassOf(Margaux ObjectHasValue(madeFromGrape MerlotGrape))
+SubClassOf(Margaux ObjectHasValue(hasFlavor Delicate))
+
+
+
+// Class: http://www.w3.org/TR/2003/PR-owl-guide-20031209/wine#StEmilion
+
+EquivalentClasses(StEmilion ObjectIntersectionOf(ObjectHasValue(locatedIn StEmilionRegion) Bordeaux))
+SubClassOf(StEmilion ObjectMaxCardinality(1 madeFromGrape))
+SubClassOf(StEmilion ObjectHasValue(madeFromGrape CabernetSauvignonGrape))
+SubClassOf(StEmilion ObjectHasValue(hasColor Red))
+SubClassOf(StEmilion ObjectHasValue(hasFlavor Strong))
+
+
+
+// Class: http://www.w3.org/TR/2003/PR-owl-guide-20031209/wine#IceWine
+
+EquivalentClasses(IceWine ObjectIntersectionOf(DessertWine
+                                               LateHarvest
+                                               ObjectHasValue(hasColor White)))
+SubClassOf(IceWine ObjectAllValuesFrom(hasBody ObjectOneOf(Medium Full)))
+SubClassOf(IceWine ObjectAllValuesFrom(hasFlavor ObjectOneOf(Strong Moderate)))
+
+
+
+// Class: http://www.w3.org/TR/2003/PR-owl-guide-20031209/wine#LateHarvest
+
+SubClassOf(LateHarvest ObjectHasValue(hasSugar Sweet))
+SubClassOf(LateHarvest ObjectAllValuesFrom(hasFlavor ObjectOneOf(Strong Moderate)))
+SubClassOf(LateHarvest Wine)
+DisjointClasses(LateHarvest EarlyHarvest)
+
+
+
+// Class: http://www.w3.org/TR/2003/PR-owl-guide-20031209/wine#Sauternes
+
+SubClassOf(Sauternes LateHarvest)
+SubClassOf(Sauternes ObjectHasValue(locatedIn SauterneRegion))
+SubClassOf(Sauternes Bordeaux)
+SubClassOf(Sauternes ObjectHasValue(hasBody Medium))
+SubClassOf(Sauternes ObjectHasValue(hasColor White))
+
+
+
+// Class: http://www.w3.org/TR/2003/PR-owl-guide-20031209/wine#ItalianWine
+
+EquivalentClasses(ItalianWine ObjectIntersectionOf(ObjectHasValue(locatedIn ItalianRegion) Wine))
+
+
+
+// Class: http://www.w3.org/TR/2003/PR-owl-guide-20031209/wine#WineFlavor
+
+EquivalentClasses(WineFlavor ObjectOneOf(Moderate
+                                         Delicate
+                                         Strong))
+SubClassOf(WineFlavor WineTaste)
+
+
+
+// Class: http://www.w3.org/TR/2003/PR-owl-guide-20031209/wine#Beaujolais
+
+EquivalentClasses(Beaujolais ObjectIntersectionOf(ObjectHasValue(locatedIn BeaujolaisRegion) Wine))
+SubClassOf(Beaujolais ObjectMaxCardinality(1 madeFromGrape))
+SubClassOf(Beaujolais ObjectHasValue(hasColor Red))
+SubClassOf(Beaujolais ObjectHasValue(hasFlavor Delicate))
+SubClassOf(Beaujolais ObjectHasValue(hasSugar Dry))
+SubClassOf(Beaujolais ObjectHasValue(hasBody Light))
+SubClassOf(Beaujolais ObjectHasValue(madeFromGrape GamayGrape))
+
+
+
+// Class: http://www.w3.org/TR/2003/PR-owl-guide-20031209/wine#Sancerre
+
+EquivalentClasses(Sancerre ObjectIntersectionOf(ObjectHasValue(locatedIn SancerreRegion) Loire))
+SubClassOf(Sancerre ObjectHasValue(madeFromGrape SauvignonBlancGrape))
+SubClassOf(Sancerre ObjectHasValue(hasBody Medium))
+SubClassOf(Sancerre ObjectMaxCardinality(1 madeFromGrape))
+SubClassOf(Sancerre ObjectHasValue(hasSugar OffDry))
+SubClassOf(Sancerre ObjectHasValue(hasFlavor Delicate))
+
+
+
+// Class: http://www.w3.org/TR/2003/PR-owl-guide-20031209/wine#Winery
+
+
+
+
+// Class: http://www.w3.org/TR/2003/PR-owl-guide-20031209/wine#WineSugar
+
+EquivalentClasses(WineSugar ObjectOneOf(OffDry
+                                        Sweet
+                                        Dry))
+SubClassOf(WineSugar WineTaste)
+
+
+
+// Class: http://www.w3.org/TR/2003/PR-owl-guide-20031209/wine#EarlyHarvest
+
+SubClassOf(EarlyHarvest Wine)
+SubClassOf(EarlyHarvest ObjectAllValuesFrom(hasSugar ObjectOneOf(Dry OffDry)))
+DisjointClasses(EarlyHarvest LateHarvest)
+
+
+
+// Class: http://www.w3.org/TR/2003/PR-owl-guide-20031209/wine#SauvignonBlanc
+
+EquivalentClasses(SauvignonBlanc ObjectIntersectionOf(SemillonOrSauvignonBlanc
+                                                      ObjectHasValue(madeFromGrape SauvignonBlancGrape)
+                                                      ObjectMaxCardinality(1 madeFromGrape)))
+
+
+
+// Class: http://www.w3.org/TR/2003/PR-owl-guide-20031209/wine#RedBurgundy
+
+EquivalentClasses(RedBurgundy ObjectIntersectionOf(RedWine Burgundy))
+SubClassOf(RedBurgundy ObjectMaxCardinality(1 madeFromGrape))
+SubClassOf(RedBurgundy ObjectHasValue(madeFromGrape PinotNoirGrape))
+
+
+
+// Class: http://www.w3.org/TR/2003/PR-owl-guide-20031209/wine#SweetRiesling
+
+EquivalentClasses(SweetRiesling ObjectIntersectionOf(ObjectHasValue(hasSugar Sweet) Riesling))
+SubClassOf(SweetRiesling ObjectAllValuesFrom(hasFlavor ObjectOneOf(Strong Moderate)))
+SubClassOf(SweetRiesling ObjectHasValue(hasBody Full))
+SubClassOf(SweetRiesling DessertWine)
+
+
+
+// Class: http://www.w3.org/TR/2003/PR-owl-guide-20031209/wine#SemillonOrSauvignonBlanc
+
+EquivalentClasses(SemillonOrSauvignonBlanc ObjectIntersectionOf(ObjectAllValuesFrom(madeFromGrape ObjectOneOf(SauvignonBlancGrape SemillonGrape)) Wine))
+SubClassOf(SemillonOrSauvignonBlanc ObjectAllValuesFrom(hasBody ObjectOneOf(Medium Full)))
+SubClassOf(SemillonOrSauvignonBlanc ObjectHasValue(hasColor White))
+
+
+
+// Class: http://www.w3.org/TR/2003/PR-owl-guide-20031209/wine#Gamay
+
+EquivalentClasses(Gamay ObjectIntersectionOf(Wine
+                                             ObjectHasValue(madeFromGrape GamayGrape)
+                                             ObjectMaxCardinality(1 madeFromGrape)))
+
+
+
+// Class: http://www.w3.org/TR/2003/PR-owl-guide-20031209/wine#WineGrape
+
+SubClassOf(WineGrape food:Grape)
+
+
+
+// Class: http://www.w3.org/TR/2003/PR-owl-guide-20031209/wine#CabernetFranc
+
+EquivalentClasses(CabernetFranc ObjectIntersectionOf(Wine
+                                                     ObjectHasValue(madeFromGrape CabernetFrancGrape)
+                                                     ObjectMaxCardinality(1 madeFromGrape)))
+SubClassOf(CabernetFranc ObjectHasValue(hasSugar Dry))
+SubClassOf(CabernetFranc ObjectHasValue(hasFlavor Moderate))
+SubClassOf(CabernetFranc ObjectHasValue(hasBody Medium))
+SubClassOf(CabernetFranc ObjectHasValue(hasColor Red))
+
+
+
+// Class: http://www.w3.org/2002/07/owl#Thing
+
+
+
+
+// Class: http://www.w3.org/TR/2003/PR-owl-guide-20031209/wine#PinotNoir
+
+EquivalentClasses(PinotNoir ObjectIntersectionOf(Wine
+                                                 ObjectHasValue(madeFromGrape PinotNoirGrape)
+                                                 ObjectMaxCardinality(1 madeFromGrape)))
+SubClassOf(PinotNoir ObjectHasValue(hasColor Red))
+
+
+
+// Class: http://www.w3.org/TR/2003/PR-owl-guide-20031209/wine#WhiteNonSweetWine
+
+EquivalentClasses(WhiteNonSweetWine ObjectIntersectionOf(ObjectAllValuesFrom(hasSugar ObjectOneOf(Dry OffDry)) WhiteWine))
+
+
+
+// Class: http://www.w3.org/TR/2003/PR-owl-guide-20031209/wine#PinotBlanc
+
+EquivalentClasses(PinotBlanc ObjectIntersectionOf(Wine
+                                                  ObjectHasValue(madeFromGrape PinotBlancGrape)
+                                                  ObjectMaxCardinality(1 madeFromGrape)))
+SubClassOf(PinotBlanc ObjectHasValue(hasColor White))
+
+
+
+// Class: http://www.w3.org/TR/2003/PR-owl-guide-20031209/wine#WineDescriptor
+
+EntityAnnotation(Class(WineDescriptor) Comment("Made WineDescriptor unionType of tastes and color"))
+EquivalentClasses(WineDescriptor ObjectUnionOf(WineTaste WineColor))
+
+
+
+// Class: http://www.w3.org/TR/2003/PR-owl-guide-20031209/wine#CabernetSauvignon
+
+EquivalentClasses(CabernetSauvignon ObjectIntersectionOf(Wine
+                                                         ObjectHasValue(madeFromGrape CabernetSauvignonGrape)
+                                                         ObjectMaxCardinality(1 madeFromGrape)))
+SubClassOf(CabernetSauvignon ObjectAllValuesFrom(hasFlavor ObjectOneOf(Strong Moderate)))
+SubClassOf(CabernetSauvignon ObjectHasValue(hasSugar Dry))
+SubClassOf(CabernetSauvignon ObjectAllValuesFrom(hasBody ObjectOneOf(Medium Full)))
+SubClassOf(CabernetSauvignon ObjectHasValue(hasColor Red))
+
+
+
+// Class: http://www.w3.org/TR/2003/PR-owl-guide-20031209/wine#Meursault
+
+EquivalentClasses(Meursault ObjectIntersectionOf(ObjectHasValue(locatedIn MeursaultRegion) WhiteBurgundy))
+SubClassOf(Meursault ObjectHasValue(hasBody Full))
+
+
+
+// Class: http://www.w3.org/TR/2003/PR-owl-guide-20031209/wine#WhiteBurgundy
+
+EquivalentClasses(WhiteBurgundy ObjectIntersectionOf(WhiteWine Burgundy))
+SubClassOf(WhiteBurgundy ObjectMaxCardinality(1 madeFromGrape))
+SubClassOf(WhiteBurgundy ObjectHasValue(madeFromGrape ChardonnayGrape))
+
+
+
+// Class: http://www.w3.org/TR/2003/PR-owl-guide-20031209/wine#Wine
+
+EntityAnnotation(Class(Wine) Label("vin"@fr))
+EntityAnnotation(Class(Wine) Label("wine"@en))
+SubClassOf(Wine ObjectExactCardinality(1 hasSugar))
+SubClassOf(Wine ObjectMinCardinality(1 madeFromGrape))
+SubClassOf(Wine ObjectExactCardinality(1 hasMaker))
+SubClassOf(Wine food:PotableLiquid)
+SubClassOf(Wine ObjectExactCardinality(1 hasBody))
+SubClassOf(Wine ObjectAllValuesFrom(hasMaker Winery))
+SubClassOf(Wine ObjectExactCardinality(1 hasColor))
+SubClassOf(Wine ObjectSomeValuesFrom(locatedIn Region))
+SubClassOf(Wine ObjectExactCardinality(1 hasFlavor))
+
+
+
+// Class: http://www.w3.org/TR/2003/PR-owl-guide-20031209/wine#WineTaste
+
+SubClassOf(WineTaste WineDescriptor)
+
+
+
+// Object property: http://www.w3.org/TR/2003/PR-owl-guide-20031209/wine#hasWineDescriptor
+
+ObjectPropertyDomain(hasWineDescriptor Wine)
+ObjectPropertyRange(hasWineDescriptor WineDescriptor)
+
+
+
+// Object property: http://www.w3.org/TR/2003/PR-owl-guide-20031209/food#madeFromFruit
+
+
+
+
+// Object property: http://www.w3.org/TR/2003/PR-owl-guide-20031209/wine#hasMaker
+
+InverseObjectProperties(producesWine hasMaker)
+FunctionalObjectProperty(hasMaker)
+
+
+
+// Object property: http://www.w3.org/TR/2003/PR-owl-guide-20031209/wine#hasColor
+
+SubObjectPropertyOf(hasColor hasWineDescriptor)
+FunctionalObjectProperty(hasColor)
+ObjectPropertyDomain(hasColor Wine)
+ObjectPropertyRange(hasColor WineColor)
+
+
+
+// Object property: http://www.w3.org/TR/2003/PR-owl-guide-20031209/wine#madeIntoWine
+
+InverseObjectProperties(madeIntoWine madeFromGrape)
+
+
+
+// Object property: http://www.w3.org/TR/2003/PR-owl-guide-20031209/wine#producesWine
+
+InverseObjectProperties(producesWine hasMaker)
+
+
+
+// Object property: http://www.w3.org/TR/2003/PR-owl-guide-20031209/wine#hasSugar
+
+SubObjectPropertyOf(hasSugar hasWineDescriptor)
+FunctionalObjectProperty(hasSugar)
+ObjectPropertyRange(hasSugar WineSugar)
+
+
+
+// Object property: http://www.w3.org/TR/2003/PR-owl-guide-20031209/wine#madeFromGrape
+
+SubObjectPropertyOf(madeFromGrape food:madeFromFruit)
+InverseObjectProperties(madeIntoWine madeFromGrape)
+ObjectPropertyDomain(madeFromGrape Wine)
+ObjectPropertyRange(madeFromGrape WineGrape)
+
+
+
+// Object property: http://www.w3.org/TR/2003/PR-owl-guide-20031209/wine#locatedIn
+
+TransitiveObjectProperty(locatedIn)
+ObjectPropertyDomain(locatedIn owl:Thing)
+ObjectPropertyRange(locatedIn Region)
+
+
+
+// Object property: http://www.w3.org/TR/2003/PR-owl-guide-20031209/wine#hasBody
+
+SubObjectPropertyOf(hasBody hasWineDescriptor)
+FunctionalObjectProperty(hasBody)
+ObjectPropertyRange(hasBody WineBody)
+
+
+
+// Object property: http://www.w3.org/TR/2003/PR-owl-guide-20031209/wine#hasVintageYear
+
+FunctionalObjectProperty(hasVintageYear)
+ObjectPropertyDomain(hasVintageYear Vintage)
+ObjectPropertyRange(hasVintageYear VintageYear)
+
+
+
+// Object property: http://www.w3.org/TR/2003/PR-owl-guide-20031209/wine#hasFlavor
+
+SubObjectPropertyOf(hasFlavor hasWineDescriptor)
+FunctionalObjectProperty(hasFlavor)
+ObjectPropertyRange(hasFlavor WineFlavor)
+
+
+
+// Object property: http://www.w3.org/TR/2003/PR-owl-guide-20031209/wine#adjacentRegion
+
+SymmetricObjectProperty(adjacentRegion)
+ObjectPropertyDomain(adjacentRegion Region)
+ObjectPropertyRange(adjacentRegion Region)
+
+
+
+// Data property: http://www.w3.org/TR/2003/PR-owl-guide-20031209/wine#yearValue
+
+DataPropertyDomain(yearValue VintageYear)
+DataPropertyRange(yearValue xsd:positiveInteger)
+
+
+
+// Individual: http://www.w3.org/TR/2003/PR-owl-guide-20031209/wine#ZinfandelGrape
+
+ClassAssertion(ZinfandelGrape WineGrape)
+
+
+
+// Individual: http://www.w3.org/TR/2003/PR-owl-guide-20031209/wine#Marietta
+
+ClassAssertion(Marietta Winery)
+DifferentIndividuals(Marietta
+                     SaucelitoCanyon
+                     Bancroft
+                     PageMillWinery
+                     DAnjou
+                     PulignyMontrachet
+                     CongressSprings
+                     Corbans
+                     Cotturi
+                     Mountadam
+                     ChateauDYchem
+                     KathrynKennedy
+                     Longridge
+                     McGuinnesso
+                     GaryFarrell
+                     SantaCruzMountainVineyard
+                     WhitehallLane
+                     PeterMccoy
+                     CortonMontrachet
+                     LaneTanner
+                     ChateauLafiteRothschild
+                     SeanThackrey
+                     StGenevieve
+                     ClosDeVougeot
+                     Forman
+                     SchlossVolrad
+                     KalinCellars
+                     ClosDeLaPoussie
+                     MountEdenVineyard
+                     ChateauDeMeursault
+                     Stonleigh
+                     Ventana
+                     ChateauMargauxWinery
+                     SevreEtMaine
+                     ChateauChevalBlanc
+                     ChateauMorgon
+                     Elyse
+                     Foxen
+                     Selaks
+                     Taylor
+                     SchlossRothermel)
+
+
+
+// Individual: http://www.w3.org/TR/2003/PR-owl-guide-20031209/wine#CorbansSauvignonBlanc
+
+ClassAssertion(CorbansSauvignonBlanc SauvignonBlanc)
+ObjectPropertyAssertion(hasBody CorbansSauvignonBlanc Medium)
+ObjectPropertyAssertion(hasFlavor CorbansSauvignonBlanc Strong)
+ObjectPropertyAssertion(hasMaker CorbansSauvignonBlanc Corbans)
+ObjectPropertyAssertion(hasSugar CorbansSauvignonBlanc Dry)
+ObjectPropertyAssertion(locatedIn CorbansSauvignonBlanc NewZealandRegion)
+
+
+
+// Individual: http://www.w3.org/TR/2003/PR-owl-guide-20031209/wine#Bancroft
+
+ClassAssertion(Bancroft Winery)
+DifferentIndividuals(Marietta
+                     SaucelitoCanyon
+                     Bancroft
+                     PageMillWinery
+                     DAnjou
+                     PulignyMontrachet
+                     CongressSprings
+                     Corbans
+                     Cotturi
+                     Mountadam
+                     ChateauDYchem
+                     KathrynKennedy
+                     Longridge
+                     McGuinnesso
+                     GaryFarrell
+                     SantaCruzMountainVineyard
+                     WhitehallLane
+                     PeterMccoy
+                     CortonMontrachet
+                     LaneTanner
+                     ChateauLafiteRothschild
+                     SeanThackrey
+                     StGenevieve
+                     ClosDeVougeot
+                     Forman
+                     SchlossVolrad
+                     KalinCellars
+                     ClosDeLaPoussie
+                     MountEdenVineyard
+                     ChateauDeMeursault
+                     Stonleigh
+                     Ventana
+                     ChateauMargauxWinery
+                     SevreEtMaine
+                     ChateauChevalBlanc
+                     ChateauMorgon
+                     Elyse
+                     Foxen
+                     Selaks
+                     Taylor
+                     SchlossRothermel)
+
+
+
+// Individual: http://www.w3.org/TR/2003/PR-owl-guide-20031209/wine#ClosDeVougeotCotesDOr
+
+ClassAssertion(ClosDeVougeotCotesDOr CotesDOr)
+ObjectPropertyAssertion(hasMaker ClosDeVougeotCotesDOr ClosDeVougeot)
+
+
+
+// Individual: http://www.w3.org/TR/2003/PR-owl-guide-20031209/wine#PulignyMontrachetWhiteBurgundy
+
+ClassAssertion(PulignyMontrachetWhiteBurgundy WhiteBurgundy)
+ObjectPropertyAssertion(hasMaker PulignyMontrachetWhiteBurgundy PulignyMontrachet)
+ObjectPropertyAssertion(hasBody PulignyMontrachetWhiteBurgundy Medium)
+ObjectPropertyAssertion(hasSugar PulignyMontrachetWhiteBurgundy Dry)
+ObjectPropertyAssertion(hasFlavor PulignyMontrachetWhiteBurgundy Moderate)
+
+
+
+// Individual: http://www.w3.org/TR/2003/PR-owl-guide-20031209/wine#CabernetSauvignonGrape
+
+ClassAssertion(CabernetSauvignonGrape owl:Thing)
+ClassAssertion(CabernetSauvignonGrape WineGrape)
+
+
+
+// Individual: http://www.w3.org/TR/2003/PR-owl-guide-20031209/wine#SchlossRothermelTrochenbierenausleseRiesling
+
+ClassAssertion(SchlossRothermelTrochenbierenausleseRiesling SweetRiesling)
+ObjectPropertyAssertion(locatedIn SchlossRothermelTrochenbierenausleseRiesling GermanyRegion)
+ObjectPropertyAssertion(hasMaker SchlossRothermelTrochenbierenausleseRiesling SchlossRothermel)
+ObjectPropertyAssertion(hasFlavor SchlossRothermelTrochenbierenausleseRiesling Strong)
+ObjectPropertyAssertion(hasBody SchlossRothermelTrochenbierenausleseRiesling Full)
+ObjectPropertyAssertion(hasSugar SchlossRothermelTrochenbierenausleseRiesling Sweet)
+
+
+
+// Individual: http://www.w3.org/TR/2003/PR-owl-guide-20031209/wine#DAnjou
+
+ClassAssertion(DAnjou Winery)
+DifferentIndividuals(Marietta
+                     SaucelitoCanyon
+                     Bancroft
+                     PageMillWinery
+                     DAnjou
+                     PulignyMontrachet
+                     CongressSprings
+                     Corbans
+                     Cotturi
+                     Mountadam
+                     ChateauDYchem
+                     KathrynKennedy
+                     Longridge
+                     McGuinnesso
+                     GaryFarrell
+                     SantaCruzMountainVineyard
+                     WhitehallLane
+                     PeterMccoy
+                     CortonMontrachet
+                     LaneTanner
+                     ChateauLafiteRothschild
+                     SeanThackrey
+                     StGenevieve
+                     ClosDeVougeot
+                     Forman
+                     SchlossVolrad
+                     KalinCellars
+                     ClosDeLaPoussie
+                     MountEdenVineyard
+                     ChateauDeMeursault
+                     Stonleigh
+                     Ventana
+                     ChateauMargauxWinery
+                     SevreEtMaine
+                     ChateauChevalBlanc
+                     ChateauMorgon
+                     Elyse
+                     Foxen
+                     Selaks
+                     Taylor
+                     SchlossRothermel)
+
+
+
+// Individual: http://www.w3.org/TR/2003/PR-owl-guide-20031209/wine#PetiteSyrahGrape
+
+ClassAssertion(PetiteSyrahGrape WineGrape)
+
+
+
+// Individual: http://www.w3.org/TR/2003/PR-owl-guide-20031209/wine#PageMillWineryCabernetSauvignon
+
+ClassAssertion(PageMillWineryCabernetSauvignon CabernetSauvignon)
+ObjectPropertyAssertion(hasSugar PageMillWineryCabernetSauvignon Dry)
+ObjectPropertyAssertion(hasBody PageMillWineryCabernetSauvignon Medium)
+ObjectPropertyAssertion(hasFlavor PageMillWineryCabernetSauvignon Moderate)
+ObjectPropertyAssertion(locatedIn PageMillWineryCabernetSauvignon NapaRegion)
+ObjectPropertyAssertion(hasMaker PageMillWineryCabernetSauvignon PageMillWinery)
+
+
+
+// Individual: http://www.w3.org/TR/2003/PR-owl-guide-20031209/wine#MedocRegion
+
+ClassAssertion(MedocRegion Region)
+ObjectPropertyAssertion(locatedIn MedocRegion BordeauxRegion)
+
+
+
+// Individual: http://www.w3.org/TR/2003/PR-owl-guide-20031209/wine#Dry
+
+ClassAssertion(Dry WineSugar)
+ClassAssertion(Dry owl:Thing)
+DifferentIndividuals(Dry OffDry)
+DifferentIndividuals(OffDry
+                     Sweet
+                     Dry)
+DifferentIndividuals(Dry Sweet)
+
+
+
+// Individual: http://www.w3.org/TR/2003/PR-owl-guide-20031209/wine#Corbans
+
+ClassAssertion(Corbans Winery)
+DifferentIndividuals(Marietta
+                     SaucelitoCanyon
+                     Bancroft
+                     PageMillWinery
+                     DAnjou
+                     PulignyMontrachet
+                     CongressSprings
+                     Corbans
+                     Cotturi
+                     Mountadam
+                     ChateauDYchem
+                     KathrynKennedy
+                     Longridge
+                     McGuinnesso
+                     GaryFarrell
+                     SantaCruzMountainVineyard
+                     WhitehallLane
+                     PeterMccoy
+                     CortonMontrachet
+                     LaneTanner
+                     ChateauLafiteRothschild
+                     SeanThackrey
+                     StGenevieve
+                     ClosDeVougeot
+                     Forman
+                     SchlossVolrad
+                     KalinCellars
+                     ClosDeLaPoussie
+                     MountEdenVineyard
+                     ChateauDeMeursault
+                     Stonleigh
+                     Ventana
+                     ChateauMargauxWinery
+                     SevreEtMaine
+                     ChateauChevalBlanc
+                     ChateauMorgon
+                     Elyse
+                     Foxen
+                     Selaks
+                     Taylor
+                     SchlossRothermel)
+
+
+
+// Individual: http://www.w3.org/TR/2003/PR-owl-guide-20031209/wine#PortugalRegion
+
+ClassAssertion(PortugalRegion Region)
+
+
+
+// Individual: http://www.w3.org/TR/2003/PR-owl-guide-20031209/wine#TexasRegion
+
+ClassAssertion(TexasRegion Region)
+ObjectPropertyAssertion(locatedIn TexasRegion USRegion)
+
+
+
+// Individual: http://www.w3.org/TR/2003/PR-owl-guide-20031209/wine#OffDry
+
+ClassAssertion(OffDry owl:Thing)
+ClassAssertion(OffDry WineSugar)
+DifferentIndividuals(OffDry Dry)
+DifferentIndividuals(OffDry
+                     Sweet
+                     Dry)
+DifferentIndividuals(OffDry Sweet)
+
+
+
+// Individual: http://www.w3.org/TR/2003/PR-owl-guide-20031209/wine#SchlossVolradTrochenbierenausleseRiesling
+
+ClassAssertion(SchlossVolradTrochenbierenausleseRiesling SweetRiesling)
+ObjectPropertyAssertion(hasSugar SchlossVolradTrochenbierenausleseRiesling Sweet)
+ObjectPropertyAssertion(hasBody SchlossVolradTrochenbierenausleseRiesling Full)
+ObjectPropertyAssertion(hasMaker SchlossVolradTrochenbierenausleseRiesling SchlossVolrad)
+ObjectPropertyAssertion(hasFlavor SchlossVolradTrochenbierenausleseRiesling Moderate)
+ObjectPropertyAssertion(locatedIn SchlossVolradTrochenbierenausleseRiesling GermanyRegion)
+
+
+
+// Individual: http://www.w3.org/TR/2003/PR-owl-guide-20031209/wine#Mountadam
+
+ClassAssertion(Mountadam Winery)
+DifferentIndividuals(Marietta
+                     SaucelitoCanyon
+                     Bancroft
+                     PageMillWinery
+                     DAnjou
+                     PulignyMontrachet
+                     CongressSprings
+                     Corbans
+                     Cotturi
+                     Mountadam
+                     ChateauDYchem
+                     KathrynKennedy
+                     Longridge
+                     McGuinnesso
+                     GaryFarrell
+                     SantaCruzMountainVineyard
+                     WhitehallLane
+                     PeterMccoy
+                     CortonMontrachet
+                     LaneTanner
+                     ChateauLafiteRothschild
+                     SeanThackrey
+                     StGenevieve
+                     ClosDeVougeot
+                     Forman
+                     SchlossVolrad
+                     KalinCellars
+                     ClosDeLaPoussie
+                     MountEdenVineyard
+                     ChateauDeMeursault
+                     Stonleigh
+                     Ventana
+                     ChateauMargauxWinery
+                     SevreEtMaine
+                     ChateauChevalBlanc
+                     ChateauMorgon
+                     Elyse
+                     Foxen
+                     Selaks
+                     Taylor
+                     SchlossRothermel)
+
+
+
+// Individual: http://www.w3.org/TR/2003/PR-owl-guide-20031209/wine#ChateauDYchemSauterne
+
+ClassAssertion(ChateauDYchemSauterne Sauternes)
+ObjectPropertyAssertion(madeFromGrape ChateauDYchemSauterne SauvignonBlancGrape)
+ObjectPropertyAssertion(hasFlavor ChateauDYchemSauterne Strong)
+ObjectPropertyAssertion(madeFromGrape ChateauDYchemSauterne SemillonGrape)
+ObjectPropertyAssertion(hasMaker ChateauDYchemSauterne ChateauDYchem)
+
+
+
+// Individual: http://www.w3.org/TR/2003/PR-owl-guide-20031209/wine#WhitehallLanePrimavera
+
+ClassAssertion(WhitehallLanePrimavera DessertWine)
+ObjectPropertyAssertion(hasBody WhitehallLanePrimavera Light)
+ObjectPropertyAssertion(hasFlavor WhitehallLanePrimavera Delicate)
+ObjectPropertyAssertion(locatedIn WhitehallLanePrimavera NapaRegion)
+ObjectPropertyAssertion(hasSugar WhitehallLanePrimavera Sweet)
+
+
+
+// Individual: http://www.w3.org/TR/2003/PR-owl-guide-20031209/wine#CortonMontrachetWhiteBurgundy
+
+ClassAssertion(CortonMontrachetWhiteBurgundy WhiteBurgundy)
+ObjectPropertyAssertion(hasFlavor CortonMontrachetWhiteBurgundy Strong)
+ObjectPropertyAssertion(hasMaker CortonMontrachetWhiteBurgundy CortonMontrachet)
+ObjectPropertyAssertion(hasBody CortonMontrachetWhiteBurgundy Full)
+ObjectPropertyAssertion(hasSugar CortonMontrachetWhiteBurgundy Dry)
+
+
+
+// Individual: http://www.w3.org/TR/2003/PR-owl-guide-20031209/wine#CabernetFrancGrape
+
+ClassAssertion(CabernetFrancGrape WineGrape)
+ClassAssertion(CabernetFrancGrape owl:Thing)
+
+
+
+// Individual: http://www.w3.org/TR/2003/PR-owl-guide-20031209/wine#MariettaOldVinesRed
+
+ClassAssertion(MariettaOldVinesRed RedTableWine)
+ObjectPropertyAssertion(hasSugar MariettaOldVinesRed Dry)
+ObjectPropertyAssertion(hasFlavor MariettaOldVinesRed Moderate)
+ObjectPropertyAssertion(hasBody MariettaOldVinesRed Medium)
+ObjectPropertyAssertion(locatedIn MariettaOldVinesRed SonomaRegion)
+ObjectPropertyAssertion(hasMaker MariettaOldVinesRed Marietta)
+
+
+
+// Individual: http://www.w3.org/TR/2003/PR-owl-guide-20031209/wine#GaryFarrell
+
+ClassAssertion(GaryFarrell Winery)
+DifferentIndividuals(Marietta
+                     SaucelitoCanyon
+                     Bancroft
+                     PageMillWinery
+                     DAnjou
+                     PulignyMontrachet
+                     CongressSprings
+                     Corbans
+                     Cotturi
+                     Mountadam
+                     ChateauDYchem
+                     KathrynKennedy
+                     Longridge
+                     McGuinnesso
+                     GaryFarrell
+                     SantaCruzMountainVineyard
+                     WhitehallLane
+                     PeterMccoy
+                     CortonMontrachet
+                     LaneTanner
+                     ChateauLafiteRothschild
+                     SeanThackrey
+                     StGenevieve
+                     ClosDeVougeot
+                     Forman
+                     SchlossVolrad
+                     KalinCellars
+                     ClosDeLaPoussie
+                     MountEdenVineyard
+                     ChateauDeMeursault
+                     Stonleigh
+                     Ventana
+                     ChateauMargauxWinery
+                     SevreEtMaine
+                     ChateauChevalBlanc
+                     ChateauMorgon
+                     Elyse
+                     Foxen
+                     Selaks
+                     Taylor
+                     SchlossRothermel)
+
+
+
+// Individual: http://www.w3.org/TR/2003/PR-owl-guide-20031209/wine#CotturiZinfandel
+
+ClassAssertion(CotturiZinfandel Zinfandel)
+ObjectPropertyAssertion(locatedIn CotturiZinfandel SonomaRegion)
+ObjectPropertyAssertion(hasSugar CotturiZinfandel Dry)
+ObjectPropertyAssertion(hasBody CotturiZinfandel Full)
+ObjectPropertyAssertion(hasMaker CotturiZinfandel Cotturi)
+ObjectPropertyAssertion(hasFlavor CotturiZinfandel Strong)
+
+
+
+// Individual: http://www.w3.org/TR/2003/PR-owl-guide-20031209/wine#CortonMontrachet
+
+ClassAssertion(CortonMontrachet Winery)
+DifferentIndividuals(Marietta
+                     SaucelitoCanyon
+                     Bancroft
+                     PageMillWinery
+                     DAnjou
+                     PulignyMontrachet
+                     CongressSprings
+                     Corbans
+                     Cotturi
+                     Mountadam
+                     ChateauDYchem
+                     KathrynKennedy
+                     Longridge
+                     McGuinnesso
+                     GaryFarrell
+                     SantaCruzMountainVineyard
+                     WhitehallLane
+                     PeterMccoy
+                     CortonMontrachet
+                     LaneTanner
+                     ChateauLafiteRothschild
+                     SeanThackrey
+                     StGenevieve
+                     ClosDeVougeot
+                     Forman
+                     SchlossVolrad
+                     KalinCellars
+                     ClosDeLaPoussie
+                     MountEdenVineyard
+                     ChateauDeMeursault
+                     Stonleigh
+                     Ventana
+                     ChateauMargauxWinery
+                     SevreEtMaine
+                     ChateauChevalBlanc
+                     ChateauMorgon
+                     Elyse
+                     Foxen
+                     Selaks
+                     Taylor
+                     SchlossRothermel)
+
+
+
+// Individual: http://www.w3.org/TR/2003/PR-owl-guide-20031209/wine#ChateauMargaux
+
+ClassAssertion(ChateauMargaux Margaux)
+ObjectPropertyAssertion(hasMaker ChateauMargaux ChateauMargauxWinery)
+
+
+
+// Individual: http://www.w3.org/TR/2003/PR-owl-guide-20031209/wine#BourgogneRegion
+
+ClassAssertion(BourgogneRegion Region)
+ObjectPropertyAssertion(locatedIn BourgogneRegion FrenchRegion)
+
+
+
+// Individual: http://www.w3.org/TR/2003/PR-owl-guide-20031209/wine#FoxenCheninBlanc
+
+ClassAssertion(FoxenCheninBlanc CheninBlanc)
+ObjectPropertyAssertion(hasSugar FoxenCheninBlanc Dry)
+ObjectPropertyAssertion(hasFlavor FoxenCheninBlanc Moderate)
+ObjectPropertyAssertion(hasBody FoxenCheninBlanc Full)
+ObjectPropertyAssertion(hasMaker FoxenCheninBlanc Foxen)
+ObjectPropertyAssertion(locatedIn FoxenCheninBlanc SantaBarbaraRegion)
+
+
+
+// Individual: http://www.w3.org/TR/2003/PR-owl-guide-20031209/wine#Light
+
+ClassAssertion(Light WineBody)
+ClassAssertion(Light owl:Thing)
+DifferentIndividuals(Full
+                     Medium
+                     Light)
+
+
+
+// Individual: http://www.w3.org/TR/2003/PR-owl-guide-20031209/wine#MalbecGrape
+
+ClassAssertion(MalbecGrape owl:Thing)
+ClassAssertion(MalbecGrape WineGrape)
+
+
+
+// Individual: http://www.w3.org/TR/2003/PR-owl-guide-20031209/wine#MerlotGrape
+
+ClassAssertion(MerlotGrape WineGrape)
+ClassAssertion(MerlotGrape owl:Thing)
+
+
+
+// Individual: http://www.w3.org/TR/2003/PR-owl-guide-20031209/wine#MuscadetRegion
+
+ClassAssertion(MuscadetRegion Region)
+ObjectPropertyAssertion(locatedIn MuscadetRegion LoireRegion)
+
+
+
+// Individual: http://www.w3.org/TR/2003/PR-owl-guide-20031209/wine#CorbansPrivateBinSauvignonBlanc
+
+ClassAssertion(CorbansPrivateBinSauvignonBlanc SauvignonBlanc)
+ObjectPropertyAssertion(locatedIn CorbansPrivateBinSauvignonBlanc NewZealandRegion)
+ObjectPropertyAssertion(hasBody CorbansPrivateBinSauvignonBlanc Full)
+ObjectPropertyAssertion(hasFlavor CorbansPrivateBinSauvignonBlanc Strong)
+ObjectPropertyAssertion(hasSugar CorbansPrivateBinSauvignonBlanc Dry)
+ObjectPropertyAssertion(hasMaker CorbansPrivateBinSauvignonBlanc Corbans)
+
+
+
+// Individual: http://www.w3.org/TR/2003/PR-owl-guide-20031209/wine#MountadamChardonnay
+
+ClassAssertion(MountadamChardonnay Chardonnay)
+ObjectPropertyAssertion(hasBody MountadamChardonnay Full)
+ObjectPropertyAssertion(hasSugar MountadamChardonnay Dry)
+ObjectPropertyAssertion(hasFlavor MountadamChardonnay Strong)
+ObjectPropertyAssertion(locatedIn MountadamChardonnay SouthAustraliaRegion)
+ObjectPropertyAssertion(hasMaker MountadamChardonnay Mountadam)
+
+
+
+// Individual: http://www.w3.org/TR/2003/PR-owl-guide-20031209/wine#KalinCellars
+
+ClassAssertion(KalinCellars Winery)
+DifferentIndividuals(Marietta
+                     SaucelitoCanyon
+                     Bancroft
+                     PageMillWinery
+                     DAnjou
+                     PulignyMontrachet
+                     CongressSprings
+                     Corbans
+                     Cotturi
+                     Mountadam
+                     ChateauDYchem
+                     KathrynKennedy
+                     Longridge
+                     McGuinnesso
+                     GaryFarrell
+                     SantaCruzMountainVineyard
+                     WhitehallLane
+                     PeterMccoy
+                     CortonMontrachet
+                     LaneTanner
+                     ChateauLafiteRothschild
+                     SeanThackrey
+                     StGenevieve
+                     ClosDeVougeot
+                     Forman
+                     SchlossVolrad
+                     KalinCellars
+                     ClosDeLaPoussie
+                     MountEdenVineyard
+                     ChateauDeMeursault
+                     Stonleigh
+                     Ventana
+                     ChateauMargauxWinery
+                     SevreEtMaine
+                     ChateauChevalBlanc
+                     ChateauMorgon
+                     Elyse
+                     Foxen
+                     Selaks
+                     Taylor
+                     SchlossRothermel)
+
+
+
+// Individual: http://www.w3.org/TR/2003/PR-owl-guide-20031209/wine#CongressSpringsSemillon
+
+ClassAssertion(CongressSpringsSemillon Semillon)
+ObjectPropertyAssertion(hasFlavor CongressSpringsSemillon Moderate)
+ObjectPropertyAssertion(hasMaker CongressSpringsSemillon CongressSprings)
+ObjectPropertyAssertion(hasSugar CongressSpringsSemillon Dry)
+ObjectPropertyAssertion(hasBody CongressSpringsSemillon Medium)
+
+
+
+// Individual: http://www.w3.org/TR/2003/PR-owl-guide-20031209/wine#CorbansDryWhiteRiesling
+
+ClassAssertion(CorbansDryWhiteRiesling Riesling)
+ObjectPropertyAssertion(hasFlavor CorbansDryWhiteRiesling Moderate)
+ObjectPropertyAssertion(locatedIn CorbansDryWhiteRiesling NewZealandRegion)
+ObjectPropertyAssertion(hasBody CorbansDryWhiteRiesling Medium)
+ObjectPropertyAssertion(hasSugar CorbansDryWhiteRiesling OffDry)
+ObjectPropertyAssertion(hasMaker CorbansDryWhiteRiesling Corbans)
+
+
+
+// Individual: http://www.w3.org/TR/2003/PR-owl-guide-20031209/wine#SelaksIceWine
+
+ClassAssertion(SelaksIceWine IceWine)
+ObjectPropertyAssertion(hasFlavor SelaksIceWine Moderate)
+ObjectPropertyAssertion(hasColor SelaksIceWine White)
+ObjectPropertyAssertion(hasBody SelaksIceWine Medium)
+ObjectPropertyAssertion(hasMaker SelaksIceWine Selaks)
+ObjectPropertyAssertion(locatedIn SelaksIceWine NewZealandRegion)
+
+
+
+// Individual: http://www.w3.org/TR/2003/PR-owl-guide-20031209/wine#ToursRegion
+
+ClassAssertion(ToursRegion Region)
+ObjectPropertyAssertion(locatedIn ToursRegion LoireRegion)
+
+
+
+// Individual: http://www.w3.org/TR/2003/PR-owl-guide-20031209/wine#CongressSprings
+
+ClassAssertion(CongressSprings Winery)
+DifferentIndividuals(Marietta
+                     SaucelitoCanyon
+                     Bancroft
+                     PageMillWinery
+                     DAnjou
+                     PulignyMontrachet
+                     CongressSprings
+                     Corbans
+                     Cotturi
+                     Mountadam
+                     ChateauDYchem
+                     KathrynKennedy
+                     Longridge
+                     McGuinnesso
+                     GaryFarrell
+                     SantaCruzMountainVineyard
+                     WhitehallLane
+                     PeterMccoy
+                     CortonMontrachet
+                     LaneTanner
+                     ChateauLafiteRothschild
+                     SeanThackrey
+                     StGenevieve
+                     ClosDeVougeot
+                     Forman
+                     SchlossVolrad
+                     KalinCellars
+                     ClosDeLaPoussie
+                     MountEdenVineyard
+                     ChateauDeMeursault
+                     Stonleigh
+                     Ventana
+                     ChateauMargauxWinery
+                     SevreEtMaine
+                     ChateauChevalBlanc
+                     ChateauMorgon
+                     Elyse
+                     Foxen
+                     Selaks
+                     Taylor
+                     SchlossRothermel)
+
+
+
+// Individual: http://www.w3.org/TR/2003/PR-owl-guide-20031209/wine#ChateauDeMeursaultMeursault
+
+ClassAssertion(ChateauDeMeursaultMeursault Meursault)
+ObjectPropertyAssertion(hasFlavor ChateauDeMeursaultMeursault Moderate)
+ObjectPropertyAssertion(hasMaker ChateauDeMeursaultMeursault ChateauDeMeursault)
+
+
+
+// Individual: http://www.w3.org/TR/2003/PR-owl-guide-20031209/wine#MeursaultRegion
+
+ClassAssertion(MeursaultRegion Region)
+ObjectPropertyAssertion(locatedIn MeursaultRegion BourgogneRegion)
+
+
+
+// Individual: http://www.w3.org/TR/2003/PR-owl-guide-20031209/wine#StonleighSauvignonBlanc
+
+ClassAssertion(StonleighSauvignonBlanc SauvignonBlanc)
+ObjectPropertyAssertion(hasMaker StonleighSauvignonBlanc Stonleigh)
+ObjectPropertyAssertion(hasSugar StonleighSauvignonBlanc Dry)
+ObjectPropertyAssertion(locatedIn StonleighSauvignonBlanc NewZealandRegion)
+ObjectPropertyAssertion(hasBody StonleighSauvignonBlanc Medium)
+ObjectPropertyAssertion(hasFlavor StonleighSauvignonBlanc Delicate)
+
+
+
+// Individual: http://www.w3.org/TR/2003/PR-owl-guide-20031209/wine#USRegion
+
+ClassAssertion(USRegion Region)
+
+
+
+// Individual: http://www.w3.org/TR/2003/PR-owl-guide-20031209/wine#Handley
+
+ClassAssertion(Handley Winery)
+
+
+
+// Individual: http://www.w3.org/TR/2003/PR-owl-guide-20031209/wine#SelaksSauvignonBlanc
+
+ClassAssertion(SelaksSauvignonBlanc SauvignonBlanc)
+ObjectPropertyAssertion(hasBody SelaksSauvignonBlanc Medium)
+ObjectPropertyAssertion(locatedIn SelaksSauvignonBlanc NewZealandRegion)
+ObjectPropertyAssertion(hasSugar SelaksSauvignonBlanc Dry)
+ObjectPropertyAssertion(hasFlavor SelaksSauvignonBlanc Moderate)
+ObjectPropertyAssertion(hasMaker SelaksSauvignonBlanc Selaks)
+
+
+
+// Individual: http://www.w3.org/TR/2003/PR-owl-guide-20031209/wine#BancroftChardonnay
+
+ClassAssertion(BancroftChardonnay Chardonnay)
+ObjectPropertyAssertion(hasSugar BancroftChardonnay Dry)
+ObjectPropertyAssertion(hasBody BancroftChardonnay Medium)
+ObjectPropertyAssertion(locatedIn BancroftChardonnay NapaRegion)
+ObjectPropertyAssertion(hasFlavor BancroftChardonnay Moderate)
+ObjectPropertyAssertion(hasMaker BancroftChardonnay Bancroft)
+
+
+
+// Individual: http://www.w3.org/TR/2003/PR-owl-guide-20031209/wine#McGuinnesso
+
+ClassAssertion(McGuinnesso Winery)
+DifferentIndividuals(Marietta
+                     SaucelitoCanyon
+                     Bancroft
+                     PageMillWinery
+                     DAnjou
+                     PulignyMontrachet
+                     CongressSprings
+                     Corbans
+                     Cotturi
+                     Mountadam
+                     ChateauDYchem
+                     KathrynKennedy
+                     Longridge
+                     McGuinnesso
+                     GaryFarrell
+                     SantaCruzMountainVineyard
+                     WhitehallLane
+                     PeterMccoy
+                     CortonMontrachet
+                     LaneTanner
+                     ChateauLafiteRothschild
+                     SeanThackrey
+                     StGenevieve
+                     ClosDeVougeot
+                     Forman
+                     SchlossVolrad
+                     KalinCellars
+                     ClosDeLaPoussie
+                     MountEdenVineyard
+                     ChateauDeMeursault
+                     Stonleigh
+                     Ventana
+                     ChateauMargauxWinery
+                     SevreEtMaine
+                     ChateauChevalBlanc
+                     ChateauMorgon
+                     Elyse
+                     Foxen
+                     Selaks
+                     Taylor
+                     SchlossRothermel)
+
+
+
+// Individual: http://www.w3.org/TR/2003/PR-owl-guide-20031209/wine#Rose
+
+ClassAssertion(Rose owl:Thing)
+ClassAssertion(Rose WineColor)
+DifferentIndividuals(Rose
+                     White
+                     Red)
+
+
+
+// Individual: http://www.w3.org/TR/2003/PR-owl-guide-20031209/wine#Medium
+
+ClassAssertion(Medium owl:Thing)
+ClassAssertion(Medium WineBody)
+DifferentIndividuals(Full
+                     Medium
+                     Light)
+
+
+
+// Individual: http://www.w3.org/TR/2003/PR-owl-guide-20031209/wine#PetiteVerdotGrape
+
+ClassAssertion(PetiteVerdotGrape WineGrape)
+ClassAssertion(PetiteVerdotGrape owl:Thing)
+
+
+
+// Individual: http://www.w3.org/TR/2003/PR-owl-guide-20031209/wine#KathrynKennedyLateral
+
+ClassAssertion(KathrynKennedyLateral Meritage)
+ObjectPropertyAssertion(hasBody KathrynKennedyLateral Medium)
+ObjectPropertyAssertion(hasMaker KathrynKennedyLateral KathrynKennedy)
+ObjectPropertyAssertion(hasSugar KathrynKennedyLateral Dry)
+ObjectPropertyAssertion(hasFlavor KathrynKennedyLateral Delicate)
+
+
+
+// Individual: http://www.w3.org/TR/2003/PR-owl-guide-20031209/wine#ChiantiRegion
+
+ClassAssertion(ChiantiRegion Region)
+ObjectPropertyAssertion(locatedIn ChiantiRegion ItalianRegion)
+
+
+
+// Individual: http://www.w3.org/TR/2003/PR-owl-guide-20031209/wine#StGenevieve
+
+ClassAssertion(StGenevieve Winery)
+DifferentIndividuals(Marietta
+                     SaucelitoCanyon
+                     Bancroft
+                     PageMillWinery
+                     DAnjou
+                     PulignyMontrachet
+                     CongressSprings
+                     Corbans
+                     Cotturi
+                     Mountadam
+                     ChateauDYchem
+                     KathrynKennedy
+                     Longridge
+                     McGuinnesso
+                     GaryFarrell
+                     SantaCruzMountainVineyard
+                     WhitehallLane
+                     PeterMccoy
+                     CortonMontrachet
+                     LaneTanner
+                     ChateauLafiteRothschild
+                     SeanThackrey
+                     StGenevieve
+                     ClosDeVougeot
+                     Forman
+                     SchlossVolrad
+                     KalinCellars
+                     ClosDeLaPoussie
+                     MountEdenVineyard
+                     ChateauDeMeursault
+                     Stonleigh
+                     Ventana
+                     ChateauMargauxWinery
+                     SevreEtMaine
+                     ChateauChevalBlanc
+                     ChateauMorgon
+                     Elyse
+                     Foxen
+                     Selaks
+                     Taylor
+                     SchlossRothermel)
+
+
+
+// Individual: http://www.w3.org/TR/2003/PR-owl-guide-20031209/wine#WhitehallLaneCabernetFranc
+
+ClassAssertion(WhitehallLaneCabernetFranc CabernetFranc)
+ObjectPropertyAssertion(hasFlavor WhitehallLaneCabernetFranc Moderate)
+ObjectPropertyAssertion(hasSugar WhitehallLaneCabernetFranc Dry)
+ObjectPropertyAssertion(locatedIn WhitehallLaneCabernetFranc NapaRegion)
+ObjectPropertyAssertion(hasMaker WhitehallLaneCabernetFranc WhitehallLane)
+ObjectPropertyAssertion(hasBody WhitehallLaneCabernetFranc Medium)
+
+
+
+// Individual: http://www.w3.org/TR/2003/PR-owl-guide-20031209/wine#SauterneRegion
+
+ClassAssertion(SauterneRegion Region)
+ObjectPropertyAssertion(locatedIn SauterneRegion BordeauxRegion)
+
+
+
+// Individual: http://www.w3.org/TR/2003/PR-owl-guide-20031209/wine#SchlossVolrad
+
+ClassAssertion(SchlossVolrad Winery)
+DifferentIndividuals(Marietta
+                     SaucelitoCanyon
+                     Bancroft
+                     PageMillWinery
+                     DAnjou
+                     PulignyMontrachet
+                     CongressSprings
+                     Corbans
+                     Cotturi
+                     Mountadam
+                     ChateauDYchem
+                     KathrynKennedy
+                     Longridge
+                     McGuinnesso
+                     GaryFarrell
+                     SantaCruzMountainVineyard
+                     WhitehallLane
+                     PeterMccoy
+                     CortonMontrachet
+                     LaneTanner
+                     ChateauLafiteRothschild
+                     SeanThackrey
+                     StGenevieve
+                     ClosDeVougeot
+                     Forman
+                     SchlossVolrad
+                     KalinCellars
+                     ClosDeLaPoussie
+                     MountEdenVineyard
+                     ChateauDeMeursault
+                     Stonleigh
+                     Ventana
+                     ChateauMargauxWinery
+                     SevreEtMaine
+                     ChateauChevalBlanc
+                     ChateauMorgon
+                     Elyse
+                     Foxen
+                     Selaks
+                     Taylor
+                     SchlossRothermel)
+
+
+
+// Individual: http://www.w3.org/TR/2003/PR-owl-guide-20031209/wine#FormanCabernetSauvignon
+
+ClassAssertion(FormanCabernetSauvignon CabernetSauvignon)
+ObjectPropertyAssertion(hasBody FormanCabernetSauvignon Medium)
+ObjectPropertyAssertion(hasFlavor FormanCabernetSauvignon Strong)
+ObjectPropertyAssertion(hasSugar FormanCabernetSauvignon Dry)
+ObjectPropertyAssertion(hasMaker FormanCabernetSauvignon Forman)
+ObjectPropertyAssertion(locatedIn FormanCabernetSauvignon NapaRegion)
+
+
+
+// Individual: http://www.w3.org/TR/2003/PR-owl-guide-20031209/wine#ChateauMorgonBeaujolais
+
+ClassAssertion(ChateauMorgonBeaujolais Beaujolais)
+ObjectPropertyAssertion(hasMaker ChateauMorgonBeaujolais ChateauMorgon)
+
+
+
+// Individual: http://www.w3.org/TR/2003/PR-owl-guide-20031209/wine#PinotBlancGrape
+
+ClassAssertion(PinotBlancGrape WineGrape)
+ClassAssertion(PinotBlancGrape owl:Thing)
+
+
+
+// Individual: http://www.w3.org/TR/2003/PR-owl-guide-20031209/wine#RoseDAnjou
+
+ClassAssertion(RoseDAnjou Anjou)
+ObjectPropertyAssertion(hasMaker RoseDAnjou DAnjou)
+
+
+
+// Individual: http://www.w3.org/TR/2003/PR-owl-guide-20031209/wine#MountEdenVineyard
+
+ClassAssertion(MountEdenVineyard Winery)
+DifferentIndividuals(Marietta
+                     SaucelitoCanyon
+                     Bancroft
+                     PageMillWinery
+                     DAnjou
+                     PulignyMontrachet
+                     CongressSprings
+                     Corbans
+                     Cotturi
+                     Mountadam
+                     ChateauDYchem
+                     KathrynKennedy
+                     Longridge
+                     McGuinnesso
+                     GaryFarrell
+                     SantaCruzMountainVineyard
+                     WhitehallLane
+                     PeterMccoy
+                     CortonMontrachet
+                     LaneTanner
+                     ChateauLafiteRothschild
+                     SeanThackrey
+                     StGenevieve
+                     ClosDeVougeot
+                     Forman
+                     SchlossVolrad
+                     KalinCellars
+                     ClosDeLaPoussie
+                     MountEdenVineyard
+                     ChateauDeMeursault
+                     Stonleigh
+                     Ventana
+                     ChateauMargauxWinery
+                     SevreEtMaine
+                     ChateauChevalBlanc
+                     ChateauMorgon
+                     Elyse
+                     Foxen
+                     Selaks
+                     Taylor
+                     SchlossRothermel)
+
+
+
+// Individual: http://www.w3.org/TR/2003/PR-owl-guide-20031209/wine#Moderate
+
+ClassAssertion(Moderate owl:Thing)
+ClassAssertion(Moderate WineFlavor)
+DifferentIndividuals(Moderate
+                     Delicate
+                     Strong)
+
+
+
+// Individual: http://www.w3.org/TR/2003/PR-owl-guide-20031209/wine#ChateauMargauxWinery
+
+ClassAssertion(ChateauMargauxWinery Winery)
+DifferentIndividuals(Marietta
+                     SaucelitoCanyon
+                     Bancroft
+                     PageMillWinery
+                     DAnjou
+                     PulignyMontrachet
+                     CongressSprings
+                     Corbans
+                     Cotturi
+                     Mountadam
+                     ChateauDYchem
+                     KathrynKennedy
+                     Longridge
+                     McGuinnesso
+                     GaryFarrell
+                     SantaCruzMountainVineyard
+                     WhitehallLane
+                     PeterMccoy
+                     CortonMontrachet
+                     LaneTanner
+                     ChateauLafiteRothschild
+                     SeanThackrey
+                     StGenevieve
+                     ClosDeVougeot
+                     Forman
+                     SchlossVolrad
+                     KalinCellars
+                     ClosDeLaPoussie
+                     MountEdenVineyard
+                     ChateauDeMeursault
+                     Stonleigh
+                     Ventana
+                     ChateauMargauxWinery
+                     SevreEtMaine
+                     ChateauChevalBlanc
+                     ChateauMorgon
+                     Elyse
+                     Foxen
+                     Selaks
+                     Taylor
+                     SchlossRothermel)
+
+
+
+// Individual: http://www.w3.org/TR/2003/PR-owl-guide-20031209/wine#NewZealandRegion
+
+ClassAssertion(NewZealandRegion Region)
+
+
+
+// Individual: http://www.w3.org/TR/2003/PR-owl-guide-20031209/wine#ChateauMorgon
+
+ClassAssertion(ChateauMorgon Winery)
+DifferentIndividuals(Marietta
+                     SaucelitoCanyon
+                     Bancroft
+                     PageMillWinery
+                     DAnjou
+                     PulignyMontrachet
+                     CongressSprings
+                     Corbans
+                     Cotturi
+                     Mountadam
+                     ChateauDYchem
+                     KathrynKennedy
+                     Longridge
+                     McGuinnesso
+                     GaryFarrell
+                     SantaCruzMountainVineyard
+                     WhitehallLane
+                     PeterMccoy
+                     CortonMontrachet
+                     LaneTanner
+                     ChateauLafiteRothschild
+                     SeanThackrey
+                     StGenevieve
+                     ClosDeVougeot
+                     Forman
+                     SchlossVolrad
+                     KalinCellars
+                     ClosDeLaPoussie
+                     MountEdenVineyard
+                     ChateauDeMeursault
+                     Stonleigh
+                     Ventana
+                     ChateauMargauxWinery
+                     SevreEtMaine
+                     ChateauChevalBlanc
+                     ChateauMorgon
+                     Elyse
+                     Foxen
+                     Selaks
+                     Taylor
+                     SchlossRothermel)
+
+
+
+// Individual: http://www.w3.org/TR/2003/PR-owl-guide-20031209/wine#AnjouRegion
+
+ClassAssertion(AnjouRegion Region)
+ObjectPropertyAssertion(locatedIn AnjouRegion LoireRegion)
+
+
+
+// Individual: http://www.w3.org/TR/2003/PR-owl-guide-20031209/wine#MariettaPetiteSyrah
+
+ClassAssertion(MariettaPetiteSyrah PetiteSyrah)
+ObjectPropertyAssertion(locatedIn MariettaPetiteSyrah SonomaRegion)
+ObjectPropertyAssertion(hasMaker MariettaPetiteSyrah Marietta)
+ObjectPropertyAssertion(hasBody MariettaPetiteSyrah Medium)
+ObjectPropertyAssertion(hasSugar MariettaPetiteSyrah Dry)
+ObjectPropertyAssertion(hasFlavor MariettaPetiteSyrah Moderate)
+
+
+
+// Individual: http://www.w3.org/TR/2003/PR-owl-guide-20031209/wine#Foxen
+
+ClassAssertion(Foxen Winery)
+DifferentIndividuals(Marietta
+                     SaucelitoCanyon
+                     Bancroft
+                     PageMillWinery
+                     DAnjou
+                     PulignyMontrachet
+                     CongressSprings
+                     Corbans
+                     Cotturi
+                     Mountadam
+                     ChateauDYchem
+                     KathrynKennedy
+                     Longridge
+                     McGuinnesso
+                     GaryFarrell
+                     SantaCruzMountainVineyard
+                     WhitehallLane
+                     PeterMccoy
+                     CortonMontrachet
+                     LaneTanner
+                     ChateauLafiteRothschild
+                     SeanThackrey
+                     StGenevieve
+                     ClosDeVougeot
+                     Forman
+                     SchlossVolrad
+                     KalinCellars
+                     ClosDeLaPoussie
+                     MountEdenVineyard
+                     ChateauDeMeursault
+                     Stonleigh
+                     Ventana
+                     ChateauMargauxWinery
+                     SevreEtMaine
+                     ChateauChevalBlanc
+                     ChateauMorgon
+                     Elyse
+                     Foxen
+                     Selaks
+                     Taylor
+                     SchlossRothermel)
+
+
+
+// Individual: http://www.w3.org/TR/2003/PR-owl-guide-20031209/wine#FrenchRegion
+
+ClassAssertion(FrenchRegion Region)
+
+
+
+// Individual: http://www.w3.org/TR/2003/PR-owl-guide-20031209/wine#ItalianRegion
+
+ClassAssertion(ItalianRegion Region)
+
+
+
+// Individual: http://www.w3.org/TR/2003/PR-owl-guide-20031209/wine#StGenevieveTexasWhite
+
+ClassAssertion(StGenevieveTexasWhite WhiteWine)
+ObjectPropertyAssertion(hasFlavor StGenevieveTexasWhite Moderate)
+ObjectPropertyAssertion(hasSugar StGenevieveTexasWhite Dry)
+ObjectPropertyAssertion(hasMaker StGenevieveTexasWhite StGenevieve)
+ObjectPropertyAssertion(locatedIn StGenevieveTexasWhite CentralTexasRegion)
+
+
+
+// Individual: http://www.w3.org/TR/2003/PR-owl-guide-20031209/wine#SchlossRothermel
+
+ClassAssertion(SchlossRothermel Winery)
+DifferentIndividuals(Marietta
+                     SaucelitoCanyon
+                     Bancroft
+                     PageMillWinery
+                     DAnjou
+                     PulignyMontrachet
+                     CongressSprings
+                     Corbans
+                     Cotturi
+                     Mountadam
+                     ChateauDYchem
+                     KathrynKennedy
+                     Longridge
+                     McGuinnesso
+                     GaryFarrell
+                     SantaCruzMountainVineyard
+                     WhitehallLane
+                     PeterMccoy
+                     CortonMontrachet
+                     LaneTanner
+                     ChateauLafiteRothschild
+                     SeanThackrey
+                     StGenevieve
+                     ClosDeVougeot
+                     Forman
+                     SchlossVolrad
+                     KalinCellars
+                     ClosDeLaPoussie
+                     MountEdenVineyard
+                     ChateauDeMeursault
+                     Stonleigh
+                     Ventana
+                     ChateauMargauxWinery
+                     SevreEtMaine
+                     ChateauChevalBlanc
+                     ChateauMorgon
+                     Elyse
+                     Foxen
+                     Selaks
+                     Taylor
+                     SchlossRothermel)
+
+
+
+// Individual: http://www.w3.org/TR/2003/PR-owl-guide-20031209/wine#LoireRegion
+
+ClassAssertion(LoireRegion Region)
+ObjectPropertyAssertion(locatedIn LoireRegion FrenchRegion)
+
+
+
+// Individual: http://www.w3.org/TR/2003/PR-owl-guide-20031209/wine#SaucelitoCanyon
+
+ClassAssertion(SaucelitoCanyon Winery)
+DifferentIndividuals(Marietta
+                     SaucelitoCanyon
+                     Bancroft
+                     PageMillWinery
+                     DAnjou
+                     PulignyMontrachet
+                     CongressSprings
+                     Corbans
+                     Cotturi
+                     Mountadam
+                     ChateauDYchem
+                     KathrynKennedy
+                     Longridge
+                     McGuinnesso
+                     GaryFarrell
+                     SantaCruzMountainVineyard
+                     WhitehallLane
+                     PeterMccoy
+                     CortonMontrachet
+                     LaneTanner
+                     ChateauLafiteRothschild
+                     SeanThackrey
+                     StGenevieve
+                     ClosDeVougeot
+                     Forman
+                     SchlossVolrad
+                     KalinCellars
+                     ClosDeLaPoussie
+                     MountEdenVineyard
+                     ChateauDeMeursault
+                     Stonleigh
+                     Ventana
+                     ChateauMargauxWinery
+                     SevreEtMaine
+                     ChateauChevalBlanc
+                     ChateauMorgon
+                     Elyse
+                     Foxen
+                     Selaks
+                     Taylor
+                     SchlossRothermel)
+
+
+
+// Individual: http://www.w3.org/TR/2003/PR-owl-guide-20031209/wine#MountadamRiesling
+
+ClassAssertion(MountadamRiesling DryRiesling)
+ObjectPropertyAssertion(hasFlavor MountadamRiesling Delicate)
+ObjectPropertyAssertion(hasSugar MountadamRiesling Dry)
+ObjectPropertyAssertion(hasMaker MountadamRiesling Mountadam)
+ObjectPropertyAssertion(hasBody MountadamRiesling Medium)
+ObjectPropertyAssertion(locatedIn MountadamRiesling SouthAustraliaRegion)
+
+
+
+// Individual: http://www.w3.org/TR/2003/PR-owl-guide-20031209/wine#SonomaRegion
+
+ClassAssertion(SonomaRegion Region)
+ObjectPropertyAssertion(locatedIn SonomaRegion CaliforniaRegion)
+
+
+
+// Individual: http://www.w3.org/TR/2003/PR-owl-guide-20031209/wine#SouthAustraliaRegion
+
+ClassAssertion(SouthAustraliaRegion Region)
+ObjectPropertyAssertion(locatedIn SouthAustraliaRegion AustralianRegion)
+
+
+
+// Individual: http://www.w3.org/TR/2003/PR-owl-guide-20031209/wine#PulignyMontrachet
+
+ClassAssertion(PulignyMontrachet Winery)
+DifferentIndividuals(Marietta
+                     SaucelitoCanyon
+                     Bancroft
+                     PageMillWinery
+                     DAnjou
+                     PulignyMontrachet
+                     CongressSprings
+                     Corbans
+                     Cotturi
+                     Mountadam
+                     ChateauDYchem
+                     KathrynKennedy
+                     Longridge
+                     McGuinnesso
+                     GaryFarrell
+                     SantaCruzMountainVineyard
+                     WhitehallLane
+                     PeterMccoy
+                     CortonMontrachet
+                     LaneTanner
+                     ChateauLafiteRothschild
+                     SeanThackrey
+                     StGenevieve
+                     ClosDeVougeot
+                     Forman
+                     SchlossVolrad
+                     KalinCellars
+                     ClosDeLaPoussie
+                     MountEdenVineyard
+                     ChateauDeMeursault
+                     Stonleigh
+                     Ventana
+                     ChateauMargauxWinery
+                     SevreEtMaine
+                     ChateauChevalBlanc
+                     ChateauMorgon
+                     Elyse
+                     Foxen
+                     Selaks
+                     Taylor
+                     SchlossRothermel)
+
+
+
+// Individual: http://www.w3.org/TR/2003/PR-owl-guide-20031209/wine#SantaBarbaraRegion
+
+ClassAssertion(SantaBarbaraRegion Region)
+ObjectPropertyAssertion(locatedIn SantaBarbaraRegion CaliforniaRegion)
+
+
+
+// Individual: http://www.w3.org/TR/2003/PR-owl-guide-20031209/wine#ArroyoGrandeRegion
+
+ClassAssertion(ArroyoGrandeRegion Region)
+ObjectPropertyAssertion(locatedIn ArroyoGrandeRegion CaliforniaRegion)
+
+
+
+// Individual: http://www.w3.org/TR/2003/PR-owl-guide-20031209/wine#ChateauChevalBlancStEmilion
+
+ClassAssertion(ChateauChevalBlancStEmilion StEmilion)
+ObjectPropertyAssertion(hasMaker ChateauChevalBlancStEmilion ChateauChevalBlanc)
+
+
+
+// Individual: http://www.w3.org/TR/2003/PR-owl-guide-20031209/wine#AustralianRegion
+
+ClassAssertion(AustralianRegion Region)
+
+
+
+// Individual: http://www.w3.org/TR/2003/PR-owl-guide-20031209/wine#StEmilionRegion
+
+ClassAssertion(StEmilionRegion Region)
+ObjectPropertyAssertion(locatedIn StEmilionRegion BordeauxRegion)
+
+
+
+// Individual: http://www.w3.org/TR/2003/PR-owl-guide-20031209/wine#EdnaValleyRegion
+
+ClassAssertion(EdnaValleyRegion Region)
+ObjectPropertyAssertion(locatedIn EdnaValleyRegion CaliforniaRegion)
+
+
+
+// Individual: http://www.w3.org/TR/2003/PR-owl-guide-20031209/wine#Cotturi
+
+ClassAssertion(Cotturi Winery)
+DifferentIndividuals(Marietta
+                     SaucelitoCanyon
+                     Bancroft
+                     PageMillWinery
+                     DAnjou
+                     PulignyMontrachet
+                     CongressSprings
+                     Corbans
+                     Cotturi
+                     Mountadam
+                     ChateauDYchem
+                     KathrynKennedy
+                     Longridge
+                     McGuinnesso
+                     GaryFarrell
+                     SantaCruzMountainVineyard
+                     WhitehallLane
+                     PeterMccoy
+                     CortonMontrachet
+                     LaneTanner
+                     ChateauLafiteRothschild
+                     SeanThackrey
+                     StGenevieve
+                     ClosDeVougeot
+                     Forman
+                     SchlossVolrad
+                     KalinCellars
+                     ClosDeLaPoussie
+                     MountEdenVineyard
+                     ChateauDeMeursault
+                     Stonleigh
+                     Ventana
+                     ChateauMargauxWinery
+                     SevreEtMaine
+                     ChateauChevalBlanc
+                     ChateauMorgon
+                     Elyse
+                     Foxen
+                     Selaks
+                     Taylor
+                     SchlossRothermel)
+
+
+
+// Individual: http://www.w3.org/TR/2003/PR-owl-guide-20031209/wine#CentralCoastRegion
+
+ClassAssertion(CentralCoastRegion Region)
+ObjectPropertyAssertion(locatedIn CentralCoastRegion CaliforniaRegion)
+
+
+
+// Individual: http://www.w3.org/TR/2003/PR-owl-guide-20031209/wine#Year1998
+
+ClassAssertion(Year1998 VintageYear)
+DataPropertyAssertion(yearValue Year1998 "1998"^^xsd:positiveInteger)
+
+
+
+// Individual: http://www.w3.org/TR/2003/PR-owl-guide-20031209/wine#CaliforniaRegion
+
+ClassAssertion(CaliforniaRegion Region)
+ObjectPropertyAssertion(locatedIn CaliforniaRegion USRegion)
+
+
+
+// Individual: http://www.w3.org/TR/2003/PR-owl-guide-20031209/wine#PauillacRegion
+
+ClassAssertion(PauillacRegion Region)
+ObjectPropertyAssertion(locatedIn PauillacRegion MedocRegion)
+
+
+
+// Individual: http://www.w3.org/TR/2003/PR-owl-guide-20031209/wine#Longridge
+
+ClassAssertion(Longridge Winery)
+DifferentIndividuals(Marietta
+                     SaucelitoCanyon
+                     Bancroft
+                     PageMillWinery
+                     DAnjou
+                     PulignyMontrachet
+                     CongressSprings
+                     Corbans
+                     Cotturi
+                     Mountadam
+                     ChateauDYchem
+                     KathrynKennedy
+                     Longridge
+                     McGuinnesso
+                     GaryFarrell
+                     SantaCruzMountainVineyard
+                     WhitehallLane
+                     PeterMccoy
+                     CortonMontrachet
+                     LaneTanner
+                     ChateauLafiteRothschild
+                     SeanThackrey
+                     StGenevieve
+                     ClosDeVougeot
+                     Forman
+                     SchlossVolrad
+                     KalinCellars
+                     ClosDeLaPoussie
+                     MountEdenVineyard
+                     ChateauDeMeursault
+                     Stonleigh
+                     Ventana
+                     ChateauMargauxWinery
+                     SevreEtMaine
+                     ChateauChevalBlanc
+                     ChateauMorgon
+                     Elyse
+                     Foxen
+                     Selaks
+                     Taylor
+                     SchlossRothermel)
+
+
+
+// Individual: http://www.w3.org/TR/2003/PR-owl-guide-20031209/wine#MariettaCabernetSauvignon
+
+ClassAssertion(MariettaCabernetSauvignon CabernetSauvignon)
+ObjectPropertyAssertion(locatedIn MariettaCabernetSauvignon SonomaRegion)
+ObjectPropertyAssertion(hasMaker MariettaCabernetSauvignon Marietta)
+ObjectPropertyAssertion(hasFlavor MariettaCabernetSauvignon Moderate)
+ObjectPropertyAssertion(hasSugar MariettaCabernetSauvignon Dry)
+ObjectPropertyAssertion(hasBody MariettaCabernetSauvignon Medium)
+
+
+
+// Individual: http://www.w3.org/TR/2003/PR-owl-guide-20031209/wine#SemillonGrape
+
+ClassAssertion(SemillonGrape WineGrape)
+ClassAssertion(SemillonGrape owl:Thing)
+
+
+
+// Individual: http://www.w3.org/TR/2003/PR-owl-guide-20031209/wine#RieslingGrape
+
+ClassAssertion(RieslingGrape WineGrape)
+
+
+
+// Individual: http://www.w3.org/TR/2003/PR-owl-guide-20031209/wine#SevreEtMaineMuscadet
+
+ClassAssertion(SevreEtMaineMuscadet Muscadet)
+ObjectPropertyAssertion(hasMaker SevreEtMaineMuscadet SevreEtMaine)
+
+
+
+// Individual: http://www.w3.org/TR/2003/PR-owl-guide-20031209/wine#SauvignonBlancGrape
+
+ClassAssertion(SauvignonBlancGrape owl:Thing)
+ClassAssertion(SauvignonBlancGrape WineGrape)
+
+
+
+// Individual: http://www.w3.org/TR/2003/PR-owl-guide-20031209/wine#SantaCruzMountainsRegion
+
+ClassAssertion(SantaCruzMountainsRegion Region)
+ObjectPropertyAssertion(locatedIn SantaCruzMountainsRegion CaliforniaRegion)
+
+
+
+// Individual: http://www.w3.org/TR/2003/PR-owl-guide-20031209/wine#ClosDeLaPoussieSancerre
+
+ClassAssertion(ClosDeLaPoussieSancerre Sancerre)
+ObjectPropertyAssertion(hasMaker ClosDeLaPoussieSancerre ClosDeLaPoussie)
+
+
+
+// Individual: http://www.w3.org/TR/2003/PR-owl-guide-20031209/wine#SeanThackrey
+
+ClassAssertion(SeanThackrey Winery)
+DifferentIndividuals(Marietta
+                     SaucelitoCanyon
+                     Bancroft
+                     PageMillWinery
+                     DAnjou
+                     PulignyMontrachet
+                     CongressSprings
+                     Corbans
+                     Cotturi
+                     Mountadam
+                     ChateauDYchem
+                     KathrynKennedy
+                     Longridge
+                     McGuinnesso
+                     GaryFarrell
+                     SantaCruzMountainVineyard
+                     WhitehallLane
+                     PeterMccoy
+                     CortonMontrachet
+                     LaneTanner
+                     ChateauLafiteRothschild
+                     SeanThackrey
+                     StGenevieve
+                     ClosDeVougeot
+                     Forman
+                     SchlossVolrad
+                     KalinCellars
+                     ClosDeLaPoussie
+                     MountEdenVineyard
+                     ChateauDeMeursault
+                     Stonleigh
+                     Ventana
+                     ChateauMargauxWinery
+                     SevreEtMaine
+                     ChateauChevalBlanc
+                     ChateauMorgon
+                     Elyse
+                     Foxen
+                     Selaks
+                     Taylor
+                     SchlossRothermel)
+
+
+
+// Individual: http://www.w3.org/TR/2003/PR-owl-guide-20031209/wine#ClosDeVougeot
+
+ClassAssertion(ClosDeVougeot Winery)
+DifferentIndividuals(Marietta
+                     SaucelitoCanyon
+                     Bancroft
+                     PageMillWinery
+                     DAnjou
+                     PulignyMontrachet
+                     CongressSprings
+                     Corbans
+                     Cotturi
+                     Mountadam
+                     ChateauDYchem
+                     KathrynKennedy
+                     Longridge
+                     McGuinnesso
+                     GaryFarrell
+                     SantaCruzMountainVineyard
+                     WhitehallLane
+                     PeterMccoy
+                     CortonMontrachet
+                     LaneTanner
+                     ChateauLafiteRothschild
+                     SeanThackrey
+                     StGenevieve
+                     ClosDeVougeot
+                     Forman
+                     SchlossVolrad
+                     KalinCellars
+                     ClosDeLaPoussie
+                     MountEdenVineyard
+                     ChateauDeMeursault
+                     Stonleigh
+                     Ventana
+                     ChateauMargauxWinery
+                     SevreEtMaine
+                     ChateauChevalBlanc
+                     ChateauMorgon
+                     Elyse
+                     Foxen
+                     Selaks
+                     Taylor
+                     SchlossRothermel)
+
+
+
+// Individual: http://www.w3.org/TR/2003/PR-owl-guide-20031209/wine#BeaujolaisRegion
+
+ClassAssertion(BeaujolaisRegion Region)
+ObjectPropertyAssertion(locatedIn BeaujolaisRegion FrenchRegion)
+
+
+
+// Individual: http://www.w3.org/TR/2003/PR-owl-guide-20031209/wine#Forman
+
+ClassAssertion(Forman Winery)
+DifferentIndividuals(Marietta
+                     SaucelitoCanyon
+                     Bancroft
+                     PageMillWinery
+                     DAnjou
+                     PulignyMontrachet
+                     CongressSprings
+                     Corbans
+                     Cotturi
+                     Mountadam
+                     ChateauDYchem
+                     KathrynKennedy
+                     Longridge
+                     McGuinnesso
+                     GaryFarrell
+                     SantaCruzMountainVineyard
+                     WhitehallLane
+                     PeterMccoy
+                     CortonMontrachet
+                     LaneTanner
+                     ChateauLafiteRothschild
+                     SeanThackrey
+                     StGenevieve
+                     ClosDeVougeot
+                     Forman
+                     SchlossVolrad
+                     KalinCellars
+                     ClosDeLaPoussie
+                     MountEdenVineyard
+                     ChateauDeMeursault
+                     Stonleigh
+                     Ventana
+                     ChateauMargauxWinery
+                     SevreEtMaine
+                     ChateauChevalBlanc
+                     ChateauMorgon
+                     Elyse
+                     Foxen
+                     Selaks
+                     Taylor
+                     SchlossRothermel)
+
+
+
+// Individual: http://www.w3.org/TR/2003/PR-owl-guide-20031209/wine#SeanThackreySiriusPetiteSyrah
+
+ClassAssertion(SeanThackreySiriusPetiteSyrah PetiteSyrah)
+ObjectPropertyAssertion(hasMaker SeanThackreySiriusPetiteSyrah SeanThackrey)
+ObjectPropertyAssertion(hasSugar SeanThackreySiriusPetiteSyrah Dry)
+ObjectPropertyAssertion(hasBody SeanThackreySiriusPetiteSyrah Full)
+ObjectPropertyAssertion(locatedIn SeanThackreySiriusPetiteSyrah NapaRegion)
+ObjectPropertyAssertion(hasFlavor SeanThackreySiriusPetiteSyrah Strong)
+
+
+
+// Individual: http://www.w3.org/TR/2003/PR-owl-guide-20031209/wine#MountadamPinotNoir
+
+ClassAssertion(MountadamPinotNoir PinotNoir)
+ObjectPropertyAssertion(hasBody MountadamPinotNoir Medium)
+ObjectPropertyAssertion(hasMaker MountadamPinotNoir Mountadam)
+ObjectPropertyAssertion(hasSugar MountadamPinotNoir Dry)
+ObjectPropertyAssertion(locatedIn MountadamPinotNoir SouthAustraliaRegion)
+ObjectPropertyAssertion(hasFlavor MountadamPinotNoir Moderate)
+
+
+
+// Individual: http://www.w3.org/TR/2003/PR-owl-guide-20031209/wine#FormanChardonnay
+
+ClassAssertion(FormanChardonnay Chardonnay)
+ObjectPropertyAssertion(locatedIn FormanChardonnay NapaRegion)
+ObjectPropertyAssertion(hasMaker FormanChardonnay Forman)
+ObjectPropertyAssertion(hasSugar FormanChardonnay Dry)
+ObjectPropertyAssertion(hasFlavor FormanChardonnay Moderate)
+ObjectPropertyAssertion(hasBody FormanChardonnay Full)
+
+
+
+// Individual: http://www.w3.org/TR/2003/PR-owl-guide-20031209/wine#Ventana
+
+ClassAssertion(Ventana Winery)
+DifferentIndividuals(Marietta
+                     SaucelitoCanyon
+                     Bancroft
+                     PageMillWinery
+                     DAnjou
+                     PulignyMontrachet
+                     CongressSprings
+                     Corbans
+                     Cotturi
+                     Mountadam
+                     ChateauDYchem
+                     KathrynKennedy
+                     Longridge
+                     McGuinnesso
+                     GaryFarrell
+                     SantaCruzMountainVineyard
+                     WhitehallLane
+                     PeterMccoy
+                     CortonMontrachet
+                     LaneTanner
+                     ChateauLafiteRothschild
+                     SeanThackrey
+                     StGenevieve
+                     ClosDeVougeot
+                     Forman
+                     SchlossVolrad
+                     KalinCellars
+                     ClosDeLaPoussie
+                     MountEdenVineyard
+                     ChateauDeMeursault
+                     Stonleigh
+                     Ventana
+                     ChateauMargauxWinery
+                     SevreEtMaine
+                     ChateauChevalBlanc
+                     ChateauMorgon
+                     Elyse
+                     Foxen
+                     Selaks
+                     Taylor
+                     SchlossRothermel)
+
+
+
+// Individual: http://www.w3.org/TR/2003/PR-owl-guide-20031209/wine#SevreEtMaine
+
+ClassAssertion(SevreEtMaine Winery)
+DifferentIndividuals(Marietta
+                     SaucelitoCanyon
+                     Bancroft
+                     PageMillWinery
+                     DAnjou
+                     PulignyMontrachet
+                     CongressSprings
+                     Corbans
+                     Cotturi
+                     Mountadam
+                     ChateauDYchem
+                     KathrynKennedy
+                     Longridge
+                     McGuinnesso
+                     GaryFarrell
+                     SantaCruzMountainVineyard
+                     WhitehallLane
+                     PeterMccoy
+                     CortonMontrachet
+                     LaneTanner
+                     ChateauLafiteRothschild
+                     SeanThackrey
+                     StGenevieve
+                     ClosDeVougeot
+                     Forman
+                     SchlossVolrad
+                     KalinCellars
+                     ClosDeLaPoussie
+                     MountEdenVineyard
+                     ChateauDeMeursault
+                     Stonleigh
+                     Ventana
+                     ChateauMargauxWinery
+                     SevreEtMaine
+                     ChateauChevalBlanc
+                     ChateauMorgon
+                     Elyse
+                     Foxen
+                     Selaks
+                     Taylor
+                     SchlossRothermel)
+
+
+
+// Individual: http://www.w3.org/TR/2003/PR-owl-guide-20031209/wine#ChateauChevalBlanc
+
+ClassAssertion(ChateauChevalBlanc Winery)
+DifferentIndividuals(Marietta
+                     SaucelitoCanyon
+                     Bancroft
+                     PageMillWinery
+                     DAnjou
+                     PulignyMontrachet
+                     CongressSprings
+                     Corbans
+                     Cotturi
+                     Mountadam
+                     ChateauDYchem
+                     KathrynKennedy
+                     Longridge
+                     McGuinnesso
+                     GaryFarrell
+                     SantaCruzMountainVineyard
+                     WhitehallLane
+                     PeterMccoy
+                     CortonMontrachet
+                     LaneTanner
+                     ChateauLafiteRothschild
+                     SeanThackrey
+                     StGenevieve
+                     ClosDeVougeot
+                     Forman
+                     SchlossVolrad
+                     KalinCellars
+                     ClosDeLaPoussie
+                     MountEdenVineyard
+                     ChateauDeMeursault
+                     Stonleigh
+                     Ventana
+                     ChateauMargauxWinery
+                     SevreEtMaine
+                     ChateauChevalBlanc
+                     ChateauMorgon
+                     Elyse
+                     Foxen
+                     Selaks
+                     Taylor
+                     SchlossRothermel)
+
+
+
+// Individual: http://www.w3.org/TR/2003/PR-owl-guide-20031209/wine#Elyse
+
+ClassAssertion(Elyse Winery)
+DifferentIndividuals(Marietta
+                     SaucelitoCanyon
+                     Bancroft
+                     PageMillWinery
+                     DAnjou
+                     PulignyMontrachet
+                     CongressSprings
+                     Corbans
+                     Cotturi
+                     Mountadam
+                     ChateauDYchem
+                     KathrynKennedy
+                     Longridge
+                     McGuinnesso
+                     GaryFarrell
+                     SantaCruzMountainVineyard
+                     WhitehallLane
+                     PeterMccoy
+                     CortonMontrachet
+                     LaneTanner
+                     ChateauLafiteRothschild
+                     SeanThackrey
+                     StGenevieve
+                     ClosDeVougeot
+                     Forman
+                     SchlossVolrad
+                     KalinCellars
+                     ClosDeLaPoussie
+                     MountEdenVineyard
+                     ChateauDeMeursault
+                     Stonleigh
+                     Ventana
+                     ChateauMargauxWinery
+                     SevreEtMaine
+                     ChateauChevalBlanc
+                     ChateauMorgon
+                     Elyse
+                     Foxen
+                     Selaks
+                     Taylor
+                     SchlossRothermel)
+
+
+
+// Individual: http://www.w3.org/TR/2003/PR-owl-guide-20031209/wine#CheninBlancGrape
+
+ClassAssertion(CheninBlancGrape owl:Thing)
+ClassAssertion(CheninBlancGrape WineGrape)
+
+
+
+// Individual: http://www.w3.org/TR/2003/PR-owl-guide-20031209/wine#MendocinoRegion
+
+ClassAssertion(MendocinoRegion Region)
+ObjectPropertyAssertion(adjacentRegion MendocinoRegion SonomaRegion)
+ObjectPropertyAssertion(locatedIn MendocinoRegion CaliforniaRegion)
+
+
+
+// Individual: http://www.w3.org/TR/2003/PR-owl-guide-20031209/wine#MountEdenVineyardEstatePinotNoir
+
+ClassAssertion(MountEdenVineyardEstatePinotNoir PinotNoir)
+ObjectPropertyAssertion(hasFlavor MountEdenVineyardEstatePinotNoir Strong)
+ObjectPropertyAssertion(hasMaker MountEdenVineyardEstatePinotNoir MountEdenVineyard)
+ObjectPropertyAssertion(hasBody MountEdenVineyardEstatePinotNoir Full)
+ObjectPropertyAssertion(hasSugar MountEdenVineyardEstatePinotNoir Dry)
+ObjectPropertyAssertion(locatedIn MountEdenVineyardEstatePinotNoir EdnaValleyRegion)
+
+
+
+// Individual: http://www.w3.org/TR/2003/PR-owl-guide-20031209/wine#TaylorPort
+
+ClassAssertion(TaylorPort Port)
+ObjectPropertyAssertion(hasMaker TaylorPort Taylor)
+
+
+
+// Individual: http://www.w3.org/TR/2003/PR-owl-guide-20031209/wine#GamayGrape
+
+ClassAssertion(GamayGrape WineGrape)
+
+
+
+// Individual: http://www.w3.org/TR/2003/PR-owl-guide-20031209/wine#Sweet
+
+ClassAssertion(Sweet WineSugar)
+ClassAssertion(Sweet owl:Thing)
+DifferentIndividuals(OffDry
+                     Sweet
+                     Dry)
+DifferentIndividuals(Sweet Dry)
+DifferentIndividuals(Sweet OffDry)
+
+
+
+// Individual: http://www.w3.org/TR/2003/PR-owl-guide-20031209/wine#BordeauxRegion
+
+ClassAssertion(BordeauxRegion Region)
+ObjectPropertyAssertion(locatedIn BordeauxRegion FrenchRegion)
+
+
+
+// Individual: http://www.w3.org/TR/2003/PR-owl-guide-20031209/wine#Delicate
+
+ClassAssertion(Delicate owl:Thing)
+ClassAssertion(Delicate WineFlavor)
+DifferentIndividuals(Moderate
+                     Delicate
+                     Strong)
+
+
+
+// Individual: http://www.w3.org/TR/2003/PR-owl-guide-20031209/wine#VentanaCheninBlanc
+
+ClassAssertion(VentanaCheninBlanc CheninBlanc)
+ObjectPropertyAssertion(hasFlavor VentanaCheninBlanc Moderate)
+ObjectPropertyAssertion(hasBody VentanaCheninBlanc Medium)
+ObjectPropertyAssertion(hasSugar VentanaCheninBlanc OffDry)
+ObjectPropertyAssertion(locatedIn VentanaCheninBlanc CentralCoastRegion)
+ObjectPropertyAssertion(hasMaker VentanaCheninBlanc Ventana)
+
+
+
+// Individual: http://www.w3.org/TR/2003/PR-owl-guide-20031209/wine#LaneTannerPinotNoir
+
+ClassAssertion(LaneTannerPinotNoir PinotNoir)
+ObjectPropertyAssertion(hasBody LaneTannerPinotNoir Light)
+ObjectPropertyAssertion(hasMaker LaneTannerPinotNoir LaneTanner)
+ObjectPropertyAssertion(locatedIn LaneTannerPinotNoir SantaBarbaraRegion)
+ObjectPropertyAssertion(hasSugar LaneTannerPinotNoir Dry)
+ObjectPropertyAssertion(hasFlavor LaneTannerPinotNoir Delicate)
+
+
+
+// Individual: http://www.w3.org/TR/2003/PR-owl-guide-20031209/wine#ChardonnayGrape
+
+ClassAssertion(ChardonnayGrape WineGrape)
+
+
+
+// Individual: http://www.w3.org/TR/2003/PR-owl-guide-20031209/wine#GaryFarrellMerlot
+
+ClassAssertion(GaryFarrellMerlot Merlot)
+ObjectPropertyAssertion(hasMaker GaryFarrellMerlot GaryFarrell)
+ObjectPropertyAssertion(hasFlavor GaryFarrellMerlot Moderate)
+ObjectPropertyAssertion(hasSugar GaryFarrellMerlot Dry)
+ObjectPropertyAssertion(locatedIn GaryFarrellMerlot SonomaRegion)
+ObjectPropertyAssertion(hasBody GaryFarrellMerlot Medium)
+
+
+
+// Individual: http://www.w3.org/TR/2003/PR-owl-guide-20031209/wine#GermanyRegion
+
+ClassAssertion(GermanyRegion Region)
+
+
+
+// Individual: http://www.w3.org/TR/2003/PR-owl-guide-20031209/wine#MountEdenVineyardEdnaValleyChardonnay
+
+ClassAssertion(MountEdenVineyardEdnaValleyChardonnay Chardonnay)
+ObjectPropertyAssertion(hasBody MountEdenVineyardEdnaValleyChardonnay Medium)
+ObjectPropertyAssertion(hasMaker MountEdenVineyardEdnaValleyChardonnay MountEdenVineyard)
+ObjectPropertyAssertion(hasFlavor MountEdenVineyardEdnaValleyChardonnay Moderate)
+ObjectPropertyAssertion(hasSugar MountEdenVineyardEdnaValleyChardonnay Dry)
+ObjectPropertyAssertion(locatedIn MountEdenVineyardEdnaValleyChardonnay EdnaValleyRegion)
+
+
+
+// Individual: http://www.w3.org/TR/2003/PR-owl-guide-20031209/wine#PageMillWinery
+
+ClassAssertion(PageMillWinery Winery)
+DifferentIndividuals(Marietta
+                     SaucelitoCanyon
+                     Bancroft
+                     PageMillWinery
+                     DAnjou
+                     PulignyMontrachet
+                     CongressSprings
+                     Corbans
+                     Cotturi
+                     Mountadam
+                     ChateauDYchem
+                     KathrynKennedy
+                     Longridge
+                     McGuinnesso
+                     GaryFarrell
+                     SantaCruzMountainVineyard
+                     WhitehallLane
+                     PeterMccoy
+                     CortonMontrachet
+                     LaneTanner
+                     ChateauLafiteRothschild
+                     SeanThackrey
+                     StGenevieve
+                     ClosDeVougeot
+                     Forman
+                     SchlossVolrad
+                     KalinCellars
+                     ClosDeLaPoussie
+                     MountEdenVineyard
+                     ChateauDeMeursault
+                     Stonleigh
+                     Ventana
+                     ChateauMargauxWinery
+                     SevreEtMaine
+                     ChateauChevalBlanc
+                     ChateauMorgon
+                     Elyse
+                     Foxen
+                     Selaks
+                     Taylor
+                     SchlossRothermel)
+
+
+
+// Individual: http://www.w3.org/TR/2003/PR-owl-guide-20031209/wine#CotesDOrRegion
+
+ClassAssertion(CotesDOrRegion Region)
+ObjectPropertyAssertion(locatedIn CotesDOrRegion BourgogneRegion)
+
+
+
+// Individual: http://www.w3.org/TR/2003/PR-owl-guide-20031209/wine#ChateauLafiteRothschildPauillac
+
+ClassAssertion(ChateauLafiteRothschildPauillac Pauillac)
+ObjectPropertyAssertion(hasMaker ChateauLafiteRothschildPauillac ChateauLafiteRothschild)
+
+
+
+// Individual: http://www.w3.org/TR/2003/PR-owl-guide-20031209/wine#Full
+
+ClassAssertion(Full owl:Thing)
+ClassAssertion(Full WineBody)
+DifferentIndividuals(Full
+                     Medium
+                     Light)
+
+
+
+// Individual: http://www.w3.org/TR/2003/PR-owl-guide-20031209/wine#White
+
+ClassAssertion(White owl:Thing)
+ClassAssertion(White WineColor)
+DifferentIndividuals(Rose
+                     White
+                     Red)
+
+
+
+// Individual: http://www.w3.org/TR/2003/PR-owl-guide-20031209/wine#AlsaceRegion
+
+ClassAssertion(AlsaceRegion Region)
+ObjectPropertyAssertion(locatedIn AlsaceRegion FrenchRegion)
+
+
+
+// Individual: http://www.w3.org/TR/2003/PR-owl-guide-20031209/wine#ChiantiClassico
+
+ClassAssertion(ChiantiClassico Chianti)
+ObjectPropertyAssertion(hasBody ChiantiClassico Medium)
+ObjectPropertyAssertion(hasMaker ChiantiClassico McGuinnesso)
+
+
+
+// Individual: http://www.w3.org/TR/2003/PR-owl-guide-20031209/wine#SaucelitoCanyonZinfandel
+
+ClassAssertion(SaucelitoCanyonZinfandel Zinfandel)
+ObjectPropertyAssertion(hasSugar SaucelitoCanyonZinfandel Dry)
+ObjectPropertyAssertion(hasBody SaucelitoCanyonZinfandel Medium)
+ObjectPropertyAssertion(locatedIn SaucelitoCanyonZinfandel ArroyoGrandeRegion)
+ObjectPropertyAssertion(hasMaker SaucelitoCanyonZinfandel SaucelitoCanyon)
+ObjectPropertyAssertion(hasFlavor SaucelitoCanyonZinfandel Moderate)
+
+
+
+// Individual: http://www.w3.org/TR/2003/PR-owl-guide-20031209/wine#SantaCruzMountainVineyardCabernetSauvignon
+
+ClassAssertion(SantaCruzMountainVineyardCabernetSauvignon CabernetSauvignon)
+ObjectPropertyAssertion(hasSugar SantaCruzMountainVineyardCabernetSauvignon Dry)
+ObjectPropertyAssertion(hasFlavor SantaCruzMountainVineyardCabernetSauvignon Strong)
+ObjectPropertyAssertion(hasMaker SantaCruzMountainVineyardCabernetSauvignon SantaCruzMountainVineyard)
+ObjectPropertyAssertion(hasBody SantaCruzMountainVineyardCabernetSauvignon Full)
+ObjectPropertyAssertion(locatedIn SantaCruzMountainVineyardCabernetSauvignon SantaCruzMountainsRegion)
+
+
+
+// Individual: http://www.w3.org/TR/2003/PR-owl-guide-20031209/wine#KathrynKennedy
+
+ClassAssertion(KathrynKennedy Winery)
+DifferentIndividuals(Marietta
+                     SaucelitoCanyon
+                     Bancroft
+                     PageMillWinery
+                     DAnjou
+                     PulignyMontrachet
+                     CongressSprings
+                     Corbans
+                     Cotturi
+                     Mountadam
+                     ChateauDYchem
+                     KathrynKennedy
+                     Longridge
+                     McGuinnesso
+                     GaryFarrell
+                     SantaCruzMountainVineyard
+                     WhitehallLane
+                     PeterMccoy
+                     CortonMontrachet
+                     LaneTanner
+                     ChateauLafiteRothschild
+                     SeanThackrey
+                     StGenevieve
+                     ClosDeVougeot
+                     Forman
+                     SchlossVolrad
+                     KalinCellars
+                     ClosDeLaPoussie
+                     MountEdenVineyard
+                     ChateauDeMeursault
+                     Stonleigh
+                     Ventana
+                     ChateauMargauxWinery
+                     SevreEtMaine
+                     ChateauChevalBlanc
+                     ChateauMorgon
+                     Elyse
+                     Foxen
+                     Selaks
+                     Taylor
+                     SchlossRothermel)
+
+
+
+// Individual: http://www.w3.org/TR/2003/PR-owl-guide-20031209/wine#ChateauDYchem
+
+ClassAssertion(ChateauDYchem Winery)
+DifferentIndividuals(Marietta
+                     SaucelitoCanyon
+                     Bancroft
+                     PageMillWinery
+                     DAnjou
+                     PulignyMontrachet
+                     CongressSprings
+                     Corbans
+                     Cotturi
+                     Mountadam
+                     ChateauDYchem
+                     KathrynKennedy
+                     Longridge
+                     McGuinnesso
+                     GaryFarrell
+                     SantaCruzMountainVineyard
+                     WhitehallLane
+                     PeterMccoy
+                     CortonMontrachet
+                     LaneTanner
+                     ChateauLafiteRothschild
+                     SeanThackrey
+                     StGenevieve
+                     ClosDeVougeot
+                     Forman
+                     SchlossVolrad
+                     KalinCellars
+                     ClosDeLaPoussie
+                     MountEdenVineyard
+                     ChateauDeMeursault
+                     Stonleigh
+                     Ventana
+                     ChateauMargauxWinery
+                     SevreEtMaine
+                     ChateauChevalBlanc
+                     ChateauMorgon
+                     Elyse
+                     Foxen
+                     Selaks
+                     Taylor
+                     SchlossRothermel)
+
+
+
+// Individual: http://www.w3.org/TR/2003/PR-owl-guide-20031209/wine#NapaRegion
+
+ClassAssertion(NapaRegion Region)
+ObjectPropertyAssertion(locatedIn NapaRegion CaliforniaRegion)
+
+
+
+// Individual: http://www.w3.org/TR/2003/PR-owl-guide-20031209/wine#Beringer
+
+ClassAssertion(Beringer Winery)
+
+
+
+// Individual: http://www.w3.org/TR/2003/PR-owl-guide-20031209/wine#MargauxRegion
+
+ClassAssertion(MargauxRegion Region)
+ObjectPropertyAssertion(locatedIn MargauxRegion MedocRegion)
+
+
+
+// Individual: http://www.w3.org/TR/2003/PR-owl-guide-20031209/wine#MariettaZinfandel
+
+ClassAssertion(MariettaZinfandel Zinfandel)
+ObjectPropertyAssertion(hasMaker MariettaZinfandel Marietta)
+ObjectPropertyAssertion(locatedIn MariettaZinfandel SonomaRegion)
+ObjectPropertyAssertion(hasFlavor MariettaZinfandel Moderate)
+ObjectPropertyAssertion(hasBody MariettaZinfandel Medium)
+ObjectPropertyAssertion(hasSugar MariettaZinfandel Dry)
+
+
+
+// Individual: http://www.w3.org/TR/2003/PR-owl-guide-20031209/wine#PinotNoirGrape
+
+ClassAssertion(PinotNoirGrape WineGrape)
+
+
+
+// Individual: http://www.w3.org/TR/2003/PR-owl-guide-20031209/wine#ElyseZinfandel
+
+ClassAssertion(ElyseZinfandel Zinfandel)
+ObjectPropertyAssertion(hasFlavor ElyseZinfandel Moderate)
+ObjectPropertyAssertion(hasBody ElyseZinfandel Full)
+ObjectPropertyAssertion(hasSugar ElyseZinfandel Dry)
+ObjectPropertyAssertion(hasMaker ElyseZinfandel Elyse)
+ObjectPropertyAssertion(locatedIn ElyseZinfandel NapaRegion)
+
+
+
+// Individual: http://www.w3.org/TR/2003/PR-owl-guide-20031209/wine#SantaCruzMountainVineyard
+
+ClassAssertion(SantaCruzMountainVineyard Winery)
+DifferentIndividuals(Marietta
+                     SaucelitoCanyon
+                     Bancroft
+                     PageMillWinery
+                     DAnjou
+                     PulignyMontrachet
+                     CongressSprings
+                     Corbans
+                     Cotturi
+                     Mountadam
+                     ChateauDYchem
+                     KathrynKennedy
+                     Longridge
+                     McGuinnesso
+                     GaryFarrell
+                     SantaCruzMountainVineyard
+                     WhitehallLane
+                     PeterMccoy
+                     CortonMontrachet
+                     LaneTanner
+                     ChateauLafiteRothschild
+                     SeanThackrey
+                     StGenevieve
+                     ClosDeVougeot
+                     Forman
+                     SchlossVolrad
+                     KalinCellars
+                     ClosDeLaPoussie
+                     MountEdenVineyard
+                     ChateauDeMeursault
+                     Stonleigh
+                     Ventana
+                     ChateauMargauxWinery
+                     SevreEtMaine
+                     ChateauChevalBlanc
+                     ChateauMorgon
+                     Elyse
+                     Foxen
+                     Selaks
+                     Taylor
+                     SchlossRothermel)
+
+
+
+// Individual: http://www.w3.org/TR/2003/PR-owl-guide-20031209/wine#WhitehallLane
+
+ClassAssertion(WhitehallLane Winery)
+DifferentIndividuals(Marietta
+                     SaucelitoCanyon
+                     Bancroft
+                     PageMillWinery
+                     DAnjou
+                     PulignyMontrachet
+                     CongressSprings
+                     Corbans
+                     Cotturi
+                     Mountadam
+                     ChateauDYchem
+                     KathrynKennedy
+                     Longridge
+                     McGuinnesso
+                     GaryFarrell
+                     SantaCruzMountainVineyard
+                     WhitehallLane
+                     PeterMccoy
+                     CortonMontrachet
+                     LaneTanner
+                     ChateauLafiteRothschild
+                     SeanThackrey
+                     StGenevieve
+                     ClosDeVougeot
+                     Forman
+                     SchlossVolrad
+                     KalinCellars
+                     ClosDeLaPoussie
+                     MountEdenVineyard
+                     ChateauDeMeursault
+                     Stonleigh
+                     Ventana
+                     ChateauMargauxWinery
+                     SevreEtMaine
+                     ChateauChevalBlanc
+                     ChateauMorgon
+                     Elyse
+                     Foxen
+                     Selaks
+                     Taylor
+                     SchlossRothermel)
+
+
+
+// Individual: http://www.w3.org/TR/2003/PR-owl-guide-20031209/wine#CentralTexasRegion
+
+ClassAssertion(CentralTexasRegion Region)
+ObjectPropertyAssertion(locatedIn CentralTexasRegion TexasRegion)
+
+
+
+// Individual: http://www.w3.org/TR/2003/PR-owl-guide-20031209/wine#PeterMccoy
+
+ClassAssertion(PeterMccoy Winery)
+DifferentIndividuals(Marietta
+                     SaucelitoCanyon
+                     Bancroft
+                     PageMillWinery
+                     DAnjou
+                     PulignyMontrachet
+                     CongressSprings
+                     Corbans
+                     Cotturi
+                     Mountadam
+                     ChateauDYchem
+                     KathrynKennedy
+                     Longridge
+                     McGuinnesso
+                     GaryFarrell
+                     SantaCruzMountainVineyard
+                     WhitehallLane
+                     PeterMccoy
+                     CortonMontrachet
+                     LaneTanner
+                     ChateauLafiteRothschild
+                     SeanThackrey
+                     StGenevieve
+                     ClosDeVougeot
+                     Forman
+                     SchlossVolrad
+                     KalinCellars
+                     ClosDeLaPoussie
+                     MountEdenVineyard
+                     ChateauDeMeursault
+                     Stonleigh
+                     Ventana
+                     ChateauMargauxWinery
+                     SevreEtMaine
+                     ChateauChevalBlanc
+                     ChateauMorgon
+                     Elyse
+                     Foxen
+                     Selaks
+                     Taylor
+                     SchlossRothermel)
+
+
+
+// Individual: http://www.w3.org/TR/2003/PR-owl-guide-20031209/wine#LaneTanner
+
+ClassAssertion(LaneTanner Winery)
+DifferentIndividuals(Marietta
+                     SaucelitoCanyon
+                     Bancroft
+                     PageMillWinery
+                     DAnjou
+                     PulignyMontrachet
+                     CongressSprings
+                     Corbans
+                     Cotturi
+                     Mountadam
+                     ChateauDYchem
+                     KathrynKennedy
+                     Longridge
+                     McGuinnesso
+                     GaryFarrell
+                     SantaCruzMountainVineyard
+                     WhitehallLane
+                     PeterMccoy
+                     CortonMontrachet
+                     LaneTanner
+                     ChateauLafiteRothschild
+                     SeanThackrey
+                     StGenevieve
+                     ClosDeVougeot
+                     Forman
+                     SchlossVolrad
+                     KalinCellars
+                     ClosDeLaPoussie
+                     MountEdenVineyard
+                     ChateauDeMeursault
+                     Stonleigh
+                     Ventana
+                     ChateauMargauxWinery
+                     SevreEtMaine
+                     ChateauChevalBlanc
+                     ChateauMorgon
+                     Elyse
+                     Foxen
+                     Selaks
+                     Taylor
+                     SchlossRothermel)
+
+
+
+// Individual: http://www.w3.org/TR/2003/PR-owl-guide-20031209/wine#ChateauLafiteRothschild
+
+ClassAssertion(ChateauLafiteRothschild Winery)
+DifferentIndividuals(Marietta
+                     SaucelitoCanyon
+                     Bancroft
+                     PageMillWinery
+                     DAnjou
+                     PulignyMontrachet
+                     CongressSprings
+                     Corbans
+                     Cotturi
+                     Mountadam
+                     ChateauDYchem
+                     KathrynKennedy
+                     Longridge
+                     McGuinnesso
+                     GaryFarrell
+                     SantaCruzMountainVineyard
+                     WhitehallLane
+                     PeterMccoy
+                     CortonMontrachet
+                     LaneTanner
+                     ChateauLafiteRothschild
+                     SeanThackrey
+                     StGenevieve
+                     ClosDeVougeot
+                     Forman
+                     SchlossVolrad
+                     KalinCellars
+                     ClosDeLaPoussie
+                     MountEdenVineyard
+                     ChateauDeMeursault
+                     Stonleigh
+                     Ventana
+                     ChateauMargauxWinery
+                     SevreEtMaine
+                     ChateauChevalBlanc
+                     ChateauMorgon
+                     Elyse
+                     Foxen
+                     Selaks
+                     Taylor
+                     SchlossRothermel)
+
+
+
+// Individual: http://www.w3.org/TR/2003/CR-owl-guide-20030818/wine
+
+
+
+
+// Individual: http://www.w3.org/TR/2003/PR-owl-guide-20031209/wine#Strong
+
+ClassAssertion(Strong WineFlavor)
+ClassAssertion(Strong owl:Thing)
+DifferentIndividuals(Moderate
+                     Delicate
+                     Strong)
+
+
+
+// Individual: http://www.w3.org/TR/2003/PR-owl-guide-20031209/wine#LongridgeMerlot
+
+ClassAssertion(LongridgeMerlot Merlot)
+ObjectPropertyAssertion(hasMaker LongridgeMerlot Longridge)
+ObjectPropertyAssertion(locatedIn LongridgeMerlot NewZealandRegion)
+ObjectPropertyAssertion(hasSugar LongridgeMerlot Dry)
+ObjectPropertyAssertion(hasFlavor LongridgeMerlot Moderate)
+ObjectPropertyAssertion(hasBody LongridgeMerlot Light)
+
+
+
+// Individual: http://www.w3.org/TR/2003/PR-owl-guide-20031209/wine#ClosDeLaPoussie
+
+ClassAssertion(ClosDeLaPoussie Winery)
+DifferentIndividuals(Marietta
+                     SaucelitoCanyon
+                     Bancroft
+                     PageMillWinery
+                     DAnjou
+                     PulignyMontrachet
+                     CongressSprings
+                     Corbans
+                     Cotturi
+                     Mountadam
+                     ChateauDYchem
+                     KathrynKennedy
+                     Longridge
+                     McGuinnesso
+                     GaryFarrell
+                     SantaCruzMountainVineyard
+                     WhitehallLane
+                     PeterMccoy
+                     CortonMontrachet
+                     LaneTanner
+                     ChateauLafiteRothschild
+                     SeanThackrey
+                     StGenevieve
+                     ClosDeVougeot
+                     Forman
+                     SchlossVolrad
+                     KalinCellars
+                     ClosDeLaPoussie
+                     MountEdenVineyard
+                     ChateauDeMeursault
+                     Stonleigh
+                     Ventana
+                     ChateauMargauxWinery
+                     SevreEtMaine
+                     ChateauChevalBlanc
+                     ChateauMorgon
+                     Elyse
+                     Foxen
+                     Selaks
+                     Taylor
+                     SchlossRothermel)
+
+
+
+// Individual: http://www.w3.org/TR/2003/PR-owl-guide-20031209/wine#SancerreRegion
+
+ClassAssertion(SancerreRegion Region)
+ObjectPropertyAssertion(locatedIn SancerreRegion LoireRegion)
+
+
+
+// Individual: http://www.w3.org/TR/2003/PR-owl-guide-20031209/wine#SangioveseGrape
+
+ClassAssertion(SangioveseGrape WineGrape)
+
+
+
+// Individual: http://www.w3.org/TR/2003/PR-owl-guide-20031209/wine#ChateauDeMeursault
+
+ClassAssertion(ChateauDeMeursault Winery)
+DifferentIndividuals(Marietta
+                     SaucelitoCanyon
+                     Bancroft
+                     PageMillWinery
+                     DAnjou
+                     PulignyMontrachet
+                     CongressSprings
+                     Corbans
+                     Cotturi
+                     Mountadam
+                     ChateauDYchem
+                     KathrynKennedy
+                     Longridge
+                     McGuinnesso
+                     GaryFarrell
+                     SantaCruzMountainVineyard
+                     WhitehallLane
+                     PeterMccoy
+                     CortonMontrachet
+                     LaneTanner
+                     ChateauLafiteRothschild
+                     SeanThackrey
+                     StGenevieve
+                     ClosDeVougeot
+                     Forman
+                     SchlossVolrad
+                     KalinCellars
+                     ClosDeLaPoussie
+                     MountEdenVineyard
+                     ChateauDeMeursault
+                     Stonleigh
+                     Ventana
+                     ChateauMargauxWinery
+                     SevreEtMaine
+                     ChateauChevalBlanc
+                     ChateauMorgon
+                     Elyse
+                     Foxen
+                     Selaks
+                     Taylor
+                     SchlossRothermel)
+
+
+
+// Individual: http://www.w3.org/TR/2003/PR-owl-guide-20031209/wine#SaucelitoCanyonZinfandel1998
+
+ClassAssertion(SaucelitoCanyonZinfandel1998 Zinfandel)
+ObjectPropertyAssertion(hasBody SaucelitoCanyonZinfandel1998 Medium)
+ObjectPropertyAssertion(hasFlavor SaucelitoCanyonZinfandel1998 Moderate)
+ObjectPropertyAssertion(hasMaker SaucelitoCanyonZinfandel1998 SaucelitoCanyon)
+ObjectPropertyAssertion(locatedIn SaucelitoCanyonZinfandel1998 ArroyoGrandeRegion)
+ObjectPropertyAssertion(hasSugar SaucelitoCanyonZinfandel1998 Dry)
+ObjectPropertyAssertion(hasVintageYear SaucelitoCanyonZinfandel1998 Year1998)
+
+
+
+// Individual: http://www.w3.org/TR/2003/PR-owl-guide-20031209/wine#Stonleigh
+
+ClassAssertion(Stonleigh Winery)
+DifferentIndividuals(Marietta
+                     SaucelitoCanyon
+                     Bancroft
+                     PageMillWinery
+                     DAnjou
+                     PulignyMontrachet
+                     CongressSprings
+                     Corbans
+                     Cotturi
+                     Mountadam
+                     ChateauDYchem
+                     KathrynKennedy
+                     Longridge
+                     McGuinnesso
+                     GaryFarrell
+                     SantaCruzMountainVineyard
+                     WhitehallLane
+                     PeterMccoy
+                     CortonMontrachet
+                     LaneTanner
+                     ChateauLafiteRothschild
+                     SeanThackrey
+                     StGenevieve
+                     ClosDeVougeot
+                     Forman
+                     SchlossVolrad
+                     KalinCellars
+                     ClosDeLaPoussie
+                     MountEdenVineyard
+                     ChateauDeMeursault
+                     Stonleigh
+                     Ventana
+                     ChateauMargauxWinery
+                     SevreEtMaine
+                     ChateauChevalBlanc
+                     ChateauMorgon
+                     Elyse
+                     Foxen
+                     Selaks
+                     Taylor
+                     SchlossRothermel)
+
+
+
+// Individual: http://www.w3.org/TR/2003/PR-owl-guide-20031209/wine#KalinCellarsSemillon
+
+ClassAssertion(KalinCellarsSemillon Semillon)
+ObjectPropertyAssertion(hasSugar KalinCellarsSemillon Dry)
+ObjectPropertyAssertion(hasBody KalinCellarsSemillon Full)
+ObjectPropertyAssertion(hasMaker KalinCellarsSemillon KalinCellars)
+ObjectPropertyAssertion(hasFlavor KalinCellarsSemillon Strong)
+
+
+
+// Individual: http://www.w3.org/TR/2003/PR-owl-guide-20031209/wine#Red
+
+ClassAssertion(Red owl:Thing)
+ClassAssertion(Red WineColor)
+DifferentIndividuals(Rose
+                     White
+                     Red)
+
+
+
+// Individual: http://www.w3.org/TR/2003/PR-owl-guide-20031209/wine#PeterMccoyChardonnay
+
+ClassAssertion(PeterMccoyChardonnay Chardonnay)
+ObjectPropertyAssertion(hasSugar PeterMccoyChardonnay Dry)
+ObjectPropertyAssertion(hasBody PeterMccoyChardonnay Medium)
+ObjectPropertyAssertion(hasFlavor PeterMccoyChardonnay Moderate)
+ObjectPropertyAssertion(locatedIn PeterMccoyChardonnay SonomaRegion)
+ObjectPropertyAssertion(hasMaker PeterMccoyChardonnay PeterMccoy)
+
+
+
+// Individual: http://www.w3.org/TR/2003/PR-owl-guide-20031209/wine#Selaks
+
+ClassAssertion(Selaks Winery)
+DifferentIndividuals(Marietta
+                     SaucelitoCanyon
+                     Bancroft
+                     PageMillWinery
+                     DAnjou
+                     PulignyMontrachet
+                     CongressSprings
+                     Corbans
+                     Cotturi
+                     Mountadam
+                     ChateauDYchem
+                     KathrynKennedy
+                     Longridge
+                     McGuinnesso
+                     GaryFarrell
+                     SantaCruzMountainVineyard
+                     WhitehallLane
+                     PeterMccoy
+                     CortonMontrachet
+                     LaneTanner
+                     ChateauLafiteRothschild
+                     SeanThackrey
+                     StGenevieve
+                     ClosDeVougeot
+                     Forman
+                     SchlossVolrad
+                     KalinCellars
+                     ClosDeLaPoussie
+                     MountEdenVineyard
+                     ChateauDeMeursault
+                     Stonleigh
+                     Ventana
+                     ChateauMargauxWinery
+                     SevreEtMaine
+                     ChateauChevalBlanc
+                     ChateauMorgon
+                     Elyse
+                     Foxen
+                     Selaks
+                     Taylor
+                     SchlossRothermel)
+
+
+
+// Individual: http://www.w3.org/TR/2003/PR-owl-guide-20031209/wine#Taylor
+
+ClassAssertion(Taylor Winery)
+DifferentIndividuals(Marietta
+                     SaucelitoCanyon
+                     Bancroft
+                     PageMillWinery
+                     DAnjou
+                     PulignyMontrachet
+                     CongressSprings
+                     Corbans
+                     Cotturi
+                     Mountadam
+                     ChateauDYchem
+                     KathrynKennedy
+                     Longridge
+                     McGuinnesso
+                     GaryFarrell
+                     SantaCruzMountainVineyard
+                     WhitehallLane
+                     PeterMccoy
+                     CortonMontrachet
+                     LaneTanner
+                     ChateauLafiteRothschild
+                     SeanThackrey
+                     StGenevieve
+                     ClosDeVougeot
+                     Forman
+                     SchlossVolrad
+                     KalinCellars
+                     ClosDeLaPoussie
+                     MountEdenVineyard
+                     ChateauDeMeursault
+                     Stonleigh
+                     Ventana
+                     ChateauMargauxWinery
+                     SevreEtMaine
+                     ChateauChevalBlanc
+                     ChateauMorgon
+                     Elyse
+                     Foxen
+                     Selaks
+                     Taylor
+                     SchlossRothermel)
+
+
+
+)
+// Generated by the OWL API (version 2.2.1.1138) http://owlapi.sourceforge.net

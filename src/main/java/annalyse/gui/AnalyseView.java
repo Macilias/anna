@@ -4,12 +4,8 @@
 
 package annalyse.gui;
 
-import org.jdesktop.application.Action;
-import org.jdesktop.application.ResourceMap;
-import org.jdesktop.application.SingleFrameApplication;
-import org.jdesktop.application.FrameView;
-import org.jdesktop.application.Task;
-import org.jdesktop.application.TaskMonitor;
+import org.jdesktop.application.*;
+
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 import java.util.LinkedList;
@@ -33,7 +29,11 @@ public class AnalyseView extends FrameView {
 //        showWordEditor();
 
         // status bar initialization - message timeout, idle icon and busy animation, etc
-        ResourceMap resourceMap = getResourceMap();
+
+        ApplicationContext context = Application.getInstance().getContext();
+        ResourceMap resourceMap = context.getResourceMap(AnalyseView.class);
+//        ResourceMap resourceMap = getResourceMap();
+//        ResourceMap resourceMap = getContext().getResourceMap(AnalyseView.class);
         int messageTimeout = resourceMap.getInteger("StatusBar.messageTimeout");
         messageTimer = new Timer(messageTimeout, new ActionListener() {
             public void actionPerformed(ActionEvent e) {

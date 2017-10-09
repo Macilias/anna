@@ -1,0 +1,54 @@
+###############################################################              
+# This version defines a specific property to be transitive
+# and symmetric.
+# It computes the property closure in forward mode - so everything
+# is calculated when the graph is prepared - whether it is needed or not
+
+#[transitiveRule: (?A demo:p ?B), (?B demo:p ?C) -> (?A demo:p ?C) ]
+              
+#[symmetricRule: (?Y demo:p ?X) -> (?X demo:p ?Y) ]
+
+###############################################################              
+# This approach allows a property to be declared symmetric transitive
+# and computes the property closure in forward mode - so everything
+# is caculated when the graph is prepared - whether it is needed or not
+
+#[transitiveRule: (?P rdf:type demo:TransProp) 
+#              (?A ?P ?B), (?B ?P ?C) -> (?A ?P ?C) ]
+#              
+#[symmetricRule: (?P rdf:type demo:TransProp) 
+#              (?Y ?P ?X) -> (?X ?P ?Y) ]
+                            
+###############################################################              
+# This approach allows a property to be declared symmetric transitive
+# and uses the hybrid rules to minimize overheads and only calculate
+# the transitive closure on demand
+
+#-> tableAll().
+#
+#[rule1: (?P rdf:type demo:TransProp) ->
+#			[ (?X ?P ?Y) <- (?Y ?P ?X) ]
+#			[ (?A ?P ?C) <- (?A ?P ?B), (?B ?P ?C) ] 
+#]			
+
+################################################################
+#------------------GRAMMATIK RULES - DEUTSCH-------------------#
+################################################################
+
+#ErgŠnzugsreihenfolge im Mittelfeld
+
+-> table(g:steht_vor).
+#-> tableAll().
+
+#[steht_vor: (?X rdf:type g:SatzentitŠt), (?Y rdf:type g:SatzentitŠt), notEqual(?X,?Y) ->
+#	    [ (?X g:steht_vor ?Y) <- (?X g:position_in_Satz ?Xp), (?Y g:position_in_Satz ?Yp), lessThan(?Xp, ?Yp)]
+#]
+
+#Funktioniert auf allen Elementen, welche Ÿber das PrŠdikat position_in_Satz verfŸgen, geht aber vielleicht mit obigen effizienter
+[steht_vor:  (?X g:position_in_Satz ?Xp) (?Y g:position_in_Satz ?Yp) notEqual(?X, ?Y) lessThan(?Xp, ?Yp) -> (?X g:steht_vor ?Y) ]
+
+#Vereinfachte Definition eines Aktanten ohne Bezug auf die UmstŠnde wie die eines Vorgangs oder einer Handlung
+#TODO muss noch erweitert werden
+
+[Aktant: (?X rdf:type g:Nomen) -> (?X rdf:type g:Aktant) ]
+

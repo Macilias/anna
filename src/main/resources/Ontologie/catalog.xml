@@ -1,0 +1,8 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<catalog id="file:/Users/maciekn/Documents/Programmierung/Analyse/Ontologie/" prefer="public"
+         xml:base="file:/Users/maciekn/Documents/Programmierung/Analyse/Ontologie/"
+         xmlns="urn:oasis:names:tc:entity:xmlns:xml:catalog">
+    <uri name="http://www.analisa.eu/grammatik.owl" uri="grammatik.owl"/>
+    <uri name="http://www.pizza.com/ontologies/pizza.owl" uri="pizza.owl"/>
+    <uri name="http://www.sshibak.co.uk/ontologies/2009/6/PSystem.owl" uri="PSystem3.owl"/>
+</catalog>

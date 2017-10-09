@@ -1,0 +1,40 @@
+<?xml version="1.0"?>
+<rdf:RDF
+    xmlns="file:/Users/maciekn/Documents/Programmierung/Anaylse/Ontologie/GNPolishWords/GNPolishWords.owl#"
+    xmlns:rdf="http://www.w3.org/1999/02/22-rdf-syntax-ns#"
+    xmlns:protege="http://protege.stanford.edu/plugins/owl/protege#"
+    xmlns:xsp="http://www.owl-ontologies.com/2005/08/07/xsp.owl#"
+    xmlns:owl="http://www.w3.org/2002/07/owl#"
+    xmlns:xsd="http://www.w3.org/2001/XMLSchema#"
+    xmlns:swrl="http://www.w3.org/2003/11/swrl#"
+    xmlns:swrlb="http://www.w3.org/2003/11/swrlb#"
+    xmlns:rdfs="http://www.w3.org/2000/01/rdf-schema#"
+  xml:base="file:/Users/maciekn/Documents/Programmierung/Anaylse/Ontologie/GNPolishWords/GNPolishWords.owl">
+  <owl:Ontology rdf:about="file:/Users/maciekn/Documents/Programmierung/Anaylse/Ontologie/GNPolishWords/GNPolishWords.owl"/>
+  <owl:Class>
+    <rdfs:comment rdf:datatype="http://www.w3.org/2001/XMLSchema#string"
+    >@ontobase stereotype = Data Model </rdfs:comment>
+  </owl:Class>
+  <owl:Class rdf:about="file:/Users/maciekn/Documents/Programmierung/Anaylse/Ontologie/GNPolishWords/GNPolishWords.owl#=SERVICE">
+    <rdfs:comment rdf:datatype="http://www.w3.org/2001/XMLSchema#string"
+    >@ontobase stereotype = Service Model</rdfs:comment>
+  </owl:Class>
+  <owl:Class rdf:about="file:/Users/maciekn/Documents/Programmierung/Anaylse/Ontologie/GNPolishWords/GNPolishWords.owl#.TUPLE">
+    <rdfs:comment rdf:datatype="http://www.w3.org/2001/XMLSchema#string"
+    >@ontobase stereotype = Event Model</rdfs:comment>
+  </owl:Class>
+  <owl:Class rdf:about="file:/Users/maciekn/Documents/Programmierung/Anaylse/Ontologie/GNPolishWords/GNPolishWords.owl#~STREAM">
+    <rdfs:comment rdf:datatype="http://www.w3.org/2001/XMLSchema#string"
+    >@ontobase stereotype = Process Model</rdfs:comment>
+  </owl:Class>
+  <owl:ObjectProperty rdf:about=":OBO"/>
+  <owl:ObjectProperty rdf:about=":INIT"/>
+  <owl:ObjectProperty rdf:about=":ARGS"/>
+  <owl:ObjectProperty rdf:about=":SIGN"/>
+  <rdf:Description>
+    <rdfs:comment rdf:datatype="http://www.w3.org/2001/XMLSchema#string"
+    >@ontobase stereotype = Data Model </rdfs:comment>
+  </rdf:Description>
+</rdf:RDF>
+
+<!-- Created with Protege (with OWL Plugin 3.4, Build 533)  http://protege.stanford.edu -->

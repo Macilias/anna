@@ -1,7 +1,3 @@
-/*
- * AnalyseApp.java
- */
-
 package annalyse.gui;
 
 import annalyse.logic.Anna;

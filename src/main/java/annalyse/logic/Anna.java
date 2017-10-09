@@ -18,6 +18,7 @@ import com.hp.hpl.jena.reasoner.rulesys.FBRuleReasoner;
 import java.io.BufferedInputStream;
 import java.io.DataInputStream;
 import java.io.FileInputStream;
+import java.io.InputStream;
 import java.util.LinkedList;
 import javax.persistence.EntityManager;
 import javax.persistence.EntityManagerFactory;
@@ -30,10 +31,8 @@ import org.jdesktop.application.Task;
  */
 public class Anna {
     //Connection
-    EntityManagerFactory efGER = javax.persistence.Persistence.
-            createEntityManagerFactory("AnaylsePUMNGerman");
-    EntityManagerFactory efPOL = javax.persistence.Persistence.
-            createEntityManagerFactory("AnaylsePUMNPolish");
+    EntityManagerFactory efGER = javax.persistence.Persistence.createEntityManagerFactory("AnaylsePUMNGerman");
+    EntityManagerFactory efPOL = javax.persistence.Persistence.createEntityManagerFactory("AnaylsePUMNPolish");
     private EntityManager emGER = efGER.createEntityManager();
     private EntityManager emPOL = efPOL.createEntityManager();
     private EntityManager em = emPOL;
@@ -63,8 +62,10 @@ public class Anna {
             em = efPOL.createEntityManager();
         }
         try {
-            DataInputStream in = new DataInputStream(new BufferedInputStream(
-                    new FileInputStream("Ontologie/grammatik.owl")));
+            ClassLoader cl = AnalyseApp.class.getClassLoader();
+//            FileResource fileResource = new URLClassLoaderFileResource(cl, resource);
+            InputStream stream = cl.getResourceAsStream("Ontologie/grammatik.owl");
+            DataInputStream in = new DataInputStream(new BufferedInputStream(stream));
             base.read(in, SOURCE);
             base.setNsPrefix("brain", BrainNS).setNsPrefix("g", NS);
             FBRuleReasoner reasoner = (FBRuleReasoner) m.getReasoner();

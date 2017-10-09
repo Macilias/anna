@@ -1,0 +1,4399 @@
+<?xml version="1.0"?>
+
+
+<!DOCTYPE rdf:RDF [
+    <!ENTITY owl "http://www.w3.org/2002/07/owl#" >
+    <!ENTITY dc "http://purl.org/dc/elements/1.1/" >
+    <!ENTITY xsd "http://www.w3.org/2001/XMLSchema#" >
+    <!ENTITY owl2xml "http://www.w3.org/2006/12/owl2-xml#" >
+    <!ENTITY grammatik "http://www.analisa.eu/grammatik.owl#" >
+    <!ENTITY rdfs "http://www.w3.org/2000/01/rdf-schema#" >
+    <!ENTITY męski "http://www.analisa.eu/grammatik.owl#m&#281;ski," >
+    <!ENTITY miary "http://www.analisa.eu/grammatik.owl#(miary)" >
+    <!ENTITY rdf "http://www.w3.org/1999/02/22-rdf-syntax-ns#" >
+    <!ENTITY miejsca "http://www.analisa.eu/grammatik.owl#(miejsca)" >
+    <!ENTITY männlich "http://www.analisa.eu/grammatik.owl#m&#228;nnlich," >
+    <!ENTITY Locativus "http://www.analisa.eu/grammatik.owl#(Locativus)" >
+    <!ENTITY dopełniacz "http://www.analisa.eu/grammatik.owl#dope&#322;niacz," >
+    <!ENTITY dawno "http://www.analisa.eu/grammatik.owl#przesz&#322;y_(dawno)" >
+    <!ENTITY Instrumentalis "http://www.analisa.eu/grammatik.owl#(Instrumentalis)" >
+    <!ENTITY elativus "http://www.analisa.eu/grammatik.owl#najnajwy&#380;szy_(elativus)" >
+]>
+
+
+<rdf:RDF xmlns="http://www.analisa.eu/grammatik.owl#"
+     xml:base="http://www.analisa.eu/grammatik.owl"
+     xmlns:owl2xml="http://www.w3.org/2006/12/owl2-xml#"
+     xmlns:dopełniacz="&grammatik;dope&#322;niacz,"
+     xmlns:miejsca="&grammatik;(miejsca)"
+     xmlns:Instrumentalis="&grammatik;(Instrumentalis)"
+     xmlns:elativus="&grammatik;najnajwy&#380;szy_(elativus)"
+     xmlns:xsd="http://www.w3.org/2001/XMLSchema#"
+     xmlns:männlich="&grammatik;m&#228;nnlich,"
+     xmlns:Locativus="&grammatik;(Locativus)"
+     xmlns:miary="&grammatik;(miary)"
+     xmlns:dawno="&grammatik;przesz&#322;y_(dawno)"
+     xmlns:rdfs="http://www.w3.org/2000/01/rdf-schema#"
+     xmlns:owl="http://www.w3.org/2002/07/owl#"
+     xmlns:grammatik="http://www.analisa.eu/grammatik.owl#"
+     xmlns:dc="http://purl.org/dc/elements/1.1/"
+     xmlns:męski="&grammatik;m&#281;ski,"
+     xmlns:rdf="http://www.w3.org/1999/02/22-rdf-syntax-ns#">
+    <owl:Ontology rdf:about=""/>
+    
+
+
+    <!-- 
+    ///////////////////////////////////////////////////////////////////////////////////////
+    //
+    // Annotation properties
+    //
+    ///////////////////////////////////////////////////////////////////////////////////////
+     -->
+
+    <owl:AnnotationProperty rdf:about="&dc;language"/>
+    
+
+
+    <!-- 
+    ///////////////////////////////////////////////////////////////////////////////////////
+    //
+    // Object Properties
+    //
+    ///////////////////////////////////////////////////////////////////////////////////////
+     -->
+
+    
+
+
+    <!-- http://www.analisa.eu/grammatik.owl#altus -->
+
+    <owl:ObjectProperty rdf:about="#altus">
+        <rdfs:range rdf:resource="#Altus"/>
+        <rdfs:subPropertyOf rdf:resource="#wortattribut"/>
+    </owl:ObjectProperty>
+    
+
+
+    <!-- http://www.analisa.eu/grammatik.owl#andererTeilID -->
+
+    <owl:ObjectProperty rdf:about="#andererTeilID">
+        <rdfs:range rdf:resource="#Konjunktion"/>
+    </owl:ObjectProperty>
+    
+
+
+    <!-- http://www.analisa.eu/grammatik.owl#bezugsebene -->
+
+    <owl:ObjectProperty rdf:about="#bezugsebene">
+        <rdfs:range rdf:resource="#Strukturebene"/>
+    </owl:ObjectProperty>
+    
+
+
+    <!-- http://www.analisa.eu/grammatik.owl#c-Kommando -->
+
+    <owl:ObjectProperty rdf:about="#c-Kommando">
+        <rdfs:comment rdf:datatype="&xsd;string"
+            >Grammatik Phrase _Schaffrath-Derivationen.pdf S.2
+Komplemente werden syntaktisch vom Kopf der Phrase gefordert und bilden zusammen die Projektionsstufe X&#180;. Das Komplement wird vom Kopf der XP c-kommandiert. C-command: A c-commands B if and only if A does not dominate B and every X that dominates A also dominates B</rdfs:comment>
+        <rdfs:comment
+            >Konstituent Kommando</rdfs:comment>
+        <rdfs:domain rdf:resource="#Kern"/>
+        <rdfs:subPropertyOf rdf:resource="#gb-beziehung"/>
+    </owl:ObjectProperty>
+    
+
+
+    <!-- http://www.analisa.eu/grammatik.owl#charakterisiert -->
+
+    <owl:ObjectProperty rdf:about="#charakterisiert">
+        <rdfs:domain rdf:resource="#Wort"/>
+        <rdfs:range rdf:resource="#semantisches_Bezugsobjekt"/>
+    </owl:ObjectProperty>
+    
+
+
+    <!-- http://www.analisa.eu/grammatik.owl#charakterisiert_durch -->
+
+    <owl:ObjectProperty rdf:about="#charakterisiert_durch">
+        <rdfs:range rdf:resource="#Wort"/>
+        <owl:inverseOf rdf:resource="#charakterisiert"/>
+        <rdfs:domain rdf:resource="#semantisches_Bezugsobjekt"/>
+    </owl:ObjectProperty>
+    
+
+
+    <!-- http://www.analisa.eu/grammatik.owl#der_Wortart -->
+
+    <owl:ObjectProperty rdf:about="#der_Wortart"/>
+    
+
+
+    <!-- http://www.analisa.eu/grammatik.owl#dominiert -->
+
+    <owl:ObjectProperty rdf:about="#dominiert">
+        <rdf:type rdf:resource="&owl;TransitiveProperty"/>
+        <rdfs:range rdf:resource="#GB-Element"/>
+        <rdfs:domain rdf:resource="#GB-Element"/>
+        <rdfs:subPropertyOf rdf:resource="#gb-beziehung"/>
+    </owl:ObjectProperty>
+    
+
+
+    <!-- http://www.analisa.eu/grammatik.owl#eingebettete_Phrase -->
+
+    <owl:ObjectProperty rdf:about="#eingebettete_Phrase">
+        <rdf:type rdf:resource="&owl;IrreflexiveProperty"/>
+        <rdfs:range rdf:resource="#Phrase"/>
+        <rdfs:domain rdf:resource="#Phrase"/>
+    </owl:ObjectProperty>
+    
+
+
+    <!-- http://www.analisa.eu/grammatik.owl#gb-beziehung -->
+
+    <owl:ObjectProperty rdf:about="#gb-beziehung"/>
+    
+
+
+    <!-- http://www.analisa.eu/grammatik.owl#genus -->
+
+    <owl:ObjectProperty rdf:about="#genus">
+        <rdfs:range rdf:resource="#Genus"/>
+        <rdfs:subPropertyOf rdf:resource="#wortattribut"/>
+    </owl:ObjectProperty>
+    
+
+
+    <!-- http://www.analisa.eu/grammatik.owl#kasus -->
+
+    <owl:ObjectProperty rdf:about="#kasus">
+        <rdfs:range rdf:resource="#Kasus"/>
+        <rdfs:subPropertyOf rdf:resource="#wortattribut"/>
+    </owl:ObjectProperty>
+    
+
+
+    <!-- http://www.analisa.eu/grammatik.owl#kern -->
+
+    <owl:ObjectProperty rdf:about="#kern">
+        <rdfs:domain rdf:resource="#Phrase"/>
+        <rdfs:range rdf:resource="#Wort"/>
+    </owl:ObjectProperty>
+    
+
+
+    <!-- http://www.analisa.eu/grammatik.owl#konstituente -->
+
+    <owl:ObjectProperty rdf:about="#konstituente">
+        <rdfs:range rdf:resource="#Konstituente"/>
+    </owl:ObjectProperty>
+    
+
+
+    <!-- http://www.analisa.eu/grammatik.owl#m-Kommando -->
+
+    <owl:ObjectProperty rdf:about="#m-Kommando">
+        <rdfs:comment rdf:datatype="&xsd;string"
+            >Grammatik Phrase _Schaffrath-Derivationen.pdf S.2
+Der Spezifizierer wird vom Kopf der Phrase m-kommandiert und bildet mit X&#180;zusammen die maximale Projektion XP. 
+M-command: 
+A m-commands B if and only if A does not dominate B and the maximal projection XP that dominates A also dominates B.</rdfs:comment>
+        <rdfs:domain rdf:resource="#Kern"/>
+        <rdfs:subPropertyOf rdf:resource="#gb-beziehung"/>
+    </owl:ObjectProperty>
+    
+
+
+    <!-- http://www.analisa.eu/grammatik.owl#modus -->
+
+    <owl:ObjectProperty rdf:about="#modus">
+        <rdfs:range rdf:resource="#Modus"/>
+        <rdfs:subPropertyOf rdf:resource="#wortattribut"/>
+    </owl:ObjectProperty>
+    
+
+
+    <!-- http://www.analisa.eu/grammatik.owl#numerus -->
+
+    <owl:ObjectProperty rdf:about="#numerus">
+        <rdfs:range rdf:resource="#Numerus"/>
+        <rdfs:subPropertyOf rdf:resource="#wortattribut"/>
+    </owl:ObjectProperty>
+    
+
+
+    <!-- http://www.analisa.eu/grammatik.owl#person -->
+
+    <owl:ObjectProperty rdf:about="#person">
+        <rdfs:range rdf:resource="#Person"/>
+        <rdfs:subPropertyOf rdf:resource="#wortattribut"/>
+    </owl:ObjectProperty>
+    
+
+
+    <!-- http://www.analisa.eu/grammatik.owl#phrase -->
+
+    <owl:ObjectProperty rdf:about="#phrase">
+        <rdfs:range rdf:resource="#Phrase"/>
+        <rdfs:domain rdf:resource="#Wort"/>
+        <owl:inverseOf rdf:resource="#kern"/>
+    </owl:ObjectProperty>
+    
+
+
+    <!-- http://www.analisa.eu/grammatik.owl#postposition -->
+
+    <owl:ObjectProperty rdf:about="#postposition">
+        <rdfs:range rdf:resource="#Postposition"/>
+        <rdfs:subPropertyOf rdf:resource="#wort"/>
+    </owl:ObjectProperty>
+    
+
+
+    <!-- http://www.analisa.eu/grammatik.owl#pr&#228;position -->
+
+    <owl:ObjectProperty rdf:about="#pr&#228;position">
+        <rdfs:range rdf:resource="#Pr&#228;position"/>
+        <rdfs:subPropertyOf rdf:resource="#wort"/>
+    </owl:ObjectProperty>
+    
+
+
+    <!-- http://www.analisa.eu/grammatik.owl#steht_vor -->
+
+    <owl:ObjectProperty rdf:about="#steht_vor">
+        <rdf:type rdf:resource="&owl;TransitiveProperty"/>
+        <rdfs:comment>im Duden: &gt;</rdfs:comment>
+        <rdfs:domain rdf:resource="#Satzentit&#228;t"/>
+        <rdfs:range rdf:resource="#Satzentit&#228;t"/>
+    </owl:ObjectProperty>
+    
+
+
+    <!-- http://www.analisa.eu/grammatik.owl#steigerung -->
+
+    <owl:ObjectProperty rdf:about="#steigerung">
+        <rdfs:range rdf:resource="#Steigerung"/>
+        <rdfs:subPropertyOf rdf:resource="#wortattribut"/>
+    </owl:ObjectProperty>
+    
+
+
+    <!-- http://www.analisa.eu/grammatik.owl#tempus -->
+
+    <owl:ObjectProperty rdf:about="#tempus">
+        <rdfs:range rdf:resource="#Tempus"/>
+        <rdfs:subPropertyOf rdf:resource="#wortattribut"/>
+    </owl:ObjectProperty>
+    
+
+
+    <!-- http://www.analisa.eu/grammatik.owl#umstand -->
+
+    <owl:ObjectProperty rdf:about="#umstand">
+        <rdfs:range rdf:resource="#Umstand"/>
+        <rdfs:subPropertyOf rdf:resource="#wortattribut"/>
+    </owl:ObjectProperty>
+    
+
+
+    <!-- http://www.analisa.eu/grammatik.owl#unterscheidet -->
+
+    <owl:ObjectProperty rdf:about="#unterscheidet">
+        <rdfs:domain rdf:resource="#Perspektive"/>
+    </owl:ObjectProperty>
+    
+
+
+    <!-- http://www.analisa.eu/grammatik.owl#wort -->
+
+    <owl:ObjectProperty rdf:about="#wort">
+        <rdfs:range rdf:resource="#Wort"/>
+    </owl:ObjectProperty>
+    
+
+
+    <!-- http://www.analisa.eu/grammatik.owl#wortattribut -->
+
+    <owl:ObjectProperty rdf:about="#wortattribut">
+        <rdfs:range rdf:resource="#Wortattribut"/>
+    </owl:ObjectProperty>
+    
+
+
+    <!-- http://www.analisa.eu/grammatik.owl#wortunterart -->
+
+    <owl:ObjectProperty rdf:about="#wortunterart">
+        <rdfs:range rdf:resource="#Wortunterart"/>
+        <owl:inverseOf rdf:resource="#der_Wortart"/>
+        <rdfs:subPropertyOf rdf:resource="#wortattribut"/>
+    </owl:ObjectProperty>
+    
+
+
+    <!-- 
+    ///////////////////////////////////////////////////////////////////////////////////////
+    //
+    // Data properties
+    //
+    ///////////////////////////////////////////////////////////////////////////////////////
+     -->
+
+    
+
+
+    <!-- http://www.analisa.eu/grammatik.owl#belebt -->
+
+    <owl:DatatypeProperty rdf:about="#belebt">
+        <rdfs:range rdf:resource="&xsd;boolean"/>
+    </owl:DatatypeProperty>
+    
+
+
+    <!-- http://www.analisa.eu/grammatik.owl#deklinierbar -->
+
+    <owl:DatatypeProperty rdf:about="#deklinierbar">
+        <rdfs:comment
+            >Zu den deklinierbaren W&#246;rtern z&#228;hlen die Substantive (z. B. der Mann, des Mannes), die Adjektive (z. B. klein, kleine, kleinen), die Artikel (z. B. der, den, dem) und die Pronomen (z. B. ihm, ihn) und Numerale
+=&gt; Focus: Kasus und Numerus</rdfs:comment>
+        <rdfs:subPropertyOf rdf:resource="#flektierbar"/>
+        <rdfs:range rdf:resource="&xsd;boolean"/>
+    </owl:DatatypeProperty>
+    
+
+
+    <!-- http://www.analisa.eu/grammatik.owl#flektierbar -->
+
+    <owl:DatatypeProperty rdf:about="#flektierbar">
+        <rdfs:range rdf:resource="&xsd;boolean"/>
+    </owl:DatatypeProperty>
+    
+
+
+    <!-- http://www.analisa.eu/grammatik.owl#grundform -->
+
+    <owl:DatatypeProperty rdf:about="#grundform">
+        <rdfs:range rdf:resource="&xsd;string"/>
+    </owl:DatatypeProperty>
+    
+
+
+    <!-- http://www.analisa.eu/grammatik.owl#key -->
+
+    <owl:DatatypeProperty rdf:about="#key">
+        <rdfs:range rdf:resource="&xsd;string"/>
+    </owl:DatatypeProperty>
+    
+
+
+    <!-- http://www.analisa.eu/grammatik.owl#komparierbar -->
+
+    <owl:DatatypeProperty rdf:about="#komparierbar">
+        <rdfs:comment
+            >zu den komparierbaren die Adjektive (z. B. gro&#223;, gr&#246;&#223;er, am gr&#246;&#223;ten)
+=&gt; Fokus:Steigerung</rdfs:comment>
+        <rdfs:subPropertyOf rdf:resource="#flektierbar"/>
+        <rdfs:range rdf:resource="&xsd;boolean"/>
+    </owl:DatatypeProperty>
+    
+
+
+    <!-- http://www.analisa.eu/grammatik.owl#konjugierbar -->
+
+    <owl:DatatypeProperty rdf:about="#konjugierbar">
+        <rdfs:comment
+            >zu den konjugierbaren z&#228;hlen die Verben (z. B. laufe, l&#228;ufst, lief)
+=&gt; Fokus: Person und Tempus</rdfs:comment>
+        <rdfs:subPropertyOf rdf:resource="#flektierbar"/>
+        <rdfs:range rdf:resource="&xsd;boolean"/>
+    </owl:DatatypeProperty>
+    
+
+
+    <!-- http://www.analisa.eu/grammatik.owl#language -->
+
+    <owl:DatatypeProperty rdf:about="#language">
+        <rdfs:range rdf:resource="&xsd;short"/>
+    </owl:DatatypeProperty>
+    
+
+
+    <!-- http://www.analisa.eu/grammatik.owl#lexem -->
+
+    <owl:DatatypeProperty rdf:about="#lexem">
+        <rdfs:range rdf:resource="&xsd;string"/>
+    </owl:DatatypeProperty>
+    
+
+
+    <!-- http://www.analisa.eu/grammatik.owl#position_in_Satz -->
+
+    <owl:DatatypeProperty rdf:about="#position_in_Satz">
+        <rdfs:range rdf:resource="&xsd;int"/>
+    </owl:DatatypeProperty>
+    
+
+
+    <!-- http://www.analisa.eu/grammatik.owl#semantisch -->
+
+    <owl:DatatypeProperty rdf:about="#semantisch">
+        <rdfs:range rdf:resource="&xsd;boolean"/>
+    </owl:DatatypeProperty>
+    
+
+
+    <!-- http://www.analisa.eu/grammatik.owl#semantischeKonjunktion -->
+
+    <owl:DatatypeProperty rdf:about="#semantischeKonjunktion">
+        <rdfs:range rdf:resource="&xsd;boolean"/>
+    </owl:DatatypeProperty>
+    
+
+
+    <!-- 
+    ///////////////////////////////////////////////////////////////////////////////////////
+    //
+    // Classes
+    //
+    ///////////////////////////////////////////////////////////////////////////////////////
+     -->
+
+    
+
+
+    <!-- http://www.analisa.eu/grammatik.owl#(Instrumentalis)_-_nicht_in_GER -->
+
+    <owl:Class rdf:about="#(Instrumentalis)_-_nicht_in_GER">
+        <owl:equivalentClass rdf:resource="#narz&#281;dnik_(Instrumentalis)"/>
+        <rdfs:subClassOf rdf:resource="#Kasus"/>
+        <dc:language rdf:datatype="&xsd;int">0</dc:language>
+    </owl:Class>
+    
+
+
+    <!-- http://www.analisa.eu/grammatik.owl#(Locativus)_-_nicht_in_GER -->
+
+    <owl:Class rdf:about="#(Locativus)_-_nicht_in_GER">
+        <owl:equivalentClass rdf:resource="#miejscownik_(Locativus)"/>
+        <rdfs:subClassOf rdf:resource="#Kasus"/>
+        <dc:language rdf:datatype="&xsd;int">0</dc:language>
+    </owl:Class>
+    
+
+
+    <!-- http://www.analisa.eu/grammatik.owl#(miary)_czasu -->
+
+    <owl:Class rdf:about="#(miary)_czasu">
+        <owl:equivalentClass rdf:resource="#Zeit"/>
+        <owl:equivalentClass rdf:resource="#temporale"/>
+        <rdfs:subClassOf rdf:resource="#Umstand"/>
+        <dc:language rdf:datatype="&xsd;int">1</dc:language>
+        <rdfs:comment rdf:datatype="&xsd;string"
+            >Jutro zrobi&#281; to.</rdfs:comment>
+    </owl:Class>
+    
+
+
+    <!-- http://www.analisa.eu/grammatik.owl#(miary)_cz&#281;stotliwo&#347;ci -->
+
+    <owl:Class rdf:about="#(miary)_cz&#281;stotliwo&#347;ci">
+        <rdfs:subClassOf rdf:resource="#Umstand"/>
+        <dc:language rdf:datatype="&xsd;int">1</dc:language>
+        <rdfs:comment rdf:datatype="&xsd;string"
+            >Rzadko zapominam zmienia&#263; wod&#281; u kwiatk&#243;w</rdfs:comment>
+    </owl:Class>
+    
+
+
+    <!-- http://www.analisa.eu/grammatik.owl#(miary)_dystrybutywny -->
+
+    <owl:Class rdf:about="#(miary)_dystrybutywny">
+        <rdfs:subClassOf rdf:resource="#Umstand"/>
+        <dc:language rdf:datatype="&xsd;int">1</dc:language>
+        <rdfs:comment rdf:datatype="&xsd;string"
+            >Dostali&#347;my po dwadzie&#347;cia z&#322;otych.</rdfs:comment>
+    </owl:Class>
+    
+
+
+    <!-- http://www.analisa.eu/grammatik.owl#(miary)_pr&#281;dko&#347;ci -->
+
+    <owl:Class rdf:about="#(miary)_pr&#281;dko&#347;ci">
+        <rdfs:subClassOf rdf:resource="#Umstand"/>
+        <dc:language rdf:datatype="&xsd;int">1</dc:language>
+        <rdfs:comment rdf:datatype="&xsd;string">Jecha&#322; wolno.</rdfs:comment>
+    </owl:Class>
+    
+
+
+    <!-- http://www.analisa.eu/grammatik.owl#(miejsca)_ablatwywny_miejsca -->
+
+    <owl:Class rdf:about="#(miejsca)_ablatwywny_miejsca">
+        <rdfs:subClassOf rdf:resource="#Umstand"/>
+        <dc:language rdf:datatype="&xsd;int">1</dc:language>
+        <rdfs:comment rdf:datatype="&xsd;string"
+            >Marta wr&#243;ci&#322;a z Francji.</rdfs:comment>
+    </owl:Class>
+    
+
+
+    <!-- http://www.analisa.eu/grammatik.owl#(miejsca)_allatywny_miejsca -->
+
+    <owl:Class rdf:about="#(miejsca)_allatywny_miejsca">
+        <rdfs:subClassOf rdf:resource="#Umstand"/>
+        <dc:language rdf:datatype="&xsd;int">1</dc:language>
+        <rdfs:comment rdf:datatype="&xsd;string"
+            >P&#322;yn&#281; do Szwecji.</rdfs:comment>
+    </owl:Class>
+    
+
+
+    <!-- http://www.analisa.eu/grammatik.owl#(miejsca)_lokatywny_miejsca -->
+
+    <owl:Class rdf:about="#(miejsca)_lokatywny_miejsca">
+        <owl:equivalentClass rdf:resource="#Ort"/>
+        <owl:equivalentClass rdf:resource="#lokale"/>
+        <rdfs:subClassOf rdf:resource="#Umstand"/>
+        <dc:language rdf:datatype="&xsd;int">1</dc:language>
+        <rdfs:comment rdf:datatype="&xsd;string"
+            >Maria sta&#322;a przed domem</rdfs:comment>
+    </owl:Class>
+    
+
+
+    <!-- http://www.analisa.eu/grammatik.owl#(miejsca)_perlatywny_miejsca -->
+
+    <owl:Class rdf:about="#(miejsca)_perlatywny_miejsca">
+        <rdfs:subClassOf rdf:resource="#Umstand"/>
+        <dc:language rdf:datatype="&xsd;int">1</dc:language>
+        <rdfs:comment rdf:datatype="&xsd;string"
+            >Biegli&#347;my przez ogr&#243;d.</rdfs:comment>
+    </owl:Class>
+    
+
+
+    <!-- http://www.analisa.eu/grammatik.owl#Abstrakta -->
+
+    <owl:Class rdf:about="#Abstrakta">
+        <owl:equivalentClass rdf:resource="#Begriff"/>
+        <rdfs:subClassOf rdf:resource="#semantisches_Bezugsobjekt"/>
+        <rdfs:subClassOf>
+            <owl:Restriction>
+                <owl:onProperty rdf:resource="#charakterisiert_durch"/>
+                <owl:someValuesFrom rdf:resource="#Nomen"/>
+            </owl:Restriction>
+        </rdfs:subClassOf>
+    </owl:Class>
+    
+
+
+    <!-- http://www.analisa.eu/grammatik.owl#Adjektiv -->
+
+    <owl:Class rdf:about="#Adjektiv">
+        <rdfs:subClassOf rdf:resource="#Wort"/>
+        <rdfs:subClassOf>
+            <owl:Restriction>
+                <owl:onProperty rdf:resource="#genus"/>
+                <owl:someValuesFrom rdf:resource="#Genus"/>
+            </owl:Restriction>
+        </rdfs:subClassOf>
+        <rdfs:subClassOf>
+            <owl:Restriction>
+                <owl:onProperty rdf:resource="#numerus"/>
+                <owl:someValuesFrom rdf:resource="#Numerus"/>
+            </owl:Restriction>
+        </rdfs:subClassOf>
+        <rdfs:subClassOf>
+            <owl:Restriction>
+                <owl:onProperty rdf:resource="#steigerung"/>
+                <owl:someValuesFrom rdf:resource="#Steigerung"/>
+            </owl:Restriction>
+        </rdfs:subClassOf>
+        <rdfs:subClassOf>
+            <owl:Restriction>
+                <owl:onProperty rdf:resource="#wortunterart"/>
+                <owl:someValuesFrom rdf:resource="#Wortunterart"/>
+            </owl:Restriction>
+        </rdfs:subClassOf>
+        <rdfs:subClassOf>
+            <owl:Restriction>
+                <owl:onProperty rdf:resource="#kasus"/>
+                <owl:someValuesFrom rdf:resource="#Kasus"/>
+            </owl:Restriction>
+        </rdfs:subClassOf>
+        <rdfs:comment rdf:datatype="&xsd;string">Przymiotnik</rdfs:comment>
+        <rdfs:comment
+            >Adjektive k&#246;nnen zwischen einem Artikel und einem Substantiv stehen, Possessivpronomina nicht (z. B. das sch&#246;ne Haus versus *das unser Haus). Grammatisch ist die Verwendung eines Possessivums in Verbindung mit einem Artikel nur, wenn dieses zum Adjektiv konvertiert ist (vgl. das unsrige Haus).</rdfs:comment>
+        <rdfs:comment
+            >Ein Charakteristikum von Adjektiven im Deutschen ist, dass sie nur zusammen mit einem Hilfsverb, einer Kopula, das Pr&#228;dikat bilden k&#246;nnen (vgl. Er ist krank).</rdfs:comment>
+    </owl:Class>
+    
+
+
+    <!-- http://www.analisa.eu/grammatik.owl#Adjektivphrase -->
+
+    <owl:Class rdf:about="#Adjektivphrase">
+        <owl:equivalentClass>
+            <owl:Class>
+                <owl:intersectionOf rdf:parseType="Collection">
+                    <rdf:Description rdf:about="#Wortphrase"/>
+                    <owl:Restriction>
+                        <owl:onProperty rdf:resource="#kern"/>
+                        <owl:someValuesFrom>
+                            <owl:Class>
+                                <owl:intersectionOf rdf:parseType="Collection">
+                                    <rdf:Description rdf:about="#Kern"/>
+                                    <owl:Restriction>
+                                        <owl:onProperty rdf:resource="#wort"/>
+                                        <owl:someValuesFrom rdf:resource="#Adjektiv"/>
+                                    </owl:Restriction>
+                                </owl:intersectionOf>
+                            </owl:Class>
+                        </owl:someValuesFrom>
+                    </owl:Restriction>
+                </owl:intersectionOf>
+            </owl:Class>
+        </owl:equivalentClass>
+        <rdfs:comment>endozentrisch</rdfs:comment>
+    </owl:Class>
+    
+
+
+    <!-- http://www.analisa.eu/grammatik.owl#Adjektivvalenz -->
+
+    <owl:Class rdf:about="#Adjektivvalenz">
+        <rdfs:subClassOf rdf:resource="#Valenz"/>
+    </owl:Class>
+    
+
+
+    <!-- http://www.analisa.eu/grammatik.owl#Adjunkt -->
+
+    <owl:Class rdf:about="#Adjunkt">
+        <owl:equivalentClass>
+            <owl:Class>
+                <owl:intersectionOf rdf:parseType="Collection">
+                    <rdf:Description rdf:about="#Angabe"/>
+                    <owl:Class>
+                        <owl:complementOf rdf:resource="#XKopf"/>
+                    </owl:Class>
+                </owl:intersectionOf>
+            </owl:Class>
+        </owl:equivalentClass>
+        <rdfs:subClassOf rdf:resource="#GB-Element"/>
+        <rdfs:comment rdf:datatype="&xsd;string"
+            >Adjunkte werden nicht von dem Kopf einer Phrase gefordert, sondern k&#246;nnen frei an eine Phrase adjungiert werden. F&#252;r ein Adjunkt ist innerhalb einer Phrase keine Strukturposition vorgesehen. Der XP-Knoten wird aus diesem Grund lediglich verdoppelt und bleibt in seiner Projektionsstufe gleich.</rdfs:comment>
+        <rdfs:comment
+            >Siehe Fussnote 35 Syntax S. 138.
+Es gibt Adjunktpositionen f&#252;r lexikalische Elemente (=K&#246;pfe), die durch eine Bewegung an diese Position gelangen. In diesem Fall handelt es sich niht um Angaben.</rdfs:comment>
+    </owl:Class>
+    
+
+
+    <!-- http://www.analisa.eu/grammatik.owl#Adposition -->
+
+    <owl:Class rdf:about="#Adposition">
+        <rdfs:subClassOf rdf:resource="#Wort"/>
+        <rdfs:subClassOf>
+            <owl:Restriction>
+                <owl:onProperty rdf:resource="#charakterisiert"/>
+                <owl:someValuesFrom>
+                    <owl:Class>
+                        <owl:unionOf rdf:parseType="Collection">
+                            <rdf:Description rdf:about="#Beziehung"/>
+                            <rdf:Description rdf:about="#Verh&#228;ltniss"/>
+                        </owl:unionOf>
+                    </owl:Class>
+                </owl:someValuesFrom>
+            </owl:Restriction>
+        </rdfs:subClassOf>
+        <rdfs:comment
+            >Eine Adposition ist in der Grammatik eine Wortart, die nicht flektiert werden kann und die alleine noch keine abgeschlossene Sinneinheit bildet. Zusammen mit einem Nomen, dessen Kasus sie bestimmt, bildet sie eine Adpositionalphrase. Bedeutungen, die mithilfe von Adpositionen ausgedr&#252;ckt werden k&#246;nnen, k&#246;nnen (u. a.) lokaler, temporaler, kausaler oder modaler Natur sein.</rdfs:comment>
+    </owl:Class>
+    
+
+
+    <!-- http://www.analisa.eu/grammatik.owl#Adverb -->
+
+    <owl:Class rdf:about="#Adverb">
+        <rdfs:subClassOf rdf:resource="#Wort"/>
+        <rdfs:subClassOf>
+            <owl:Restriction>
+                <owl:onProperty rdf:resource="#umstand"/>
+                <owl:someValuesFrom rdf:resource="#Umstand"/>
+            </owl:Restriction>
+        </rdfs:subClassOf>
+        <rdfs:subClassOf>
+            <owl:Restriction>
+                <owl:onProperty rdf:resource="#wortunterart"/>
+                <owl:someValuesFrom rdf:resource="#Wortunterart"/>
+            </owl:Restriction>
+        </rdfs:subClassOf>
+        <rdfs:comment rdf:datatype="&xsd;string">Przys&#322;&#243;wek</rdfs:comment>
+    </owl:Class>
+    
+
+
+    <!-- http://www.analisa.eu/grammatik.owl#Adverbial -->
+
+    <owl:Class rdf:about="#Adverbial">
+        <rdfs:subClassOf rdf:resource="#Satzentit&#228;t"/>
+        <rdfs:comment
+            >werden Realisiert durch: Adverbien, PPs(das buch liegt auf dem tisch), NPs(er tanzte die ganze Nacht) und Nebens&#228;tzte (er tantzte, bis die Sonne aufging)</rdfs:comment>
+        <rdfs:comment
+            >Adverbiale dr&#252;cken n&#228;here Umst&#228;nde aus</rdfs:comment>
+        <rdfs:comment
+            >NIcht zwangsl&#228;ufig ein Adverb sondern strikt auf das Verb bezogene Bestimmung</rdfs:comment>
+    </owl:Class>
+    
+
+
+    <!-- http://www.analisa.eu/grammatik.owl#Adverbiale -->
+
+    <owl:Class rdf:about="#Adverbiale">
+        <rdfs:subClassOf rdf:resource="#Funktionsperspektive"/>
+        <rdfs:comment rdf:datatype="&xsd;string"
+            >TODO muss noch dringend einer sinnvollen Classe zugewiesen werden</rdfs:comment>
+    </owl:Class>
+    
+
+
+    <!-- http://www.analisa.eu/grammatik.owl#Adverbphrase -->
+
+    <owl:Class rdf:about="#Adverbphrase">
+        <owl:equivalentClass>
+            <owl:Class>
+                <owl:intersectionOf rdf:parseType="Collection">
+                    <rdf:Description rdf:about="#Wortphrase"/>
+                    <owl:Restriction>
+                        <owl:onProperty rdf:resource="#kern"/>
+                        <owl:someValuesFrom>
+                            <owl:Class>
+                                <owl:intersectionOf rdf:parseType="Collection">
+                                    <rdf:Description rdf:about="#Kern"/>
+                                    <owl:Restriction>
+                                        <owl:onProperty rdf:resource="#wort"/>
+                                        <owl:someValuesFrom rdf:resource="#Adverb"/>
+                                    </owl:Restriction>
+                                </owl:intersectionOf>
+                            </owl:Class>
+                        </owl:someValuesFrom>
+                    </owl:Restriction>
+                </owl:intersectionOf>
+            </owl:Class>
+        </owl:equivalentClass>
+        <rdfs:comment
+            >nicht im CP-IP-Schema bzw. GB/X-bar Theorie</rdfs:comment>
+    </owl:Class>
+    
+
+
+    <!-- http://www.analisa.eu/grammatik.owl#Agens -->
+
+    <owl:Class rdf:about="#Agens">
+        <rdfs:subClassOf rdf:resource="#Aktant"/>
+        <rdfs:comment rdf:datatype="&xsd;string"
+            >handelde Person (hier erstmal auch Sachverhalt)</rdfs:comment>
+        <rdfs:comment
+            >ich(Agens) arbeite.</rdfs:comment>
+    </owl:Class>
+    
+
+
+    <!-- http://www.analisa.eu/grammatik.owl#Akkusativobjekt -->
+
+    <owl:Class rdf:about="#Akkusativobjekt">
+        <rdfs:subClassOf rdf:resource="#Objekt"/>
+        <rdfs:comment
+            >Das Objekt ist im Kasus durch das Verb (zB treffen + Akkusiativ) beschrieben</rdfs:comment>
+    </owl:Class>
+    
+
+
+    <!-- http://www.analisa.eu/grammatik.owl#Aktant -->
+
+    <owl:Class rdf:about="#Aktant">
+        <rdfs:subClassOf rdf:resource="#Satzentit&#228;t"/>
+        <rdfs:comment rdf:datatype="&xsd;string"
+            >Duden 1184, 1445
+Mitspieler oder Rollentr&#228;ger</rdfs:comment>
+    </owl:Class>
+    
+
+
+    <!-- http://www.analisa.eu/grammatik.owl#Allgemeinpronomen_(im_deutschen_Adverb) -->
+
+    <owl:Class rdf:about="#Allgemeinpronomen_(im_deutschen_Adverb)">
+        <owl:equivalentClass rdf:resource="#upowszechniaj&#261;cy"/>
+        <rdfs:subClassOf rdf:resource="#Wortunterart"/>
+        <dc:language rdf:datatype="&xsd;int">0</dc:language>
+    </owl:Class>
+    
+
+
+    <!-- http://www.analisa.eu/grammatik.owl#Altus -->
+
+    <owl:Class rdf:about="#Altus">
+        <rdfs:subClassOf rdf:resource="#Wortattribut"/>
+    </owl:Class>
+    
+
+
+    <!-- http://www.analisa.eu/grammatik.owl#Angabe -->
+
+    <owl:Class rdf:about="#Angabe">
+        <rdfs:subClassOf rdf:resource="#Phrase"/>
+        <rdfs:comment rdf:datatype="&xsd;string"
+            >Duden 1180
+Eine Angabe ist eine Phrase, die ein Wort, eine Phrase oder unter Umst&#228;nden auch den gesamten Satz modifiziert. Sie ist in den Valenzrahmen der zugeh&#246;rigen W&#246;rter nicht angelegt.
+Frage: Grammatik Phrase _Schaffrath-Derivationen.pdf (S1) ?= Adjkunkt oder Specifier oder Komplement?!</rdfs:comment>
+        <rdfs:comment
+            >wenigstens im franz&#246;sischen z&#228;hlen immer Pr&#228;positional angeschlossene Glieder zu den Angaben, nominale dagegen nicht</rdfs:comment>
+        <rdfs:comment
+            >nicht-Valenzgebundenes Glied</rdfs:comment>
+    </owl:Class>
+    
+
+
+    <!-- http://www.analisa.eu/grammatik.owl#Art_und_Weise -->
+
+    <owl:Class rdf:about="#Art_und_Weise">
+        <owl:equivalentClass rdf:resource="#sposobu"/>
+        <rdfs:subClassOf rdf:resource="#Umstand"/>
+        <dc:language rdf:datatype="&xsd;int">0</dc:language>
+    </owl:Class>
+    
+
+
+    <!-- http://www.analisa.eu/grammatik.owl#Artikel -->
+
+    <owl:Class rdf:about="#Artikel">
+        <rdfs:subClassOf rdf:resource="#Wort"/>
+        <rdfs:comment rdf:datatype="&xsd;string"
+            >Rodzajnik/Przedimek</rdfs:comment>
+    </owl:Class>
+    
+
+
+    <!-- http://www.analisa.eu/grammatik.owl#Begriff -->
+
+    <owl:Class rdf:about="#Begriff">
+        <rdfs:subClassOf rdf:resource="#semantisches_Bezugsobjekt"/>
+    </owl:Class>
+    
+
+
+    <!-- http://www.analisa.eu/grammatik.owl#Beschr&#228;nkung -->
+
+    <owl:Class rdf:about="#Beschr&#228;nkung">
+        <rdfs:subClassOf rdf:resource="#Optimalit&#228;tstheorie"/>
+    </owl:Class>
+    
+
+
+    <!-- http://www.analisa.eu/grammatik.owl#Beschr&#228;nkungtyp -->
+
+    <owl:Class rdf:about="#Beschr&#228;nkungtyp">
+        <rdfs:subClassOf rdf:resource="#Optimalit&#228;tstheorie"/>
+    </owl:Class>
+    
+
+
+    <!-- http://www.analisa.eu/grammatik.owl#Beziehung -->
+
+    <owl:Class rdf:about="#Beziehung">
+        <rdfs:subClassOf rdf:resource="#semantisches_Bezugsobjekt"/>
+        <rdfs:subClassOf>
+            <owl:Restriction>
+                <owl:onProperty rdf:resource="#charakterisiert_durch"/>
+                <owl:someValuesFrom rdf:resource="#Adposition"/>
+            </owl:Restriction>
+        </rdfs:subClassOf>
+    </owl:Class>
+    
+
+
+    <!-- http://www.analisa.eu/grammatik.owl#Bezugsobjekt -->
+
+    <owl:Class rdf:about="#Bezugsobjekt">
+        <rdfs:subClassOf rdf:resource="#Context"/>
+    </owl:Class>
+    
+
+
+    <!-- http://www.analisa.eu/grammatik.owl#Bruchzahl_(Partiva) -->
+
+    <owl:Class rdf:about="#Bruchzahl_(Partiva)">
+        <owl:equivalentClass rdf:resource="#u&#322;amkowe"/>
+        <rdfs:subClassOf rdf:resource="#Wortunterart"/>
+        <dc:language rdf:datatype="&xsd;int">0</dc:language>
+    </owl:Class>
+    
+
+
+    <!-- http://www.analisa.eu/grammatik.owl#CBar -->
+
+    <owl:Class rdf:about="#CBar">
+        <rdfs:subClassOf rdf:resource="#GB-Element"/>
+    </owl:Class>
+    
+
+
+    <!-- http://www.analisa.eu/grammatik.owl#CKopf -->
+
+    <owl:Class rdf:about="#CKopf">
+        <rdfs:subClassOf rdf:resource="#GB-Element"/>
+    </owl:Class>
+    
+
+
+    <!-- http://www.analisa.eu/grammatik.owl#CP -->
+
+    <owl:Class rdf:about="#CP">
+        <rdfs:subClassOf rdf:resource="#GB-Element"/>
+        <rdfs:comment rdf:datatype="&xsd;string"
+            >Complementizer Phrase
+In der CP wird bestimmt, ob es sich um einen Haupt- oder Nebensatz handelt. In Nebens&#228;tzen steht in C die Konjunktion, in Haupts&#228;tzen das finite Verb. Zudem wird in C festgelegt, ob es sich um einen Frage- oder Aussagesatz handelt.</rdfs:comment>
+    </owl:Class>
+    
+
+
+    <!-- http://www.analisa.eu/grammatik.owl#Context -->
+
+    <owl:Class rdf:about="#Context"/>
+    
+
+
+    <!-- http://www.analisa.eu/grammatik.owl#Dativobjekt -->
+
+    <owl:Class rdf:about="#Dativobjekt">
+        <rdfs:subClassOf rdf:resource="#Objekt"/>
+        <rdfs:comment
+            >Das Objekt ist im Kasus durch das Adjektiv (zB treu + Dativ) beschrieben</rdfs:comment>
+    </owl:Class>
+    
+
+
+    <!-- http://www.analisa.eu/grammatik.owl#Demonstrativpronomen -->
+
+    <owl:Class rdf:about="#Demonstrativpronomen">
+        <owl:equivalentClass rdf:resource="#wskazuj&#261;cy"/>
+        <rdfs:subClassOf rdf:resource="#Wortunterart"/>
+        <dc:language rdf:datatype="&xsd;int">0</dc:language>
+    </owl:Class>
+    
+
+
+    <!-- http://www.analisa.eu/grammatik.owl#Determinant -->
+
+    <owl:Class rdf:about="#Determinant">
+        <owl:equivalentClass>
+            <owl:Class>
+                <owl:intersectionOf rdf:parseType="Collection">
+                    <rdf:Description rdf:about="#Wort"/>
+                    <owl:Class>
+                        <owl:unionOf rdf:parseType="Collection">
+                            <rdf:Description rdf:about="#Artikel"/>
+                            <owl:Class>
+                                <owl:intersectionOf rdf:parseType="Collection">
+                                    <rdf:Description rdf:about="#Pronomen"/>
+                                    <owl:Restriction>
+                                        <owl:onProperty rdf:resource="#wortunterart"/>
+                                        <owl:someValuesFrom>
+                                            <owl:Class>
+                                                <owl:unionOf rdf:parseType="Collection">
+                                                    <rdf:Description rdf:about="#Demonstrativpronomen"/>
+                                                    <rdf:Description rdf:about="#Possesivpronomen"/>
+                                                </owl:unionOf>
+                                            </owl:Class>
+                                        </owl:someValuesFrom>
+                                    </owl:Restriction>
+                                </owl:intersectionOf>
+                            </owl:Class>
+                        </owl:unionOf>
+                    </owl:Class>
+                </owl:intersectionOf>
+            </owl:Class>
+        </owl:equivalentClass>
+    </owl:Class>
+    
+
+
+    <!-- http://www.analisa.eu/grammatik.owl#Ding -->
+
+    <owl:Class rdf:about="#Ding">
+        <owl:equivalentClass rdf:resource="#Sache"/>
+        <rdfs:subClassOf rdf:resource="#semantisches_Bezugsobjekt"/>
+        <rdfs:subClassOf>
+            <owl:Restriction>
+                <owl:onProperty rdf:resource="#charakterisiert_durch"/>
+                <owl:someValuesFrom>
+                    <owl:Class>
+                        <owl:intersectionOf rdf:parseType="Collection">
+                            <rdf:Description rdf:about="#Nomen"/>
+                            <owl:Restriction>
+                                <owl:onProperty rdf:resource="#belebt"/>
+                                <owl:hasValue>false</owl:hasValue>
+                            </owl:Restriction>
+                        </owl:intersectionOf>
+                    </owl:Class>
+                </owl:someValuesFrom>
+            </owl:Restriction>
+        </rdfs:subClassOf>
+    </owl:Class>
+    
+
+
+    <!-- http://www.analisa.eu/grammatik.owl#Ebene -->
+
+    <owl:Class rdf:about="#Ebene">
+        <rdfs:subClassOf rdf:resource="#Context"/>
+    </owl:Class>
+    
+
+
+    <!-- http://www.analisa.eu/grammatik.owl#Eigenschaft -->
+
+    <owl:Class rdf:about="#Eigenschaft">
+        <rdfs:subClassOf rdf:resource="#semantisches_Bezugsobjekt"/>
+        <rdfs:subClassOf>
+            <owl:Restriction>
+                <owl:onProperty rdf:resource="#charakterisiert_durch"/>
+                <owl:someValuesFrom rdf:resource="#Adjektiv"/>
+            </owl:Restriction>
+        </rdfs:subClassOf>
+    </owl:Class>
+    
+
+
+    <!-- http://www.analisa.eu/grammatik.owl#Erg&#228;nzung -->
+
+    <owl:Class rdf:about="#Erg&#228;nzung">
+        <owl:equivalentClass rdf:resource="#Komplement"/>
+        <rdfs:subClassOf rdf:resource="#Phrase"/>
+        <rdfs:comment rdf:datatype="&xsd;string"
+            >Duden 1180
+Eine Erg&#228;nzung ist eine Phrase, die im Valenzrahmen eines Wortes (zB eines Verbes) vorangelegt ist.
+Frage: Grammatik Phrase _Schaffrath-Derivationen.pdf (S1) ?= Adjkunkt oder Specifier oder Komplement?!</rdfs:comment>
+        <rdfs:comment
+            >Valenzgebundens Glied</rdfs:comment>
+    </owl:Class>
+    
+
+
+    <!-- http://www.analisa.eu/grammatik.owl#Erg&#228;nzungreihenfolge -->
+
+    <owl:Class rdf:about="#Erg&#228;nzungreihenfolge">
+        <rdfs:subClassOf rdf:resource="#Regel"/>
+        <rdfs:comment
+            >Duden 1353. Zu verstehen als Tendenz</rdfs:comment>
+    </owl:Class>
+    
+
+
+    <!-- http://www.analisa.eu/grammatik.owl#Fokusparikel -->
+
+    <owl:Class rdf:about="#Fokusparikel">
+        <owl:equivalentClass rdf:resource="#partyku&#322;a_wyr&#243;&#380;nieniaj&#261;ca"/>
+        <rdfs:subClassOf rdf:resource="#Wortunterart"/>
+        <dc:language rdf:datatype="&xsd;int">0</dc:language>
+        <rdfs:comment
+            >eben (auch modalpartikel)</rdfs:comment>
+    </owl:Class>
+    
+
+
+    <!-- http://www.analisa.eu/grammatik.owl#Funktionsperspektive -->
+
+    <owl:Class rdf:about="#Funktionsperspektive">
+        <rdfs:subClassOf rdf:resource="#Perspektive"/>
+        <rdfs:subClassOf>
+            <owl:Restriction>
+                <owl:onProperty rdf:resource="#unterscheidet"/>
+                <owl:someValuesFrom rdf:resource="#Pr&#228;dikativ"/>
+            </owl:Restriction>
+        </rdfs:subClassOf>
+        <rdfs:subClassOf>
+            <owl:Restriction>
+                <owl:onProperty rdf:resource="#unterscheidet"/>
+                <owl:someValuesFrom rdf:resource="#Adverbiale"/>
+            </owl:Restriction>
+        </rdfs:subClassOf>
+        <rdfs:subClassOf>
+            <owl:Restriction>
+                <owl:onProperty rdf:resource="#unterscheidet"/>
+                <owl:someValuesFrom rdf:resource="#Aktant"/>
+            </owl:Restriction>
+        </rdfs:subClassOf>
+        <rdfs:comment rdf:datatype="&xsd;string">hier Semantisch</rdfs:comment>
+    </owl:Class>
+    
+
+
+    <!-- http://www.analisa.eu/grammatik.owl#Futur_1 -->
+
+    <owl:Class rdf:about="#Futur_1">
+        <owl:equivalentClass rdf:resource="#przysz&#322;y_niedokonany"/>
+        <rdfs:subClassOf rdf:resource="#Tempus"/>
+        <dc:language rdf:datatype="&xsd;int">0</dc:language>
+    </owl:Class>
+    
+
+
+    <!-- http://www.analisa.eu/grammatik.owl#Futur_2 -->
+
+    <owl:Class rdf:about="#Futur_2">
+        <owl:equivalentClass rdf:resource="#przysy&#322;z_dokonany"/>
+        <rdfs:subClassOf rdf:resource="#Tempus"/>
+        <dc:language rdf:datatype="&xsd;int">0</dc:language>
+    </owl:Class>
+    
+
+
+    <!-- http://www.analisa.eu/grammatik.owl#GB-Element -->
+
+    <owl:Class rdf:about="#GB-Element">
+        <rdfs:subClassOf rdf:resource="#Konstituente"/>
+        <rdfs:subClassOf rdf:resource="&owl;Thing"/>
+    </owl:Class>
+    
+
+
+    <!-- http://www.analisa.eu/grammatik.owl#Gattungs&amp;Sammelzahl_(Kollektiva) -->
+
+    <owl:Class rdf:about="#Gattungs&amp;Sammelzahl_(Kollektiva)">
+        <owl:equivalentClass rdf:resource="#wielorakie"/>
+        <rdfs:subClassOf rdf:resource="#Wortunterart"/>
+        <dc:language rdf:datatype="&xsd;int">0</dc:language>
+        <rdfs:comment
+            >zB mehrerlei, mancherlei, vielerlei, allerelei..</rdfs:comment>
+    </owl:Class>
+    
+
+
+    <!-- http://www.analisa.eu/grammatik.owl#Genus -->
+
+    <owl:Class rdf:about="#Genus">
+        <rdfs:subClassOf rdf:resource="#Wortattribut"/>
+    </owl:Class>
+    
+
+
+    <!-- http://www.analisa.eu/grammatik.owl#Gliedteil -->
+
+    <owl:Class rdf:about="#Gliedteil">
+        <rdfs:subClassOf rdf:resource="#Satzentit&#228;t"/>
+        <rdfs:comment rdf:datatype="&xsd;string"
+            >Duden 1168++
+Ein Gliedteil ist eine Phrase, die in ein Satzglied eingebettet ist.</rdfs:comment>
+    </owl:Class>
+    
+
+
+    <!-- http://www.analisa.eu/grammatik.owl#Gradpartikel -->
+
+    <owl:Class rdf:about="#Gradpartikel">
+        <owl:equivalentClass rdf:resource="#stop&#324;owane_cechy_czynnos&#347;ci"/>
+        <rdfs:subClassOf rdf:resource="#Wortunterart"/>
+        <dc:language rdf:datatype="&xsd;int">0</dc:language>
+        <rdfs:comment
+            >&quot;sehr&quot;, &quot;wenig&quot;, &quot;einigerma&#223;en&quot;, &quot;&#252;beraus&quot;.</rdfs:comment>
+    </owl:Class>
+    
+
+
+    <!-- http://www.analisa.eu/grammatik.owl#Handlung -->
+
+    <owl:Class rdf:about="#Handlung">
+        <rdfs:subClassOf rdf:resource="#semantisches_Bezugsobjekt"/>
+        <rdfs:subClassOf>
+            <owl:Restriction>
+                <owl:onProperty rdf:resource="#charakterisiert_durch"/>
+                <owl:someValuesFrom rdf:resource="#Verb"/>
+            </owl:Restriction>
+        </rdfs:subClassOf>
+    </owl:Class>
+    
+
+
+    <!-- http://www.analisa.eu/grammatik.owl#IBar -->
+
+    <owl:Class rdf:about="#IBar">
+        <rdfs:subClassOf rdf:resource="#GB-Element"/>
+    </owl:Class>
+    
+
+
+    <!-- http://www.analisa.eu/grammatik.owl#IKopf -->
+
+    <owl:Class rdf:about="#IKopf">
+        <rdfs:subClassOf rdf:resource="#GB-Element"/>
+    </owl:Class>
+    
+
+
+    <!-- http://www.analisa.eu/grammatik.owl#IP -->
+
+    <owl:Class rdf:about="#IP">
+        <rdfs:subClassOf rdf:resource="#GB-Element"/>
+        <rdfs:comment rdf:datatype="&xsd;string"
+            >Inflection Phrase
+In der IP wird die Flexion des Verbs mit der Deklination und dem Kasus des Subjekts abgeglichen. Das flektierte Verb und das Subjekt, welches mit ihm kongruiert, m&#252;ssen im Deutschen immer nach I&#176; bewegt werden, da hier die Flexionsmerkmale &#252;berpr&#252;ft werden.</rdfs:comment>
+    </owl:Class>
+    
+
+
+    <!-- http://www.analisa.eu/grammatik.owl#Imperativ -->
+
+    <owl:Class rdf:about="#Imperativ">
+        <owl:equivalentClass rdf:resource="#rozkazuj&#261;cy"/>
+        <rdfs:subClassOf rdf:resource="#Modus"/>
+        <dc:language rdf:datatype="&xsd;int">0</dc:language>
+    </owl:Class>
+    
+
+
+    <!-- http://www.analisa.eu/grammatik.owl#Indefinitpronomen -->
+
+    <owl:Class rdf:about="#Indefinitpronomen">
+        <owl:equivalentClass rdf:resource="#nieokre&#347;lony_zaimek"/>
+        <rdfs:subClassOf rdf:resource="#Wortunterart"/>
+        <dc:language rdf:datatype="&xsd;int">0</dc:language>
+    </owl:Class>
+    
+
+
+    <!-- http://www.analisa.eu/grammatik.owl#Indikativ -->
+
+    <owl:Class rdf:about="#Indikativ">
+        <owl:equivalentClass rdf:resource="#orzekaj&#261;cy_(oznajmuj&#261;cy)"/>
+        <rdfs:subClassOf rdf:resource="#Modus"/>
+        <dc:language rdf:datatype="&xsd;int">0</dc:language>
+    </owl:Class>
+    
+
+
+    <!-- http://www.analisa.eu/grammatik.owl#Interjektion -->
+
+    <owl:Class rdf:about="#Interjektion">
+        <rdfs:subClassOf rdf:resource="#Wort"/>
+        <rdfs:comment rdf:datatype="&xsd;string">Wykrzyknik</rdfs:comment>
+    </owl:Class>
+    
+
+
+    <!-- http://www.analisa.eu/grammatik.owl#Interpunktion -->
+
+    <owl:Class rdf:about="#Interpunktion">
+        <rdfs:subClassOf rdf:resource="#Wort"/>
+        <rdfs:comment rdf:datatype="&xsd;string">Interpunktacja</rdfs:comment>
+    </owl:Class>
+    
+
+
+    <!-- http://www.analisa.eu/grammatik.owl#Interrogativadverb -->
+
+    <owl:Class rdf:about="#Interrogativadverb">
+        <owl:equivalentClass rdf:resource="#partyku&#322;a_pytaj&#261;ca_-_patrz_te&#380;_zaimki"/>
+        <rdfs:subClassOf rdf:resource="#Wortunterart"/>
+        <dc:language rdf:datatype="&xsd;int">0</dc:language>
+        <rdfs:comment
+            >&quot;wo&quot;, &quot;woher&quot;, wozu&quot;, &quot;wor&#252;ber&quot; wann</rdfs:comment>
+    </owl:Class>
+    
+
+
+    <!-- http://www.analisa.eu/grammatik.owl#Interrogativpronomen -->
+
+    <owl:Class rdf:about="#Interrogativpronomen">
+        <owl:equivalentClass rdf:resource="#pytaj&#261;cy"/>
+        <rdfs:subClassOf rdf:resource="#Wortunterart"/>
+        <dc:language rdf:datatype="&xsd;int">0</dc:language>
+    </owl:Class>
+    
+
+
+    <!-- http://www.analisa.eu/grammatik.owl#Kardinalzahl -->
+
+    <owl:Class rdf:about="#Kardinalzahl">
+        <owl:equivalentClass rdf:resource="#g&#322;&#243;wny"/>
+        <rdfs:subClassOf rdf:resource="#Wortunterart"/>
+        <dc:language rdf:datatype="&xsd;int">0</dc:language>
+    </owl:Class>
+    
+
+
+    <!-- http://www.analisa.eu/grammatik.owl#Kasus -->
+
+    <owl:Class rdf:about="#Kasus">
+        <rdfs:subClassOf rdf:resource="#Wortattribut"/>
+    </owl:Class>
+    
+
+
+    <!-- http://www.analisa.eu/grammatik.owl#Kern -->
+
+    <owl:Class rdf:about="#Kern">
+        <owl:equivalentClass rdf:resource="#XKopf"/>
+        <rdfs:subClassOf rdf:resource="#Konstituente"/>
+        <rdfs:subClassOf>
+            <owl:Restriction>
+                <owl:onProperty rdf:resource="#wort"/>
+                <owl:someValuesFrom rdf:resource="#Wort"/>
+            </owl:Restriction>
+        </rdfs:subClassOf>
+        <rdfs:comment rdf:datatype="&xsd;string"
+            >Grammatik Phrase _Schaffrath-Derivationen.pdf (S1) = X&#176;</rdfs:comment>
+    </owl:Class>
+    
+
+
+    <!-- http://www.analisa.eu/grammatik.owl#Komplement -->
+
+    <owl:Class rdf:about="#Komplement">
+        <rdfs:subClassOf rdf:resource="#GB-Element"/>
+        <rdfs:comment rdf:datatype="&xsd;string"
+            >Grammatik Phrase _Schaffrath-Derivationen.pdf S.2
+Komplemente werden syntaktisch vom Kopf der Phrase gefordert und bilden zusammen die Projektionsstufe X&#180;. 
+Das Komplement wird vom Kopf der XP c-kommandiert. 
+C-command: A c-commands B if and only if A does not dominate B and every X that dominates A also dominates B</rdfs:comment>
+    </owl:Class>
+    
+
+
+    <!-- http://www.analisa.eu/grammatik.owl#Konjunktion -->
+
+    <owl:Class rdf:about="#Konjunktion">
+        <rdfs:subClassOf rdf:resource="#Wort"/>
+        <rdfs:subClassOf>
+            <owl:Restriction>
+                <owl:onProperty rdf:resource="#charakterisiert"/>
+                <owl:someValuesFrom rdf:resource="#Verkn&#252;pfung"/>
+            </owl:Restriction>
+        </rdfs:subClassOf>
+        <rdfs:comment rdf:datatype="&xsd;string"
+            >&#321;&#261;cznik/Sp&#243;jnik (copula)</rdfs:comment>
+    </owl:Class>
+    
+
+
+    <!-- http://www.analisa.eu/grammatik.owl#Konjunktiv_1 -->
+
+    <owl:Class rdf:about="#Konjunktiv_1">
+        <owl:equivalentClass rdf:resource="#przypuszczaj&#261;cy/potencjalny_niedokonany_(teraz)"/>
+        <rdfs:subClassOf rdf:resource="#Modus"/>
+        <dc:language rdf:datatype="&xsd;int">0</dc:language>
+    </owl:Class>
+    
+
+
+    <!-- http://www.analisa.eu/grammatik.owl#Konjunktiv_1_oder_2 -->
+
+    <owl:Class rdf:about="#Konjunktiv_1_oder_2">
+        <owl:equivalentClass rdf:resource="#przypuszczaj&#261;cy"/>
+        <rdfs:subClassOf rdf:resource="#Modus"/>
+        <dc:language rdf:datatype="&xsd;int">0</dc:language>
+    </owl:Class>
+    
+
+
+    <!-- http://www.analisa.eu/grammatik.owl#Konjunktiv_2 -->
+
+    <owl:Class rdf:about="#Konjunktiv_2">
+        <owl:equivalentClass rdf:resource="#przypuszczaj&#261;cy/potencjalny_dokonany_(kiedy&#347;)"/>
+        <rdfs:subClassOf rdf:resource="#Modus"/>
+        <dc:language rdf:datatype="&xsd;int">0</dc:language>
+    </owl:Class>
+    
+
+
+    <!-- http://www.analisa.eu/grammatik.owl#Konstituente -->
+
+    <owl:Class rdf:about="#Konstituente">
+        <rdfs:subClassOf rdf:resource="#Satzentit&#228;t"/>
+        <rdfs:comment rdf:datatype="&xsd;string"
+            >Eine Konstituente bezeichnet in einem Satz die zusammengeh&#246;rigen Morpheme (Satzteil), die nicht weiter zerschlagen werden d&#252;rfen. Diese Konstituente kann das Subjekt oder ein Fragewort sein, aber auch Objekte oder Satzadverbien.In Verbletzts&#228;tzen mit einer Satzeinleitenden Konjunktion bleib das Vorfeld allerdings leer (siehe Bsp. 5). Auch bei Entscheidungsfragen, wie in Beispiel 2 ist das Vorfeld nicht besetzt. Au&#223;erdem gilt die Regel: W-W&#246;rter stehen im Vorfeld. Diese Regel kann jedoch mit der ersten in Konflikt treten. Bei S&#228;tzen mit zwei W-W&#246;rtern, wie in Beispiel 4 dominiert die erste &#252;ber die zweite Regel.</rdfs:comment>
+        <rdfs:comment
+            >Konstituenten sind definiert als sprachliche Einheiten, die Teile einer gr&#246;&#223;eren Einheit sind. In diesem Sinne ist sowohl das Wort, das Baustein einer Phrase ist, eine Konstituente, als auch die Phrase, da sie Baustein einer &#252;bergeordneten Phrase bzw. des Satzes ist. Konstituente ist also der Oberbegriff, &#8250;Phrase&#8249; und &#8250;Wort&#8249; sind Unterbegriffe. Oder anders gesagt: Jede Phrase bzw. jedes Wort ist eine Konstituente, aber nicht jede Konstituente ist eine Phrase bzw. ein Wort. Auch Wortverbindungen, die zwischen der Wort- und der Phrasenebene liegen, k&#246;nnen als Konstituenten bezeichnet werden, sofern nachweisbar ist, dass sie eine sprachliche Einheit bilden. Nicht nur Bestandteile von S&#228;tzen, sondern auch Bestandteile von W&#246;rtern k&#246;nnen als Konstituenten bezeichnet werden. Das Wort unfreundlich besteht beispielsweise aus den drei Konstituenten un-, freund und -lich. Anders ist es mit dem linguistischen Terminus &#8250;Phrase &#8249;: Dieser bezieht sich ausschlie&#223;lich auf die Ebene der Syntax.</rdfs:comment>
+    </owl:Class>
+    
+
+
+    <!-- http://www.analisa.eu/grammatik.owl#K&#252;rzel -->
+
+    <owl:Class rdf:about="#K&#252;rzel">
+        <owl:equivalentClass rdf:resource="#skr&#243;t"/>
+        <rdfs:subClassOf rdf:resource="#Wortunterart"/>
+        <dc:language rdf:datatype="&xsd;int">0</dc:language>
+    </owl:Class>
+    
+
+
+    <!-- http://www.analisa.eu/grammatik.owl#LEX-&#214;KON -->
+
+    <owl:Class rdf:about="#LEX-&#214;KON">
+        <rdfs:label
+            >Bewegungs&#246;konomie f&#252;r lexikalische K&#246;pfe</rdfs:label>
+        <rdfs:subClassOf rdf:resource="#Beschr&#228;nkung"/>
+        <rdfs:comment
+            >geh&#246;rt, wie VOLL-INT zu Trueverschrenkungen.</rdfs:comment>
+        <rdfs:comment
+            >Bewegung von lexikalischen K&#246;pfen ist verboten</rdfs:comment>
+    </owl:Class>
+    
+
+
+    <!-- http://www.analisa.eu/grammatik.owl#Lebewesen -->
+
+    <owl:Class rdf:about="#Lebewesen">
+        <rdfs:subClassOf rdf:resource="#semantisches_Bezugsobjekt"/>
+        <rdfs:subClassOf>
+            <owl:Restriction>
+                <owl:onProperty rdf:resource="#charakterisiert_durch"/>
+                <owl:someValuesFrom>
+                    <owl:Class>
+                        <owl:intersectionOf rdf:parseType="Collection">
+                            <rdf:Description rdf:about="#Nomen"/>
+                            <owl:Restriction>
+                                <owl:onProperty rdf:resource="#belebt"/>
+                                <owl:hasValue>true</owl:hasValue>
+                            </owl:Restriction>
+                        </owl:intersectionOf>
+                    </owl:Class>
+                </owl:someValuesFrom>
+            </owl:Restriction>
+        </rdfs:subClassOf>
+    </owl:Class>
+    
+
+
+    <!-- http://www.analisa.eu/grammatik.owl#Logik -->
+
+    <owl:Class rdf:about="#Logik">
+        <rdfs:subClassOf rdf:resource="#Strukturebene"/>
+        <rdfs:comment
+            >Helbig/SChenkel (1971) setzen diese als dritte Ebene an.
+Sp&#228;ter als Semantisch-Logsche Ebene also muss es m&#246;glich sein von der Valenz aus f&#252;r bezugsebenen mehrere Werte aufnehmen zu k&#246;nnen.
+Die meisten Verben werden wohl auch gleichsamm sowohl Syntatkische wie auch Sematische Valenz oder (logisch-semantische) aufweisen.</rdfs:comment>
+        <rdfs:comment
+            >Als logische Valenz bezeichnet man die Tatsache, da&#223; Sachverhalte der Wirklichkeit als AUssagestrukturen, d.h. als Pr&#228;dikate mit mehreren Leerstellen formulierbar sind</rdfs:comment>
+    </owl:Class>
+    
+
+
+    <!-- http://www.analisa.eu/grammatik.owl#Markierdheitsbeschr&#228;nkung -->
+
+    <owl:Class rdf:about="#Markierdheitsbeschr&#228;nkung">
+        <rdfs:subClassOf rdf:resource="#Beschr&#228;nkungtyp"/>
+        <rdfs:comment
+            >Diese bezihen sich nur auf dem Output und fordern f&#252;r diesen die Erf&#252;llung bestimmter Wohlgefortheitsbedingungen. Zu diesen geh&#246;rt zB die OB-KOPF Beschr&#228;nkung, welche &gt;Kopflose&lt; Projektionen verbietet.</rdfs:comment>
+    </owl:Class>
+    
+
+
+    <!-- http://www.analisa.eu/grammatik.owl#Merkmal -->
+
+    <owl:Class rdf:about="#Merkmal">
+        <rdfs:subClassOf rdf:resource="#semantisches_Bezugsobjekt"/>
+        <rdfs:subClassOf>
+            <owl:Restriction>
+                <owl:onProperty rdf:resource="#charakterisiert_durch"/>
+                <owl:someValuesFrom rdf:resource="#Adjektiv"/>
+            </owl:Restriction>
+        </rdfs:subClassOf>
+    </owl:Class>
+    
+
+
+    <!-- http://www.analisa.eu/grammatik.owl#Mittelfeld -->
+
+    <owl:Class rdf:about="#Mittelfeld">
+        <rdfs:subClassOf rdf:resource="#topologisches_Modell"/>
+    </owl:Class>
+    
+
+
+    <!-- http://www.analisa.eu/grammatik.owl#Modalpartikel -->
+
+    <owl:Class rdf:about="#Modalpartikel">
+        <owl:equivalentClass rdf:resource="#modalny"/>
+        <rdfs:subClassOf rdf:resource="#Wortunterart"/>
+        <dc:language rdf:datatype="&xsd;int">0</dc:language>
+        <rdfs:comment
+            >(auch Abt&#246;nungspartikeln oder F&#252;llw&#246;rter) sehr, freilich, halt, eben .. sie werden verwendet, um die Haltung des Sprechers zur Satzaussage kenntlich zu machen</rdfs:comment>
+    </owl:Class>
+    
+
+
+    <!-- http://www.analisa.eu/grammatik.owl#Modus -->
+
+    <owl:Class rdf:about="#Modus">
+        <rdfs:subClassOf rdf:resource="#Wortattribut"/>
+        <rdfs:comment
+            >Aussageweise des Verbs</rdfs:comment>
+    </owl:Class>
+    
+
+
+    <!-- http://www.analisa.eu/grammatik.owl#Name -->
+
+    <owl:Class rdf:about="#Name">
+        <owl:equivalentClass rdf:resource="#nazwa"/>
+        <rdfs:subClassOf rdf:resource="#Wortunterart"/>
+        <dc:language rdf:datatype="&xsd;int">0</dc:language>
+    </owl:Class>
+    
+
+
+    <!-- http://www.analisa.eu/grammatik.owl#Negationspartikel_(im_deutschen_Adverb) -->
+
+    <owl:Class rdf:about="#Negationspartikel_(im_deutschen_Adverb)">
+        <owl:equivalentClass rdf:resource="#przecz&#261;cy"/>
+        <rdfs:subClassOf rdf:resource="#Wortunterart"/>
+        <dc:language rdf:datatype="&xsd;int">0</dc:language>
+    </owl:Class>
+    
+
+
+    <!-- http://www.analisa.eu/grammatik.owl#Negationspartikel_(im_polnischen_Pronomen) -->
+
+    <owl:Class rdf:about="#Negationspartikel_(im_polnischen_Pronomen)">
+        <owl:equivalentClass rdf:resource="#partyku&#322;a_przecz&#261;ca"/>
+        <rdfs:subClassOf rdf:resource="#Wortunterart"/>
+        <dc:language rdf:datatype="&xsd;int">0</dc:language>
+        <rdfs:comment>nicht</rdfs:comment>
+    </owl:Class>
+    
+
+
+    <!-- http://www.analisa.eu/grammatik.owl#Nomen -->
+
+    <owl:Class rdf:about="#Nomen">
+        <rdfs:subClassOf rdf:resource="#Wort"/>
+        <rdfs:subClassOf>
+            <owl:Restriction>
+                <owl:onProperty rdf:resource="#charakterisiert"/>
+                <owl:someValuesFrom>
+                    <owl:Class>
+                        <owl:unionOf rdf:parseType="Collection">
+                            <rdf:Description rdf:about="#Abstrakta"/>
+                            <rdf:Description rdf:about="#Begriff"/>
+                            <rdf:Description rdf:about="#Ding"/>
+                            <rdf:Description rdf:about="#Lebewesen"/>
+                            <rdf:Description rdf:about="#Sache"/>
+                        </owl:unionOf>
+                    </owl:Class>
+                </owl:someValuesFrom>
+            </owl:Restriction>
+        </rdfs:subClassOf>
+        <rdfs:comment rdf:datatype="&xsd;string">Rzeczownik</rdfs:comment>
+        <rdfs:comment
+            >Nomen sind potenziell mit einem Artikel, einem Adjektiv  oder einem Zahlwort erweiterbar.</rdfs:comment>
+    </owl:Class>
+    
+
+
+    <!-- http://www.analisa.eu/grammatik.owl#Nominalphrase -->
+
+    <owl:Class rdf:about="#Nominalphrase">
+        <owl:equivalentClass>
+            <owl:Class>
+                <owl:intersectionOf rdf:parseType="Collection">
+                    <rdf:Description rdf:about="#Wortphrase"/>
+                    <owl:Restriction>
+                        <owl:onProperty rdf:resource="#kern"/>
+                        <owl:someValuesFrom>
+                            <owl:Class>
+                                <owl:intersectionOf rdf:parseType="Collection">
+                                    <rdf:Description rdf:about="#Kern"/>
+                                    <owl:Restriction>
+                                        <owl:onProperty rdf:resource="#wort"/>
+                                        <owl:someValuesFrom rdf:resource="#Nomen"/>
+                                    </owl:Restriction>
+                                </owl:intersectionOf>
+                            </owl:Class>
+                        </owl:someValuesFrom>
+                    </owl:Restriction>
+                </owl:intersectionOf>
+            </owl:Class>
+        </owl:equivalentClass>
+        <rdfs:comment rdf:datatype="&xsd;string"
+            >Verlangt im Plural auch einen Plural Artikel</rdfs:comment>
+        <rdfs:comment>endozentrisch</rdfs:comment>
+    </owl:Class>
+    
+
+
+    <!-- http://www.analisa.eu/grammatik.owl#Numeral -->
+
+    <owl:Class rdf:about="#Numeral">
+        <rdfs:subClassOf rdf:resource="#Wort"/>
+        <rdfs:comment rdf:datatype="&xsd;string"
+            >Liczebnik
+
+das morphologische Kriterium der Flektierbarkeit steht im Konflikt zu einem anderen Kriterium, das auf den Wortinhalt Bezug nimmt: W&#246;rter wie Million und doppelt lassen sich aufgrund ihrer Flektierbarkeit der Klasse der Substantive bzw. Adjektive zuordnen, aufgrund ihrer Semantik einer eigenen Klasse, der Klasse der Numeralia</rdfs:comment>
+    </owl:Class>
+    
+
+
+    <!-- http://www.analisa.eu/grammatik.owl#Numerus -->
+
+    <owl:Class rdf:about="#Numerus">
+        <rdfs:subClassOf rdf:resource="#Wortattribut"/>
+    </owl:Class>
+    
+
+
+    <!-- http://www.analisa.eu/grammatik.owl#OB-KOPF -->
+
+    <owl:Class rdf:about="#OB-KOPF">
+        <rdfs:label
+            >Obligatirische K&#246;pfe</rdfs:label>
+        <rdfs:subClassOf rdf:resource="#Beschr&#228;nkung"/>
+        <rdfs:comment
+            >Eine Projektion hat einen (nicht-leeren) Kopf</rdfs:comment>
+    </owl:Class>
+    
+
+
+    <!-- http://www.analisa.eu/grammatik.owl#Objekt -->
+
+    <owl:Class rdf:about="#Objekt">
+        <rdfs:subClassOf rdf:resource="#SOV"/>
+        <rdfs:comment
+            >Dem Objekt (lat. &#8250;obiectum&#8249;, dt. entgegengesetzt) kann prototypisch eine semantische Rolle, das Patiens, zugeordnet werden. Treten zwei Objekte auf, so wird das direkte Objekt als die Entit&#228;t charakterisiert, die von dem im Verb bezeichneten Geschehen direkt betroffen ist (Patiens), das indirekte Objekt als die Entit&#228;t, auf die das Geschehen nur mittelbar gerichtet ist (Rezipient). In der generativen Literatur finden sich hierf&#252;r die Bezeichnungen Theme (&#8776; Patiens) und Goal (&#8776; Ziel). Doch auch diese Zuordnung gilt nur f&#252;r den prototypischen Fall, d. h. f&#252;r einen Aktivsatz mit transitivem Handlungsverb.</rdfs:comment>
+    </owl:Class>
+    
+
+
+    <!-- http://www.analisa.eu/grammatik.owl#Optimalit&#228;tstheorie -->
+
+    <owl:Class rdf:about="#Optimalit&#228;tstheorie">
+        <rdfs:subClassOf rdf:resource="#Regel"/>
+    </owl:Class>
+    
+
+
+    <!-- http://www.analisa.eu/grammatik.owl#Ordinalzahl -->
+
+    <owl:Class rdf:about="#Ordinalzahl">
+        <owl:equivalentClass rdf:resource="#porz&#261;dkowy"/>
+        <rdfs:subClassOf rdf:resource="#Wortunterart"/>
+        <dc:language rdf:datatype="&xsd;int">0</dc:language>
+    </owl:Class>
+    
+
+
+    <!-- http://www.analisa.eu/grammatik.owl#Ort -->
+
+    <owl:Class rdf:about="#Ort">
+        <rdfs:subClassOf rdf:resource="#Umstand"/>
+        <dc:language rdf:datatype="&xsd;int">0</dc:language>
+    </owl:Class>
+    
+
+
+    <!-- http://www.analisa.eu/grammatik.owl#Partikel -->
+
+    <owl:Class rdf:about="#Partikel">
+        <owl:equivalentClass>
+            <owl:Class>
+                <owl:intersectionOf rdf:parseType="Collection">
+                    <rdf:Description rdf:about="#Wort"/>
+                    <owl:Restriction>
+                        <owl:onProperty rdf:resource="#wortunterart"/>
+                        <owl:someValuesFrom>
+                            <owl:Class>
+                                <owl:unionOf rdf:parseType="Collection">
+                                    <rdf:Description rdf:about="#Fokusparikel"/>
+                                    <rdf:Description rdf:about="#Gradpartikel"/>
+                                    <rdf:Description rdf:about="#Modalpartikel"/>
+                                    <rdf:Description rdf:about="#Negationspartikel_(im_polnischen_Pronomen)"/>
+                                </owl:unionOf>
+                            </owl:Class>
+                        </owl:someValuesFrom>
+                    </owl:Restriction>
+                </owl:intersectionOf>
+            </owl:Class>
+        </owl:equivalentClass>
+        <rdfs:subClassOf>
+            <owl:Restriction>
+                <owl:onProperty rdf:resource="#charakterisiert"/>
+                <owl:someValuesFrom>
+                    <owl:Class>
+                        <owl:unionOf rdf:parseType="Collection">
+                            <rdf:Description rdf:about="#Sprecherbewertung"/>
+                            <rdf:Description rdf:about="#Sprechereinstellung"/>
+                        </owl:unionOf>
+                    </owl:Class>
+                </owl:someValuesFrom>
+            </owl:Restriction>
+        </rdfs:subClassOf>
+    </owl:Class>
+    
+
+
+    <!-- http://www.analisa.eu/grammatik.owl#Partizip_Perfekt -->
+
+    <owl:Class rdf:about="#Partizip_Perfekt">
+        <owl:equivalentClass rdf:resource="#imies&#322;&#243;w_dokonany"/>
+        <rdfs:subClassOf rdf:resource="#Modus"/>
+        <dc:language rdf:datatype="&xsd;int">0</dc:language>
+    </owl:Class>
+    
+
+
+    <!-- http://www.analisa.eu/grammatik.owl#Partizip_Pr&#228;sens -->
+
+    <owl:Class rdf:about="#Partizip_Pr&#228;sens">
+        <owl:equivalentClass rdf:resource="#imies&#322;&#243;w_niedokonany"/>
+        <rdfs:subClassOf rdf:resource="#Modus"/>
+        <dc:language rdf:datatype="&xsd;int">0</dc:language>
+    </owl:Class>
+    
+
+
+    <!-- http://www.analisa.eu/grammatik.owl#Patiens -->
+
+    <owl:Class rdf:about="#Patiens">
+        <rdfs:subClassOf rdf:resource="#Aktant"/>
+        <rdfs:comment rdf:datatype="&xsd;string"
+            >betroffene Person/Sachverhalt</rdfs:comment>
+        <rdfs:comment
+            >oft das direkte Objekt - Kriterien Syntax S 36.</rdfs:comment>
+        <rdfs:comment
+            >Die Kugel(Patiens) rollt.</rdfs:comment>
+    </owl:Class>
+    <rdf:Description>
+        <rdf:type rdf:resource="&owl;AllDisjointClasses"/>
+        <owl:members rdf:parseType="Collection">
+            <rdf:Description rdf:about="#Patiens"/>
+        </owl:members>
+    </rdf:Description>
+    
+
+
+    <!-- http://www.analisa.eu/grammatik.owl#Perfekt -->
+
+    <owl:Class rdf:about="#Perfekt">
+        <owl:equivalentClass rdf:resource="#przesz&#322;y_dokonany"/>
+        <rdfs:subClassOf rdf:resource="#Tempus"/>
+        <dc:language rdf:datatype="&xsd;int">0</dc:language>
+    </owl:Class>
+    
+
+
+    <!-- http://www.analisa.eu/grammatik.owl#Perfekt_oder_Plusquamperfekt -->
+
+    <owl:Class rdf:about="#Perfekt_oder_Plusquamperfekt">
+        <owl:equivalentClass rdf:resource="#przesz&#322;y_(dawno)_dokonany"/>
+        <rdfs:subClassOf rdf:resource="#Tempus"/>
+        <dc:language rdf:datatype="&xsd;int">0</dc:language>
+    </owl:Class>
+    
+
+
+    <!-- http://www.analisa.eu/grammatik.owl#Person -->
+
+    <owl:Class rdf:about="#Person">
+        <rdfs:subClassOf rdf:resource="#Wortattribut"/>
+    </owl:Class>
+    
+
+
+    <!-- http://www.analisa.eu/grammatik.owl#Personalpronomen -->
+
+    <owl:Class rdf:about="#Personalpronomen">
+        <owl:equivalentClass rdf:resource="#osobowy"/>
+        <rdfs:subClassOf rdf:resource="#Wortunterart"/>
+        <dc:language rdf:datatype="&xsd;int">0</dc:language>
+    </owl:Class>
+    
+
+
+    <!-- http://www.analisa.eu/grammatik.owl#Perspektive -->
+
+    <owl:Class rdf:about="#Perspektive">
+        <rdfs:comment rdf:datatype="&xsd;string">Duden 1168</rdfs:comment>
+    </owl:Class>
+    
+
+
+    <!-- http://www.analisa.eu/grammatik.owl#Phrase -->
+
+    <owl:Class rdf:about="#Phrase">
+        <rdfs:subClassOf rdf:resource="#Konstituente"/>
+        <owl:disjointWith rdf:resource="#Wort"/>
+    </owl:Class>
+    
+
+
+    <!-- http://www.analisa.eu/grammatik.owl#Plural_1 -->
+
+    <owl:Class rdf:about="#Plural_1">
+        <owl:equivalentClass rdf:resource="#liczba_mnoga"/>
+        <rdfs:subClassOf rdf:resource="#Numerus"/>
+        <dc:language rdf:datatype="&xsd;int">0</dc:language>
+    </owl:Class>
+    
+
+
+    <!-- http://www.analisa.eu/grammatik.owl#Plural_2 -->
+
+    <owl:Class rdf:about="#Plural_2">
+        <owl:equivalentClass rdf:resource="#liczba_w_polskim_nieznana"/>
+        <rdfs:subClassOf rdf:resource="#Numerus"/>
+        <dc:language rdf:datatype="&xsd;int">0</dc:language>
+    </owl:Class>
+    
+
+
+    <!-- http://www.analisa.eu/grammatik.owl#Plusquamperfekt -->
+
+    <owl:Class rdf:about="#Plusquamperfekt">
+        <owl:equivalentClass rdf:resource="#przesz&#322;y_dawno_dokonany"/>
+        <rdfs:subClassOf rdf:resource="#Tempus"/>
+        <dc:language rdf:datatype="&xsd;int">0</dc:language>
+    </owl:Class>
+    
+
+
+    <!-- http://www.analisa.eu/grammatik.owl#Possesivpronomen -->
+
+    <owl:Class rdf:about="#Possesivpronomen">
+        <owl:equivalentClass rdf:resource="#dzier&#380;awczy"/>
+        <rdfs:subClassOf rdf:resource="#Wortunterart"/>
+        <dc:language rdf:datatype="&xsd;int">0</dc:language>
+    </owl:Class>
+    
+
+
+    <!-- http://www.analisa.eu/grammatik.owl#Postposition -->
+
+    <owl:Class rdf:about="#Postposition">
+        <rdfs:subClassOf rdf:resource="#Adposition"/>
+        <rdfs:comment
+            >In der Postpositionalphrase wird das Nomen vorgestellt</rdfs:comment>
+    </owl:Class>
+    
+
+
+    <!-- http://www.analisa.eu/grammatik.owl#Pronomen -->
+
+    <owl:Class rdf:about="#Pronomen">
+        <rdfs:subClassOf rdf:resource="#Wort"/>
+        <rdfs:comment rdf:datatype="&xsd;string">Zaimek</rdfs:comment>
+        <rdfs:comment
+            >Possessivpronomen k&#246;nnen nicht mit einem s&#228;chsischen Genitiv auftreten. So ist die Konstruktion Peters Schal oder sein Schal m&#246;glich, nicht aber die Kom bina tion beider in einer Konstruktion wie *Peters sein Schal. Umgangssprachlich findet sich zwar auch die Konstruktion Peter sein Schal, in diesem Fall steht der Eigenname aber im Dativ, nicht im Genitiv.</rdfs:comment>
+    </owl:Class>
+    
+
+
+    <!-- http://www.analisa.eu/grammatik.owl#Pronomialadverb -->
+
+    <owl:Class rdf:about="#Pronomialadverb">
+        <owl:equivalentClass rdf:resource="#partyku&#322;a_osobista_-_nima_w_polskim"/>
+        <rdfs:subClassOf rdf:resource="#Wortunterart"/>
+        <dc:language rdf:datatype="&xsd;int">0</dc:language>
+        <rdfs:comment
+            >dazu&quot;, &quot;hierzu&quot;, wozu&quot; und &quot;dar&#252;ber&quot;, &quot;wor&#252;ber&quot;</rdfs:comment>
+    </owl:Class>
+    
+
+
+    <!-- http://www.analisa.eu/grammatik.owl#Pr&#228;dikat -->
+
+    <owl:Class rdf:about="#Pr&#228;dikat">
+        <rdfs:subClassOf rdf:resource="#SOV"/>
+        <rdfs:comment
+            >Das was &#252;ber das Subjekt  ausgesagt wird</rdfs:comment>
+        <rdfs:comment
+            >im engen Sinne: 
+&#8211; Das Pr&#228;dikat  ist das Satzglied, dem kategorial nur eine Wortart , ein Verb bzw. ein Verbkomplex, entspricht (formales Kriterium).
+&#8211; Das Pr&#228;dikat  bezeichnet eine auf das Subjekt  bezogene Handlung, einen Vorgang oder einen Zustand (semantisches Kriterium).
+&#8211; Das Pr&#228;dikat  ist durch Kongruenz  auf das Subjekt  bezogen (morphologisches Kriterium).</rdfs:comment>
+        <rdfs:comment
+            >in weitesten Sinne also alles ausser Subjekt (Generative Grammatik)
+im engeren Sinne verbaler Kern des Satzes (traditionelle und Dependenzgrammatik)</rdfs:comment>
+    </owl:Class>
+    
+
+
+    <!-- http://www.analisa.eu/grammatik.owl#Pr&#228;dikativ -->
+
+    <owl:Class rdf:about="#Pr&#228;dikativ">
+        <owl:equivalentClass rdf:resource="#forma_bez_genusa"/>
+        <rdfs:subClassOf rdf:resource="#Wortunterart"/>
+        <dc:language rdf:datatype="&xsd;int">0</dc:language>
+        <rdfs:comment
+            >mit (am im superlativ) flektierten PersPro. und &quot;sein&quot;</rdfs:comment>
+    </owl:Class>
+    
+
+
+    <!-- http://www.analisa.eu/grammatik.owl#Pr&#228;position -->
+
+    <owl:Class rdf:about="#Pr&#228;position">
+        <rdfs:subClassOf rdf:resource="#Adposition"/>
+        <rdfs:comment rdf:datatype="&xsd;string">Przyimek</rdfs:comment>
+        <rdfs:comment
+            >Pr&#228;positionen und Konjunktionen lassen sich abgrenzen, wenn man ihre syntaktischen Eigenschaften gegen&#252;berstellt: Regiert das Wort in seiner unmittelbaren Umgebung einen Kasus, handelt es sich um eine Pr&#228;position (vgl. wegen des schlechten Wetters), andernfalls um eine Konjunktion (vgl. weil das Wetter schlecht ist). Zu beachten ist allerdings, dass einige W&#246;rter sowohl als Pr&#228;positionen als auch als Konjunktionen gebr&#228;uchlich sind (z. B. seit, bis). Sie regieren also einen Kasus (als Pr&#228;position) bzw. keinen Kasus (als Konjunktion). Ein Beispiel daf&#252;r ist in (3) gegeben: 
+(3) 
+(a) Seit dem letzten Sommer treffen wir uns jeden Tag. 
+(b) Seit wir zusammen Karneval gefeiert haben, treffen wir uns jeden Tag.</rdfs:comment>
+        <rdfs:comment
+            >In der Pr&#228;positionalphrase wird das Nomen nachgestellt</rdfs:comment>
+    </owl:Class>
+    
+
+
+    <!-- http://www.analisa.eu/grammatik.owl#Pr&#228;positionalphrase -->
+
+    <owl:Class rdf:about="#Pr&#228;positionalphrase">
+        <owl:equivalentClass>
+            <owl:Class>
+                <owl:intersectionOf rdf:parseType="Collection">
+                    <rdf:Description rdf:about="#Wortphrase"/>
+                    <owl:Restriction>
+                        <owl:onProperty rdf:resource="#kern"/>
+                        <owl:someValuesFrom>
+                            <owl:Class>
+                                <owl:intersectionOf rdf:parseType="Collection">
+                                    <rdf:Description rdf:about="#Kern"/>
+                                    <owl:Restriction>
+                                        <owl:onProperty rdf:resource="#wort"/>
+                                        <owl:someValuesFrom rdf:resource="#Pr&#228;position"/>
+                                    </owl:Restriction>
+                                </owl:intersectionOf>
+                            </owl:Class>
+                        </owl:someValuesFrom>
+                    </owl:Restriction>
+                </owl:intersectionOf>
+            </owl:Class>
+        </owl:equivalentClass>
+        <rdfs:comment>endozentrisch</rdfs:comment>
+    </owl:Class>
+    
+
+
+    <!-- http://www.analisa.eu/grammatik.owl#Pr&#228;positionvalenz -->
+
+    <owl:Class rdf:about="#Pr&#228;positionvalenz">
+        <rdfs:subClassOf rdf:resource="#Valenz"/>
+    </owl:Class>
+    
+
+
+    <!-- http://www.analisa.eu/grammatik.owl#Pr&#228;sens -->
+
+    <owl:Class rdf:about="#Pr&#228;sens">
+        <owl:equivalentClass rdf:resource="#tera&#380;niejszy_niedokonany"/>
+        <rdfs:subClassOf rdf:resource="#Tempus"/>
+        <dc:language rdf:datatype="&xsd;int">0</dc:language>
+    </owl:Class>
+    
+
+
+    <!-- http://www.analisa.eu/grammatik.owl#Pr&#228;teritum -->
+
+    <owl:Class rdf:about="#Pr&#228;teritum">
+        <owl:equivalentClass rdf:resource="#przesz&#322;y_dokonany_(lub_grzeczny_bezokolicznik)"/>
+        <rdfs:subClassOf rdf:resource="#Tempus"/>
+        <dc:language rdf:datatype="&xsd;int">0</dc:language>
+    </owl:Class>
+    
+
+
+    <!-- http://www.analisa.eu/grammatik.owl#Reflexivpronomen -->
+
+    <owl:Class rdf:about="#Reflexivpronomen">
+        <owl:equivalentClass rdf:resource="#zwrotny"/>
+        <rdfs:subClassOf rdf:resource="#Wortunterart"/>
+        <dc:language rdf:datatype="&xsd;int">0</dc:language>
+    </owl:Class>
+    
+
+
+    <!-- http://www.analisa.eu/grammatik.owl#Regel -->
+
+    <owl:Class rdf:about="#Regel"/>
+    
+
+
+    <!-- http://www.analisa.eu/grammatik.owl#Relativpronomen -->
+
+    <owl:Class rdf:about="#Relativpronomen">
+        <owl:equivalentClass rdf:resource="#wzgl&#281;dny"/>
+        <rdfs:subClassOf rdf:resource="#Wortunterart"/>
+        <dc:language rdf:datatype="&xsd;int">0</dc:language>
+    </owl:Class>
+    
+
+
+    <!-- http://www.analisa.eu/grammatik.owl#Rezipient -->
+
+    <owl:Class rdf:about="#Rezipient">
+        <rdfs:subClassOf rdf:resource="#Aktant"/>
+        <rdfs:comment rdf:datatype="&xsd;string">erh&#228;lt etwas</rdfs:comment>
+        <rdfs:comment
+            >oft das indirekte Objekt - siehe Syntax S.36</rdfs:comment>
+    </owl:Class>
+    
+
+
+    <!-- http://www.analisa.eu/grammatik.owl#SOV -->
+
+    <owl:Class rdf:about="#SOV">
+        <rdfs:subClassOf rdf:resource="#Satzentit&#228;t"/>
+        <rdfs:comment
+            >Subjekt Objekt Pr&#228;dikat</rdfs:comment>
+    </owl:Class>
+    
+
+
+    <!-- http://www.analisa.eu/grammatik.owl#Sache -->
+
+    <owl:Class rdf:about="#Sache">
+        <rdfs:subClassOf rdf:resource="#semantisches_Bezugsobjekt"/>
+    </owl:Class>
+    
+
+
+    <!-- http://www.analisa.eu/grammatik.owl#Satz -->
+
+    <owl:Class rdf:about="#Satz">
+        <rdfs:comment rdf:datatype="&xsd;string"
+            >Duden 1175 (Einfache S&#228;tze)</rdfs:comment>
+    </owl:Class>
+    
+
+
+    <!-- http://www.analisa.eu/grammatik.owl#Satzentit&#228;t -->
+
+    <owl:Class rdf:about="#Satzentit&#228;t"/>
+    
+
+
+    <!-- http://www.analisa.eu/grammatik.owl#Satzform -->
+
+    <owl:Class rdf:about="#Satzform">
+        <rdfs:comment>Duden 1341</rdfs:comment>
+    </owl:Class>
+    
+
+
+    <!-- http://www.analisa.eu/grammatik.owl#Satzglied -->
+
+    <owl:Class rdf:about="#Satzglied">
+        <rdfs:subClassOf rdf:resource="#Satzentit&#228;t"/>
+        <rdfs:comment rdf:datatype="&xsd;string"
+            >Duden 1168++
+Ein Satzglied ist eine Einheit des Satzes, die allein die Position vor dem finiten Verb besetzten kann.
+Syntax S.25:
+Unterschied zwischen Adverbien und Pr&#228;positionen:
+Adverbien k&#246;nnen als Satzglied fungieren, Pr&#228;positionen nicht. In dem Satz Er f&#228;hrt heute nach Paris z. B. stellt das Adverb &quot;heute&quot; ein Satzglied, ein Adverbial, dar (vgl. Abschn. 2.5). Die Pr&#228;position nach hingegen ist nur Teil eines Satzgliedes, aber selbst kein Satzglied.</rdfs:comment>
+    </owl:Class>
+    
+
+
+    <!-- http://www.analisa.eu/grammatik.owl#Satzteil -->
+
+    <owl:Class rdf:about="#Satzteil">
+        <owl:equivalentClass rdf:resource="#cz&#281;&#347;&#263;_zdania"/>
+        <rdfs:subClassOf rdf:resource="#Wortunterart"/>
+        <dc:language rdf:datatype="&xsd;int">0</dc:language>
+    </owl:Class>
+    
+
+
+    <!-- http://www.analisa.eu/grammatik.owl#Semantik -->
+
+    <owl:Class rdf:about="#Semantik">
+        <rdfs:subClassOf rdf:resource="#Strukturebene"/>
+        <rdfs:comment
+            >Als sematische Valenz bezeichnet man die Tatsache da&#223; die Verben betimmte Kontextpartner fordern.</rdfs:comment>
+        <rdfs:comment
+            >inhaltliche Spezifizit&#228;t zB rasieren braucht eine sematische Rolle &gt;Patiens&lt; mit dem sematischen Merkmal &gt;belebt&lt;</rdfs:comment>
+    </owl:Class>
+    
+
+
+    <!-- http://www.analisa.eu/grammatik.owl#Singular -->
+
+    <owl:Class rdf:about="#Singular">
+        <owl:equivalentClass rdf:resource="#liczba_pojedyncza"/>
+        <rdfs:subClassOf rdf:resource="#Numerus"/>
+        <dc:language rdf:datatype="&xsd;int">0</dc:language>
+    </owl:Class>
+    
+
+
+    <!-- http://www.analisa.eu/grammatik.owl#Spezifizierer -->
+
+    <owl:Class rdf:about="#Spezifizierer">
+        <rdfs:subClassOf rdf:resource="#GB-Element"/>
+        <rdfs:comment rdf:datatype="&xsd;string"
+            >Grammatik Phrase _Schaffrath-Derivationen.pdf S.2
+Der Spezifizierer wird vom Kopf der Phrase m-kommandiert und bildet mit X&#180;zusammen die maximale Projektion XP. 
+M-command: 
+A m-commands B if and only if A does not dominate B and the maximal projection XP that dominates A also dominates B.</rdfs:comment>
+    </owl:Class>
+    
+
+
+    <!-- http://www.analisa.eu/grammatik.owl#Sprecherbewertung -->
+
+    <owl:Class rdf:about="#Sprecherbewertung">
+        <rdfs:subClassOf rdf:resource="#semantisches_Bezugsobjekt"/>
+        <rdfs:subClassOf>
+            <owl:Restriction>
+                <owl:onProperty rdf:resource="#charakterisiert_durch"/>
+                <owl:someValuesFrom rdf:resource="#Partikel"/>
+            </owl:Restriction>
+        </rdfs:subClassOf>
+    </owl:Class>
+    
+
+
+    <!-- http://www.analisa.eu/grammatik.owl#Sprechereinstellung -->
+
+    <owl:Class rdf:about="#Sprechereinstellung">
+        <rdfs:subClassOf rdf:resource="#semantisches_Bezugsobjekt"/>
+        <rdfs:subClassOf>
+            <owl:Restriction>
+                <owl:onProperty rdf:resource="#charakterisiert_durch"/>
+                <owl:someValuesFrom rdf:resource="#Partikel"/>
+            </owl:Restriction>
+        </rdfs:subClassOf>
+    </owl:Class>
+    
+
+
+    <!-- http://www.analisa.eu/grammatik.owl#Steigerung -->
+
+    <owl:Class rdf:about="#Steigerung">
+        <rdfs:subClassOf rdf:resource="#Wortattribut"/>
+    </owl:Class>
+    
+
+
+    <!-- http://www.analisa.eu/grammatik.owl#Strukturebene -->
+
+    <owl:Class rdf:about="#Strukturebene">
+        <rdfs:subClassOf rdf:resource="#Ebene"/>
+    </owl:Class>
+    
+
+
+    <!-- http://www.analisa.eu/grammatik.owl#Subjekt -->
+
+    <owl:Class rdf:about="#Subjekt">
+        <rdfs:subClassOf rdf:resource="#SOV"/>
+        <rdfs:comment
+            >Ein logisches Urteil wird in zwei Bestandteile zerlegt: in das, wor&#252;ber etwas ausgesagt wird (das Topik), und das, was dar&#252;ber ausgesagt wird. Das grammatische Subjekt eines Satzes ist das Topik , der Gegenstand der Satzaussage.</rdfs:comment>
+        <rdfs:comment
+            >Feststellungsproblem: Enth&#228;lt z. B. der Satz &quot;Verloren hat Peter den Schl&#252;ssel zum Gl&#252;ck nicht&quot; eine Aussage &#252;ber das Verlieren, &#252;ber den Schl&#252;ssel oder &#252;ber Peter?</rdfs:comment>
+    </owl:Class>
+    
+
+
+    <!-- http://www.analisa.eu/grammatik.owl#Subjunktion -->
+
+    <owl:Class rdf:about="#Subjunktion">
+        <rdfs:subClassOf rdf:resource="#Satzentit&#228;t"/>
+        <rdfs:comment
+            >eine unterordnende Konjunktion
+
+Aussage, die mit dem Junktor &#8222;Wenn-dann&#8220; oder &quot;weil&quot; aus zwei anderen Aussagen zusammengesetzt ist</rdfs:comment>
+    </owl:Class>
+    
+
+
+    <!-- http://www.analisa.eu/grammatik.owl#Substantivvalenz -->
+
+    <owl:Class rdf:about="#Substantivvalenz">
+        <rdfs:subClassOf rdf:resource="#Valenz"/>
+    </owl:Class>
+    
+
+
+    <!-- http://www.analisa.eu/grammatik.owl#Syntax -->
+
+    <owl:Class rdf:about="#Syntax">
+        <rdfs:subClassOf rdf:resource="#Strukturebene"/>
+        <rdfs:comment
+            >fomale Spazifizit&#228;t zB Sie rannten auf [den Spielplatz]AKK / auf [dem Spielplatz]DAT</rdfs:comment>
+        <rdfs:comment
+            >Die syntatkische Valenz bezeichnet die obligatorische oder fakultive Besetztung von Leerstellen in einer bestimmten, vom Verb her geforderten Zahlund Art, differenziert nach den Einzelsrachen</rdfs:comment>
+    </owl:Class>
+    
+
+
+    <!-- http://www.analisa.eu/grammatik.owl#TOPIK -->
+
+    <owl:Class rdf:about="#TOPIK">
+        <rdfs:subClassOf rdf:resource="#Beschr&#228;nkung"/>
+        <rdfs:comment
+            >Topiks stehen am Satzanfang</rdfs:comment>
+        <rdfs:comment
+            >Laut Chompsky: Das Topik ist die am weitestens links stehende NP
+(Das Kommentar* der Rest des Strings)
+Kommetar im Sinne von Topik-Komentar Schema, pondon zu Subjekt Pr&#228;dikat-Schema </rdfs:comment>
+    </owl:Class>
+    
+
+
+    <!-- http://www.analisa.eu/grammatik.owl#Tempus -->
+
+    <owl:Class rdf:about="#Tempus">
+        <rdfs:subClassOf rdf:resource="#Wortattribut"/>
+    </owl:Class>
+    
+
+
+    <!-- http://www.analisa.eu/grammatik.owl#Truebeschr&#228;nkung -->
+
+    <owl:Class rdf:about="#Truebeschr&#228;nkung">
+        <rdfs:subClassOf rdf:resource="#Beschr&#228;nkungtyp"/>
+        <rdfs:comment
+            >Diesen Beschr&#228;nkungen ist geimen, dass sie sich auf das Ver&#228;ltnis von Input zu Output beziehen, wobei gilt, dass jede Abweichung des Outputs  vom Input zu einer Verletzung  einer Truebeschr&#228;ngung f&#252;rht. Solche Abweichungen stellen insbesondere Tilgungen von Inputelementen oder Hinzuf&#252;gungen von Elemente, die nicht im Input enthalten sind, dar. Der Constraint VOLL-INT zB betrifft eine solche Hinzuf&#252;gung, denn er verbietet das Einsetzten von semantischen leeren Elementen. </rdfs:comment>
+    </owl:Class>
+    
+
+
+    <!-- http://www.analisa.eu/grammatik.owl#T&#228;tigkeit -->
+
+    <owl:Class rdf:about="#T&#228;tigkeit">
+        <rdfs:subClassOf rdf:resource="#semantisches_Bezugsobjekt"/>
+        <rdfs:subClassOf>
+            <owl:Restriction>
+                <owl:onProperty rdf:resource="#charakterisiert_durch"/>
+                <owl:someValuesFrom rdf:resource="#Verb"/>
+            </owl:Restriction>
+        </rdfs:subClassOf>
+    </owl:Class>
+    
+
+
+    <!-- http://www.analisa.eu/grammatik.owl#Umstand -->
+
+    <owl:Class rdf:about="#Umstand">
+        <rdfs:subClassOf rdf:resource="#Wortattribut"/>
+    </owl:Class>
+    
+
+
+    <!-- http://www.analisa.eu/grammatik.owl#Umstandswort -->
+
+    <owl:Class rdf:about="#Umstandswort">
+        <owl:equivalentClass rdf:resource="#cechy_czynnos&#347;ci"/>
+        <rdfs:subClassOf rdf:resource="#Wortunterart"/>
+        <dc:language rdf:datatype="&xsd;int">0</dc:language>
+        <rdfs:comment
+            >Also Adverb im engeren Sinne</rdfs:comment>
+    </owl:Class>
+    
+
+
+    <!-- http://www.analisa.eu/grammatik.owl#Ursache -->
+
+    <owl:Class rdf:about="#Ursache">
+        <owl:equivalentClass rdf:resource="#przyczyny"/>
+        <rdfs:subClassOf rdf:resource="#Umstand"/>
+        <dc:language rdf:datatype="&xsd;int">0</dc:language>
+    </owl:Class>
+    
+
+
+    <!-- http://www.analisa.eu/grammatik.owl#VOLL-INT -->
+
+    <owl:Class rdf:about="#VOLL-INT">
+        <rdfs:label
+            >Vollst&#228;ndige Interpretation</rdfs:label>
+        <rdfs:subClassOf rdf:resource="#Beschr&#228;nkung"/>
+        <rdfs:comment
+            >Expletiveinsetzung ist verboten</rdfs:comment>
+        <rdfs:comment
+            >geh&#246;rt zu Familie der Treuberschr&#228;nkungen.</rdfs:comment>
+    </owl:Class>
+    
+
+
+    <!-- http://www.analisa.eu/grammatik.owl#Valenz -->
+
+    <owl:Class rdf:about="#Valenz">
+        <rdfs:subClassOf rdf:resource="#Regel"/>
+        <rdfs:subClassOf>
+            <owl:Restriction>
+                <owl:onProperty rdf:resource="#bezugsebene"/>
+                <owl:someValuesFrom rdf:resource="#Strukturebene"/>
+            </owl:Restriction>
+        </rdfs:subClassOf>
+        <rdfs:comment rdf:datatype="&xsd;string">Duden 1180</rdfs:comment>
+        <rdfs:comment
+            >Valenzen er&#246;ffen Leerstellen und fordern Ergenzungen.
+Um den Unterschied zwischen Erg&#228;nzung und Angabe zu verdeutlichen betrachte folgenden Zustand: In einen Theater wird das B&#252;hnengeschehen mit einen Verb beschrieben, die Aktanten sind die Ergenzungen, diese sind and den B&#252;hengeschehnen betiligt. Die Rahmbedingungen/Umst&#228;nde der B&#252;henshow sind die Kulissen (Angaben).</rdfs:comment>
+    </owl:Class>
+    
+
+
+    <!-- http://www.analisa.eu/grammatik.owl#Valenzperspektive -->
+
+    <owl:Class rdf:about="#Valenzperspektive">
+        <rdfs:subClassOf rdf:resource="#Perspektive"/>
+        <rdfs:subClassOf>
+            <owl:Restriction>
+                <owl:onProperty rdf:resource="#unterscheidet"/>
+                <owl:someValuesFrom rdf:resource="#Valenz"/>
+            </owl:Restriction>
+        </rdfs:subClassOf>
+    </owl:Class>
+    
+
+
+    <!-- http://www.analisa.eu/grammatik.owl#Verb -->
+
+    <owl:Class rdf:about="#Verb">
+        <rdfs:subClassOf rdf:resource="#Wort"/>
+        <rdfs:subClassOf>
+            <owl:Restriction>
+                <owl:onProperty rdf:resource="#charakterisiert"/>
+                <owl:someValuesFrom>
+                    <owl:Class>
+                        <owl:unionOf rdf:parseType="Collection">
+                            <rdf:Description rdf:about="#Handlung"/>
+                            <rdf:Description rdf:about="#T&#228;tigkeit"/>
+                            <rdf:Description rdf:about="#Vorgang"/>
+                            <rdf:Description rdf:about="#Zustand"/>
+                        </owl:unionOf>
+                    </owl:Class>
+                </owl:someValuesFrom>
+            </owl:Restriction>
+        </rdfs:subClassOf>
+        <rdfs:comment rdf:datatype="&xsd;string">Czasownik</rdfs:comment>
+    </owl:Class>
+    
+
+
+    <!-- http://www.analisa.eu/grammatik.owl#Verberstsatz -->
+
+    <owl:Class rdf:about="#Verberstsatz">
+        <rdfs:subClassOf rdf:resource="#Satz"/>
+        <rdfs:subClassOf rdf:resource="#Satzform"/>
+        <rdfs:comment
+            >Satz mit finiten Verb an erster Stelle</rdfs:comment>
+    </owl:Class>
+    
+
+
+    <!-- http://www.analisa.eu/grammatik.owl#Verbialphrase -->
+
+    <owl:Class rdf:about="#Verbialphrase">
+        <owl:equivalentClass>
+            <owl:Class>
+                <owl:intersectionOf rdf:parseType="Collection">
+                    <rdf:Description rdf:about="#Wortphrase"/>
+                    <owl:Restriction>
+                        <owl:onProperty rdf:resource="#kern"/>
+                        <owl:someValuesFrom>
+                            <owl:Class>
+                                <owl:intersectionOf rdf:parseType="Collection">
+                                    <rdf:Description rdf:about="#Kern"/>
+                                    <owl:Restriction>
+                                        <owl:onProperty rdf:resource="#wort"/>
+                                        <owl:someValuesFrom rdf:resource="#Verb"/>
+                                    </owl:Restriction>
+                                </owl:intersectionOf>
+                            </owl:Class>
+                        </owl:someValuesFrom>
+                    </owl:Restriction>
+                </owl:intersectionOf>
+            </owl:Class>
+        </owl:equivalentClass>
+        <rdfs:comment rdf:datatype="&xsd;string"
+            >muss in Numerus und PErson mit dem Subjekt &#252;bereinstimmen. Ausserdem muss die Valenz des Vers ber&#252;cksichtigt werden.</rdfs:comment>
+    </owl:Class>
+    
+
+
+    <!-- http://www.analisa.eu/grammatik.owl#Verbletztsatz -->
+
+    <owl:Class rdf:about="#Verbletztsatz">
+        <rdfs:subClassOf rdf:resource="#Satz"/>
+        <rdfs:subClassOf rdf:resource="#Satzform"/>
+        <rdfs:comment
+            >Satz mit finiten Verb an letzter Stelle</rdfs:comment>
+    </owl:Class>
+    
+
+
+    <!-- http://www.analisa.eu/grammatik.owl#Verbvalenz -->
+
+    <owl:Class rdf:about="#Verbvalenz">
+        <rdfs:subClassOf rdf:resource="#Valenz"/>
+    </owl:Class>
+    
+
+
+    <!-- http://www.analisa.eu/grammatik.owl#Verbzweitsatz -->
+
+    <owl:Class rdf:about="#Verbzweitsatz">
+        <rdfs:subClassOf rdf:resource="#Satz"/>
+        <rdfs:subClassOf rdf:resource="#Satzform"/>
+        <rdfs:comment
+            >V2 Satz mit finiten Verb an zweiter Stelle</rdfs:comment>
+    </owl:Class>
+    
+
+
+    <!-- http://www.analisa.eu/grammatik.owl#Verh&#228;ltniss -->
+
+    <owl:Class rdf:about="#Verh&#228;ltniss">
+        <rdfs:subClassOf rdf:resource="#semantisches_Bezugsobjekt"/>
+        <rdfs:subClassOf>
+            <owl:Restriction>
+                <owl:onProperty rdf:resource="#charakterisiert_durch"/>
+                <owl:someValuesFrom rdf:resource="#Adposition"/>
+            </owl:Restriction>
+        </rdfs:subClassOf>
+    </owl:Class>
+    
+
+
+    <!-- http://www.analisa.eu/grammatik.owl#Verkn&#252;pfung -->
+
+    <owl:Class rdf:about="#Verkn&#252;pfung">
+        <rdfs:subClassOf rdf:resource="#semantisches_Bezugsobjekt"/>
+        <rdfs:subClassOf>
+            <owl:Restriction>
+                <owl:onProperty rdf:resource="#charakterisiert_durch"/>
+                <owl:someValuesFrom rdf:resource="#Konjunktion"/>
+            </owl:Restriction>
+        </rdfs:subClassOf>
+    </owl:Class>
+    
+
+
+    <!-- http://www.analisa.eu/grammatik.owl#Verschiebbarkeitsperspektive -->
+
+    <owl:Class rdf:about="#Verschiebbarkeitsperspektive">
+        <rdfs:subClassOf rdf:resource="#Perspektive"/>
+        <rdfs:subClassOf>
+            <owl:Restriction>
+                <owl:onProperty rdf:resource="#unterscheidet"/>
+                <owl:someValuesFrom rdf:resource="#Satzglied"/>
+            </owl:Restriction>
+        </rdfs:subClassOf>
+        <rdfs:subClassOf>
+            <owl:Restriction>
+                <owl:onProperty rdf:resource="#unterscheidet"/>
+                <owl:someValuesFrom rdf:resource="#Gliedteil"/>
+            </owl:Restriction>
+        </rdfs:subClassOf>
+        <owl:deprecated rdf:datatype="&xsd;string">Duden 1175</owl:deprecated>
+    </owl:Class>
+    
+
+
+    <!-- http://www.analisa.eu/grammatik.owl#Verteilungszahl_(Distributiva) -->
+
+    <owl:Class rdf:about="#Verteilungszahl_(Distributiva)">
+        <owl:equivalentClass rdf:resource="#zbiorowe"/>
+        <rdfs:subClassOf rdf:resource="#Wortunterart"/>
+        <dc:language rdf:datatype="&xsd;int">0</dc:language>
+        <rdfs:comment
+            >zB je eines oder zum ersten</rdfs:comment>
+    </owl:Class>
+    
+
+
+    <!-- http://www.analisa.eu/grammatik.owl#Verweis -->
+
+    <owl:Class rdf:about="#Verweis">
+        <rdfs:subClassOf rdf:resource="#semantisches_Bezugsobjekt"/>
+        <rdfs:subClassOf>
+            <owl:Restriction>
+                <owl:onProperty rdf:resource="#charakterisiert_durch"/>
+                <owl:someValuesFrom>
+                    <owl:Class>
+                        <owl:unionOf rdf:parseType="Collection">
+                            <rdf:Description rdf:about="#Artikel"/>
+                            <rdf:Description rdf:about="#Pronomen"/>
+                        </owl:unionOf>
+                    </owl:Class>
+                </owl:someValuesFrom>
+            </owl:Restriction>
+        </rdfs:subClassOf>
+    </owl:Class>
+    
+
+
+    <!-- http://www.analisa.eu/grammatik.owl#Vorfeld -->
+
+    <owl:Class rdf:about="#Vorfeld">
+        <rdfs:subClassOf rdf:resource="#topologisches_Modell"/>
+    </owl:Class>
+    
+
+
+    <!-- http://www.analisa.eu/grammatik.owl#Vorgang -->
+
+    <owl:Class rdf:about="#Vorgang">
+        <rdfs:subClassOf rdf:resource="#semantisches_Bezugsobjekt"/>
+        <rdfs:subClassOf>
+            <owl:Restriction>
+                <owl:onProperty rdf:resource="#charakterisiert_durch"/>
+                <owl:someValuesFrom rdf:resource="#Verb"/>
+            </owl:Restriction>
+        </rdfs:subClassOf>
+    </owl:Class>
+    
+
+
+    <!-- http://www.analisa.eu/grammatik.owl#Wiederholungszahl_(*mal_*fach) -->
+
+    <owl:Class rdf:about="#Wiederholungszahl_(*mal_*fach)">
+        <owl:equivalentClass rdf:resource="#mno&#380;ne_lub_wielokrotne"/>
+        <rdfs:subClassOf rdf:resource="#Wortunterart"/>
+        <dc:language rdf:datatype="&xsd;int">0</dc:language>
+        <rdfs:comment
+            >einmal, viermal, zw&#246;lfmal manchmal, mehrmals, vielmals zweifach, vierfach usw., unbestimmt mehrfach, vielfach</rdfs:comment>
+    </owl:Class>
+    
+
+
+    <!-- http://www.analisa.eu/grammatik.owl#Wort -->
+
+    <owl:Class rdf:about="#Wort">
+        <rdfs:subClassOf rdf:resource="#Konstituente"/>
+    </owl:Class>
+    
+
+
+    <!-- http://www.analisa.eu/grammatik.owl#Wortattribut -->
+
+    <owl:Class rdf:about="#Wortattribut"/>
+    
+
+
+    <!-- http://www.analisa.eu/grammatik.owl#Wortphrase -->
+
+    <owl:Class rdf:about="#Wortphrase">
+        <rdfs:subClassOf rdf:resource="#Phrase"/>
+        <rdfs:subClassOf>
+            <owl:Restriction>
+                <owl:onProperty rdf:resource="#konstituente"/>
+                <owl:someValuesFrom rdf:resource="#Konstituente"/>
+            </owl:Restriction>
+        </rdfs:subClassOf>
+    </owl:Class>
+    
+
+
+    <!-- http://www.analisa.eu/grammatik.owl#Wortunterart -->
+
+    <owl:Class rdf:about="#Wortunterart">
+        <rdfs:subClassOf rdf:resource="#Wortattribut"/>
+    </owl:Class>
+    
+
+
+    <!-- http://www.analisa.eu/grammatik.owl#Wunsch_(PL) -->
+
+    <owl:Class rdf:about="#Wunsch_(PL)">
+        <owl:equivalentClass rdf:resource="#partyku&#322;a_&#380;ycz&#261;ca"/>
+        <rdfs:subClassOf rdf:resource="#Wortunterart"/>
+        <dc:language rdf:datatype="&xsd;int">0</dc:language>
+    </owl:Class>
+    
+
+
+    <!-- http://www.analisa.eu/grammatik.owl#XBar -->
+
+    <owl:Class rdf:about="#XBar">
+        <rdfs:subClassOf rdf:resource="#GB-Element"/>
+        <rdfs:subClassOf>
+            <owl:Class>
+                <owl:intersectionOf rdf:parseType="Collection">
+                    <owl:Restriction>
+                        <owl:onProperty rdf:resource="#dominiert"/>
+                        <owl:someValuesFrom rdf:resource="#Komplement"/>
+                    </owl:Restriction>
+                    <owl:Restriction>
+                        <owl:onProperty rdf:resource="#dominiert"/>
+                        <owl:someValuesFrom rdf:resource="#XKopf"/>
+                    </owl:Restriction>
+                </owl:intersectionOf>
+            </owl:Class>
+        </rdfs:subClassOf>
+        <rdfs:comment
+            >X&#39; steht f&#252;r alle m&#246;glichen Zwischenformen zwischen Wortphrasen h&#246;chster Ordnung und den K&#246;pfen/Kernen der Phrase und somit den Wortarten selbst.</rdfs:comment>
+    </owl:Class>
+    
+
+
+    <!-- http://www.analisa.eu/grammatik.owl#XKopf -->
+
+    <owl:Class rdf:about="#XKopf">
+        <rdfs:subClassOf rdf:resource="#GB-Element"/>
+        <rdfs:comment rdf:datatype="&xsd;string"
+            >Auch bezeichnet als Kopf der Phrase XP. (=Kern)</rdfs:comment>
+    </owl:Class>
+    
+
+
+    <!-- http://www.analisa.eu/grammatik.owl#XP -->
+
+    <owl:Class rdf:about="#XP">
+        <rdfs:subClassOf rdf:resource="#GB-Element"/>
+        <rdfs:subClassOf>
+            <owl:Class>
+                <owl:unionOf rdf:parseType="Collection">
+                    <owl:Class>
+                        <owl:intersectionOf rdf:parseType="Collection">
+                            <owl:Restriction>
+                                <owl:onProperty rdf:resource="#dominiert"/>
+                                <owl:someValuesFrom rdf:resource="#Adjunkt"/>
+                            </owl:Restriction>
+                            <owl:Restriction>
+                                <owl:onProperty rdf:resource="#dominiert"/>
+                                <owl:someValuesFrom rdf:resource="#XP"/>
+                            </owl:Restriction>
+                        </owl:intersectionOf>
+                    </owl:Class>
+                    <owl:Class>
+                        <owl:intersectionOf rdf:parseType="Collection">
+                            <owl:Restriction>
+                                <owl:onProperty rdf:resource="#dominiert"/>
+                                <owl:someValuesFrom rdf:resource="#Spezifizierer"/>
+                            </owl:Restriction>
+                            <owl:Restriction>
+                                <owl:onProperty rdf:resource="#dominiert"/>
+                                <owl:someValuesFrom rdf:resource="#XBar"/>
+                            </owl:Restriction>
+                        </owl:intersectionOf>
+                    </owl:Class>
+                </owl:unionOf>
+            </owl:Class>
+        </rdfs:subClassOf>
+        <rdfs:comment
+            >X steht f&#252;r alle m&#246;glichen Wortphrasen h&#246;chster Ordnung.</rdfs:comment>
+    </owl:Class>
+    
+
+
+    <!-- http://www.analisa.eu/grammatik.owl#Zeit -->
+
+    <owl:Class rdf:about="#Zeit">
+        <rdfs:subClassOf rdf:resource="#Umstand"/>
+        <dc:language rdf:datatype="&xsd;int">0</dc:language>
+    </owl:Class>
+    
+
+
+    <!-- http://www.analisa.eu/grammatik.owl#Zirkumposition -->
+
+    <owl:Class rdf:about="#Zirkumposition">
+        <rdfs:subClassOf rdf:resource="#Adposition"/>
+        <rdfs:comment
+            >In der Zirkumpositionalphrase wird das Nomen an einer bestimmten Stelle zwischen zwei Bestandteilen eingeschoben</rdfs:comment>
+    </owl:Class>
+    
+
+
+    <!-- http://www.analisa.eu/grammatik.owl#Zustand -->
+
+    <owl:Class rdf:about="#Zustand">
+        <rdfs:subClassOf rdf:resource="#semantisches_Bezugsobjekt"/>
+        <rdfs:subClassOf>
+            <owl:Restriction>
+                <owl:onProperty rdf:resource="#charakterisiert_durch"/>
+                <owl:someValuesFrom rdf:resource="#Verb"/>
+            </owl:Restriction>
+        </rdfs:subClassOf>
+    </owl:Class>
+    
+
+
+    <!-- http://www.analisa.eu/grammatik.owl#Zweck -->
+
+    <owl:Class rdf:about="#Zweck">
+        <owl:equivalentClass rdf:resource="#celu"/>
+        <rdfs:subClassOf rdf:resource="#Umstand"/>
+        <dc:language rdf:datatype="&xsd;int">0</dc:language>
+    </owl:Class>
+    
+
+
+    <!-- http://www.analisa.eu/grammatik.owl#additiv_(Anreihung_a&#8745;b) -->
+
+    <owl:Class rdf:about="#additiv_(Anreihung_a&#8745;b)">
+        <owl:equivalentClass rdf:resource="#&#322;&#261;czne_(a&#8745;b)"/>
+        <rdfs:subClassOf rdf:resource="#Wortunterart"/>
+        <dc:language rdf:datatype="&xsd;int">0</dc:language>
+        <rdfs:comment
+            >und, weder &#8211; noch</rdfs:comment>
+    </owl:Class>
+    
+
+
+    <!-- http://www.analisa.eu/grammatik.owl#adversativ_(Gegensatz_a&#8800;b) -->
+
+    <owl:Class rdf:about="#adversativ_(Gegensatz_a&#8800;b)">
+        <owl:equivalentClass rdf:resource="#przeciwstawne_(a&#8800;b)"/>
+        <rdfs:subClassOf rdf:resource="#Wortunterart"/>
+        <dc:language rdf:datatype="&xsd;int">0</dc:language>
+        <rdfs:comment
+            >allerdings, aber: Sie fragte ihn, aber er war ahnungslos.</rdfs:comment>
+    </owl:Class>
+    
+
+
+    <!-- http://www.analisa.eu/grammatik.owl#akkusativ -->
+
+    <owl:Class rdf:about="#akkusativ">
+        <owl:equivalentClass rdf:resource="#biernik_-_&#380;adki_w_polkim"/>
+        <rdfs:subClassOf rdf:resource="#Kasus"/>
+        <dc:language rdf:datatype="&xsd;int">0</dc:language>
+    </owl:Class>
+    
+
+
+    <!-- http://www.analisa.eu/grammatik.owl#alt -->
+
+    <owl:Class rdf:about="#alt">
+        <owl:equivalentClass rdf:resource="#staro&#347;wieckie"/>
+        <rdfs:subClassOf rdf:resource="#Altus"/>
+        <dc:language rdf:datatype="&xsd;int">0</dc:language>
+    </owl:Class>
+    
+
+
+    <!-- http://www.analisa.eu/grammatik.owl#andererTeil -->
+
+    <owl:Class rdf:about="#andererTeil">
+        <rdfs:subClassOf rdf:resource="#Konjunktion"/>
+    </owl:Class>
+    
+
+
+    <!-- http://www.analisa.eu/grammatik.owl#bestimmt -->
+
+    <owl:Class rdf:about="#bestimmt">
+        <owl:equivalentClass rdf:resource="#okre&#347;lony_Rodzajnik"/>
+        <rdfs:subClassOf rdf:resource="#Wortunterart"/>
+        <dc:language rdf:datatype="&xsd;int">0</dc:language>
+    </owl:Class>
+    
+
+
+    <!-- http://www.analisa.eu/grammatik.owl#biernik_-_&#380;adki_w_polkim -->
+
+    <owl:Class rdf:about="#biernik_-_&#380;adki_w_polkim">
+        <rdfs:subClassOf rdf:resource="#Kasus"/>
+        <dc:language rdf:datatype="&xsd;int">1</dc:language>
+        <rdfs:comment rdf:datatype="&xsd;string">kogo? co?</rdfs:comment>
+    </owl:Class>
+    
+
+
+    <!-- http://www.analisa.eu/grammatik.owl#cechy_czynnos&#347;ci -->
+
+    <owl:Class rdf:about="#cechy_czynnos&#347;ci">
+        <rdfs:subClassOf rdf:resource="#Wortunterart"/>
+        <dc:language rdf:datatype="&xsd;int">1</dc:language>
+        <rdfs:comment rdf:datatype="&xsd;string"
+            >Przys&#322;&#243;wek naturalny</rdfs:comment>
+    </owl:Class>
+    
+
+
+    <!-- http://www.analisa.eu/grammatik.owl#celownik -->
+
+    <owl:Class rdf:about="#celownik">
+        <owl:equivalentClass rdf:resource="#dativ"/>
+        <rdfs:subClassOf rdf:resource="#Kasus"/>
+        <dc:language rdf:datatype="&xsd;int">1</dc:language>
+        <rdfs:comment rdf:datatype="&xsd;string">komu? czemu?</rdfs:comment>
+    </owl:Class>
+    
+
+
+    <!-- http://www.analisa.eu/grammatik.owl#celu -->
+
+    <owl:Class rdf:about="#celu">
+        <rdfs:subClassOf rdf:resource="#Umstand"/>
+        <dc:language rdf:datatype="&xsd;int">1</dc:language>
+        <rdfs:comment rdf:datatype="&xsd;string"
+            >Id&#281; po truskawki.</rdfs:comment>
+    </owl:Class>
+    
+
+
+    <!-- http://www.analisa.eu/grammatik.owl#czynnika_towarzysz&#261;cego -->
+
+    <owl:Class rdf:about="#czynnika_towarzysz&#261;cego">
+        <rdfs:subClassOf rdf:resource="#Umstand"/>
+        <dc:language rdf:datatype="&xsd;int">1</dc:language>
+        <rdfs:comment rdf:datatype="&xsd;string"
+            >Rozstali&#347;my si&#281; z &#380;alem.</rdfs:comment>
+    </owl:Class>
+    
+
+
+    <!-- http://www.analisa.eu/grammatik.owl#cz&#281;&#347;&#263;_zdania -->
+
+    <owl:Class rdf:about="#cz&#281;&#347;&#263;_zdania">
+        <rdfs:subClassOf rdf:resource="#Wortunterart"/>
+        <dc:language rdf:datatype="&xsd;int">1</dc:language>
+    </owl:Class>
+    
+
+
+    <!-- http://www.analisa.eu/grammatik.owl#dativ -->
+
+    <owl:Class rdf:about="#dativ">
+        <rdfs:subClassOf rdf:resource="#Kasus"/>
+        <dc:language rdf:datatype="&xsd;int">0</dc:language>
+    </owl:Class>
+    
+
+
+    <!-- http://www.analisa.eu/grammatik.owl#disjunktiv_(Alternative_a&#8746;b) -->
+
+    <owl:Class rdf:about="#disjunktiv_(Alternative_a&#8746;b)">
+        <owl:equivalentClass rdf:resource="#roz&#322;&#261;czne_(a&#8746;b)"/>
+        <rdfs:subClassOf rdf:resource="#Wortunterart"/>
+        <dc:language rdf:datatype="&xsd;int">0</dc:language>
+        <rdfs:comment
+            >entweder &#8211; oder, nicht nur</rdfs:comment>
+    </owl:Class>
+    
+
+
+    <!-- http://www.analisa.eu/grammatik.owl#dope&#322;niacz -->
+
+    <owl:Class rdf:about="#dope&#322;niacz">
+        <owl:equivalentClass rdf:resource="#genitiv"/>
+        <rdfs:subClassOf rdf:resource="#Kasus"/>
+        <dc:language rdf:datatype="&xsd;int">1</dc:language>
+        <rdfs:comment rdf:datatype="&xsd;string">kogo? czego?</rdfs:comment>
+    </owl:Class>
+    
+
+
+    <!-- http://www.analisa.eu/grammatik.owl#dope&#322;niacz,_celownik_albo_biernik -->
+
+    <owl:Class rdf:about="#dope&#322;niacz,_celownik_albo_biernik">
+        <owl:equivalentClass rdf:resource="#genitiv_dativ_oder_akkusativ"/>
+        <rdfs:subClassOf rdf:resource="#Kasus"/>
+        <dc:language rdf:datatype="&xsd;int">1</dc:language>
+    </owl:Class>
+    
+
+
+    <!-- http://www.analisa.eu/grammatik.owl#dope&#322;niacz_albo_celownik -->
+
+    <owl:Class rdf:about="#dope&#322;niacz_albo_celownik">
+        <owl:equivalentClass rdf:resource="#genitiv_oder_dativ"/>
+        <rdfs:subClassOf rdf:resource="#Kasus"/>
+        <dc:language rdf:datatype="&xsd;int">1</dc:language>
+    </owl:Class>
+    
+
+
+    <!-- http://www.analisa.eu/grammatik.owl#dritte_Person -->
+
+    <owl:Class rdf:about="#dritte_Person">
+        <owl:equivalentClass rdf:resource="#trzecia_osoba"/>
+        <rdfs:subClassOf rdf:resource="#Person"/>
+        <dc:language rdf:datatype="&xsd;int">0</dc:language>
+    </owl:Class>
+    
+
+
+    <!-- http://www.analisa.eu/grammatik.owl#druga_i_trzecia_osoba -->
+
+    <owl:Class rdf:about="#druga_i_trzecia_osoba">
+        <owl:equivalentClass rdf:resource="#zweite_und_dritte_Person"/>
+        <rdfs:subClassOf rdf:resource="#Person"/>
+        <dc:language rdf:datatype="&xsd;int">1</dc:language>
+    </owl:Class>
+    
+
+
+    <!-- http://www.analisa.eu/grammatik.owl#druga_osoba -->
+
+    <owl:Class rdf:about="#druga_osoba">
+        <owl:equivalentClass rdf:resource="#zweite_Person"/>
+        <rdfs:subClassOf rdf:resource="#Person"/>
+        <dc:language rdf:datatype="&xsd;int">1</dc:language>
+    </owl:Class>
+    
+
+
+    <!-- http://www.analisa.eu/grammatik.owl#dzier&#380;awczy -->
+
+    <owl:Class rdf:about="#dzier&#380;awczy">
+        <rdfs:subClassOf rdf:resource="#Wortunterart"/>
+        <rdfs:comment rdf:datatype="&xsd;string"
+            >(np. m&#243;j, tw&#243;j, nasz, wasz, ich, jego, jej)</rdfs:comment>
+        <dc:language rdf:datatype="&xsd;int">1</dc:language>
+    </owl:Class>
+    
+
+
+    <!-- http://www.analisa.eu/grammatik.owl#elativ -->
+
+    <owl:Class rdf:about="#elativ">
+        <owl:equivalentClass rdf:resource="#najnajwy&#380;szy_(elativus)_-_nierozr&#243;&#380;niany_w_polskim"/>
+        <rdfs:subClassOf rdf:resource="#Steigerung"/>
+        <dc:language rdf:datatype="&xsd;int">0</dc:language>
+    </owl:Class>
+    
+
+
+    <!-- http://www.analisa.eu/grammatik.owl#erste_Person -->
+
+    <owl:Class rdf:about="#erste_Person">
+        <owl:equivalentClass rdf:resource="#pierwsza_osoba"/>
+        <rdfs:subClassOf rdf:resource="#Person"/>
+        <dc:language rdf:datatype="&xsd;int">0</dc:language>
+    </owl:Class>
+    
+
+
+    <!-- http://www.analisa.eu/grammatik.owl#erste_und_dritte_Person -->
+
+    <owl:Class rdf:about="#erste_und_dritte_Person">
+        <owl:equivalentClass rdf:resource="#pierwsza_i_trzecia_osoba"/>
+        <rdfs:subClassOf rdf:resource="#Person"/>
+        <dc:language rdf:datatype="&xsd;int">0</dc:language>
+    </owl:Class>
+    
+
+
+    <!-- http://www.analisa.eu/grammatik.owl#erste_und_zweite_Person -->
+
+    <owl:Class rdf:about="#erste_und_zweite_Person">
+        <owl:equivalentClass rdf:resource="#pierwsza_i_druga_osoba"/>
+        <rdfs:subClassOf rdf:resource="#Person"/>
+        <dc:language rdf:datatype="&xsd;int">0</dc:language>
+    </owl:Class>
+    
+
+
+    <!-- http://www.analisa.eu/grammatik.owl#erste_zweite_und_dritte_Person -->
+
+    <owl:Class rdf:about="#erste_zweite_und_dritte_Person">
+        <owl:equivalentClass rdf:resource="#pierwsza_druga_i_trzecia_osoba"/>
+        <rdfs:subClassOf rdf:resource="#Person"/>
+        <dc:language rdf:datatype="&xsd;int">0</dc:language>
+    </owl:Class>
+    
+
+
+    <!-- http://www.analisa.eu/grammatik.owl#explikativ_(Erkl&#228;rung_a&#8660;b) -->
+
+    <owl:Class rdf:about="#explikativ_(Erkl&#228;rung_a&#8660;b)">
+        <owl:equivalentClass rdf:resource="#wyja&#347;niaj&#261;ce_(a&#8660;b)"/>
+        <rdfs:subClassOf rdf:resource="#Wortunterart"/>
+        <dc:language rdf:datatype="&xsd;int">0</dc:language>
+        <rdfs:comment>z.B. das hei&#223;t</rdfs:comment>
+    </owl:Class>
+    
+
+
+    <!-- http://www.analisa.eu/grammatik.owl#fakultative_Erg&#228;nzung -->
+
+    <owl:Class rdf:about="#fakultative_Erg&#228;nzung">
+        <rdfs:subClassOf rdf:resource="#Erg&#228;nzung"/>
+        <rdfs:comment
+            >zB Perter schreibt &gt;Briefe&lt;</rdfs:comment>
+        <rdfs:comment
+            >zwar auch valenzgebunden, jedoch im Satz weglassbar.</rdfs:comment>
+    </owl:Class>
+    
+
+
+    <!-- http://www.analisa.eu/grammatik.owl#finales_Verb -->
+
+    <owl:Class rdf:about="#finales_Verb">
+        <rdfs:subClassOf rdf:resource="#Satzentit&#228;t"/>
+    </owl:Class>
+    
+
+
+    <!-- http://www.analisa.eu/grammatik.owl#forma_bez_genusa -->
+
+    <owl:Class rdf:about="#forma_bez_genusa">
+        <rdfs:subClassOf rdf:resource="#Wortunterart"/>
+        <dc:language rdf:datatype="&xsd;int">1</dc:language>
+    </owl:Class>
+    
+
+
+    <!-- http://www.analisa.eu/grammatik.owl#forma_z_genusem -->
+
+    <owl:Class rdf:about="#forma_z_genusem">
+        <owl:equivalentClass rdf:resource="#starke_Flexion_(ohne_Artikel)"/>
+        <rdfs:subClassOf rdf:resource="#Wortunterart"/>
+        <dc:language rdf:datatype="&xsd;int">1</dc:language>
+    </owl:Class>
+    
+
+
+    <!-- http://www.analisa.eu/grammatik.owl#gemischte_Flexion_(mit_ein,_klein,_etc.) -->
+
+    <owl:Class rdf:about="#gemischte_Flexion_(mit_ein,_klein,_etc.)">
+        <owl:equivalentClass rdf:resource="#nieokre&#347;lony_-_tylko_w_niemieckim"/>
+        <rdfs:subClassOf rdf:resource="#Wortunterart"/>
+        <dc:language rdf:datatype="&xsd;int">0</dc:language>
+    </owl:Class>
+    
+
+
+    <!-- http://www.analisa.eu/grammatik.owl#genitiv -->
+
+    <owl:Class rdf:about="#genitiv">
+        <rdfs:subClassOf rdf:resource="#Kasus"/>
+        <dc:language rdf:datatype="&xsd;int">0</dc:language>
+    </owl:Class>
+    
+
+
+    <!-- http://www.analisa.eu/grammatik.owl#genitiv_dativ_oder_akkusativ -->
+
+    <owl:Class rdf:about="#genitiv_dativ_oder_akkusativ">
+        <rdfs:subClassOf rdf:resource="#Kasus"/>
+        <dc:language rdf:datatype="&xsd;int">0</dc:language>
+    </owl:Class>
+    
+
+
+    <!-- http://www.analisa.eu/grammatik.owl#genitiv_oder_dativ -->
+
+    <owl:Class rdf:about="#genitiv_oder_dativ">
+        <rdfs:subClassOf rdf:resource="#Kasus"/>
+        <dc:language rdf:datatype="&xsd;int">0</dc:language>
+    </owl:Class>
+    
+
+
+    <!-- http://www.analisa.eu/grammatik.owl#grammatische_Merkmale -->
+
+    <owl:Class rdf:about="#grammatische_Merkmale">
+        <rdfs:subClassOf rdf:resource="#Perspektive"/>
+        <rdfs:subClassOf>
+            <owl:Restriction>
+                <owl:onProperty rdf:resource="#unterscheidet"/>
+                <owl:someValuesFrom rdf:resource="#Wortphrase"/>
+            </owl:Restriction>
+        </rdfs:subClassOf>
+        <rdfs:comment rdf:datatype="&xsd;string"
+            >hierzu z&#228;hlen die Wortphrasen und Kasus:
+Beispiel: Nominalphrase im Nominativ, Akkusati, Dativ oder Genitiv</rdfs:comment>
+    </owl:Class>
+    
+
+
+    <!-- http://www.analisa.eu/grammatik.owl#g&#322;&#243;wny -->
+
+    <owl:Class rdf:about="#g&#322;&#243;wny">
+        <rdfs:subClassOf rdf:resource="#Wortunterart"/>
+        <dc:language rdf:datatype="&xsd;int">1</dc:language>
+        <rdfs:comment rdf:datatype="&xsd;string"
+            >jeden, dwa, trzy, cztery, pi&#281;&#263;,...</rdfs:comment>
+    </owl:Class>
+    
+
+
+    <!-- http://www.analisa.eu/grammatik.owl#imies&#322;&#243;w_dokonany -->
+
+    <owl:Class rdf:about="#imies&#322;&#243;w_dokonany">
+        <rdfs:subClassOf rdf:resource="#Modus"/>
+        <dc:language rdf:datatype="&xsd;int">1</dc:language>
+    </owl:Class>
+    
+
+
+    <!-- http://www.analisa.eu/grammatik.owl#imies&#322;&#243;w_niedokonany -->
+
+    <owl:Class rdf:about="#imies&#322;&#243;w_niedokonany">
+        <rdfs:subClassOf rdf:resource="#Modus"/>
+        <dc:language rdf:datatype="&xsd;int">1</dc:language>
+    </owl:Class>
+    
+
+
+    <!-- http://www.analisa.eu/grammatik.owl#innere_Struktur -->
+
+    <owl:Class rdf:about="#innere_Struktur">
+        <rdfs:subClassOf rdf:resource="#Perspektive"/>
+        <rdfs:subClassOf>
+            <owl:Restriction>
+                <owl:onProperty rdf:resource="#unterscheidet"/>
+                <owl:someValuesFrom rdf:resource="#Konstituente"/>
+            </owl:Restriction>
+        </rdfs:subClassOf>
+    </owl:Class>
+    
+
+
+    <!-- http://www.analisa.eu/grammatik.owl#kausal_(Grund_b&#8658;a) -->
+
+    <owl:Class rdf:about="#kausal_(Grund_b&#8658;a)">
+        <owl:equivalentClass rdf:resource="#wynikowe_(a&#8658;b)"/>
+        <rdfs:subClassOf rdf:resource="#Wortunterart"/>
+        <dc:language rdf:datatype="&xsd;int">0</dc:language>
+        <rdfs:comment
+            >denn, n&#228;mlich, um, dass, weil: Er ist gl&#252;cklich, denn er wird bald heiraten.</rdfs:comment>
+    </owl:Class>
+    
+
+
+    <!-- http://www.analisa.eu/grammatik.owl#kausale -->
+
+    <owl:Class rdf:about="#kausale">
+        <owl:equivalentClass rdf:resource="#z_powodu"/>
+        <rdfs:subClassOf rdf:resource="#Umstand"/>
+        <dc:language rdf:datatype="&xsd;int">0</dc:language>
+    </owl:Class>
+    
+
+
+    <!-- http://www.analisa.eu/grammatik.owl#komparativ_(Vergleich_a==b) -->
+
+    <owl:Class rdf:about="#komparativ_(Vergleich_a==b)">
+        <owl:equivalentClass rdf:resource="#por&#243;wnawcze_(a==b)"/>
+        <rdfs:subClassOf rdf:resource="#Wortunterart"/>
+        <dc:language rdf:datatype="&xsd;int">0</dc:language>
+        <rdfs:comment
+            >als: Er mag sein Auto lieber als seine Frau.</rdfs:comment>
+    </owl:Class>
+    
+
+
+    <!-- http://www.analisa.eu/grammatik.owl#komperativ -->
+
+    <owl:Class rdf:about="#komperativ">
+        <owl:equivalentClass rdf:resource="#wy&#380;szy_(comparativus)"/>
+        <rdfs:subClassOf rdf:resource="#Steigerung"/>
+        <dc:language rdf:datatype="&xsd;int">0</dc:language>
+    </owl:Class>
+    
+
+
+    <!-- http://www.analisa.eu/grammatik.owl#konzessiv_(Einr&#228;umung_ab&#8745;ac) -->
+
+    <owl:Class rdf:about="#konzessiv_(Einr&#228;umung_ab&#8745;ac)">
+        <owl:equivalentClass rdf:resource="#przeciwstawne2_(ab&#8745;ac)"/>
+        <rdfs:subClassOf rdf:resource="#Wortunterart"/>
+        <dc:language rdf:datatype="&xsd;int">0</dc:language>
+        <rdfs:comment
+            >wenn auch, obwohl: Es ist ein trauriger, wenn auch ein aufschlussreicher Tag.</rdfs:comment>
+    </owl:Class>
+    
+
+
+    <!-- http://www.analisa.eu/grammatik.owl#liczba_mnoga -->
+
+    <owl:Class rdf:about="#liczba_mnoga">
+        <rdfs:subClassOf rdf:resource="#Numerus"/>
+        <dc:language rdf:datatype="&xsd;int">1</dc:language>
+    </owl:Class>
+    
+
+
+    <!-- http://www.analisa.eu/grammatik.owl#liczba_pojedyncza -->
+
+    <owl:Class rdf:about="#liczba_pojedyncza">
+        <rdfs:subClassOf rdf:resource="#Numerus"/>
+        <dc:language rdf:datatype="&xsd;int">1</dc:language>
+    </owl:Class>
+    
+
+
+    <!-- http://www.analisa.eu/grammatik.owl#liczba_w_polskim_nieznana -->
+
+    <owl:Class rdf:about="#liczba_w_polskim_nieznana">
+        <rdfs:subClassOf rdf:resource="#Numerus"/>
+        <dc:language rdf:datatype="&xsd;int">1</dc:language>
+    </owl:Class>
+    
+
+
+    <!-- http://www.analisa.eu/grammatik.owl#linke_Satzklammer -->
+
+    <owl:Class rdf:about="#linke_Satzklammer">
+        <rdfs:subClassOf rdf:resource="#topologisches_Modell"/>
+        <rdfs:comment
+            >Kern der Satzphrase</rdfs:comment>
+    </owl:Class>
+    
+
+
+    <!-- http://www.analisa.eu/grammatik.owl#lokale -->
+
+    <owl:Class rdf:about="#lokale">
+        <rdfs:subClassOf rdf:resource="#Umstand"/>
+        <dc:language rdf:datatype="&xsd;int">0</dc:language>
+    </owl:Class>
+    
+
+
+    <!-- http://www.analisa.eu/grammatik.owl#mehrteilig -->
+
+    <owl:Class rdf:about="#mehrteilig">
+        <owl:equivalentClass rdf:resource="#wielocz&#281;stny"/>
+        <rdfs:subClassOf rdf:resource="#Wortunterart"/>
+        <dc:language rdf:datatype="&xsd;int">0</dc:language>
+    </owl:Class>
+    
+
+
+    <!-- http://www.analisa.eu/grammatik.owl#mianownik -->
+
+    <owl:Class rdf:about="#mianownik">
+        <owl:equivalentClass rdf:resource="#nominativ"/>
+        <rdfs:subClassOf rdf:resource="#Kasus"/>
+        <dc:language rdf:datatype="&xsd;int">1</dc:language>
+    </owl:Class>
+    
+
+
+    <!-- http://www.analisa.eu/grammatik.owl#miejscownik_(Locativus) -->
+
+    <owl:Class rdf:about="#miejscownik_(Locativus)">
+        <rdfs:subClassOf rdf:resource="#Kasus"/>
+        <dc:language rdf:datatype="&xsd;int">1</dc:language>
+        <rdfs:comment rdf:datatype="&xsd;string">o kim? o czym?</rdfs:comment>
+    </owl:Class>
+    
+
+
+    <!-- http://www.analisa.eu/grammatik.owl#mno&#380;ne_lub_wielokrotne -->
+
+    <owl:Class rdf:about="#mno&#380;ne_lub_wielokrotne">
+        <rdfs:subClassOf rdf:resource="#Wortunterart"/>
+        <dc:language rdf:datatype="&xsd;int">1</dc:language>
+        <rdfs:comment rdf:datatype="&xsd;string"
+            >podw&#243;jny, potr&#243;jny, poczw&#243;rny lub trzykro&#263;, dwakro&#263;</rdfs:comment>
+    </owl:Class>
+    
+
+
+    <!-- http://www.analisa.eu/grammatik.owl#modale -->
+
+    <owl:Class rdf:about="#modale">
+        <owl:equivalentClass rdf:resource="#wzgl&#281;du_(jako&#347;&#263;)"/>
+        <rdfs:subClassOf rdf:resource="#Umstand"/>
+        <dc:language rdf:datatype="&xsd;int">0</dc:language>
+    </owl:Class>
+    
+
+
+    <!-- http://www.analisa.eu/grammatik.owl#modalny -->
+
+    <owl:Class rdf:about="#modalny">
+        <rdfs:subClassOf rdf:resource="#Wortunterart"/>
+        <dc:language rdf:datatype="&xsd;int">1</dc:language>
+    </owl:Class>
+    
+
+
+    <!-- http://www.analisa.eu/grammatik.owl#m&#228;nnlich -->
+
+    <owl:Class rdf:about="#m&#228;nnlich">
+        <owl:equivalentClass rdf:resource="#m&#281;ski"/>
+        <rdfs:subClassOf rdf:resource="#Genus"/>
+        <dc:language rdf:datatype="&xsd;int">0</dc:language>
+    </owl:Class>
+    
+
+
+    <!-- http://www.analisa.eu/grammatik.owl#m&#228;nnlich,_weiblich_oder_undefiniert -->
+
+    <owl:Class rdf:about="#m&#228;nnlich,_weiblich_oder_undefiniert">
+        <owl:equivalentClass rdf:resource="#m&#281;ski,_&#380;e&#324;ski_albo_nijaki"/>
+        <rdfs:subClassOf rdf:resource="#Genus"/>
+        <dc:language rdf:datatype="&xsd;int">0</dc:language>
+    </owl:Class>
+    
+
+
+    <!-- http://www.analisa.eu/grammatik.owl#m&#228;nnlich_oder_undefiniert -->
+
+    <owl:Class rdf:about="#m&#228;nnlich_oder_undefiniert">
+        <owl:equivalentClass rdf:resource="#m&#281;ski_albo_nijaki"/>
+        <rdfs:subClassOf rdf:resource="#Genus"/>
+        <dc:language rdf:datatype="&xsd;int">0</dc:language>
+    </owl:Class>
+    
+
+
+    <!-- http://www.analisa.eu/grammatik.owl#m&#281;ski -->
+
+    <owl:Class rdf:about="#m&#281;ski">
+        <rdfs:subClassOf rdf:resource="#Genus"/>
+        <dc:language rdf:datatype="&xsd;int">1</dc:language>
+    </owl:Class>
+    
+
+
+    <!-- http://www.analisa.eu/grammatik.owl#m&#281;ski,_&#380;e&#324;ski_albo_nijaki -->
+
+    <owl:Class rdf:about="#m&#281;ski,_&#380;e&#324;ski_albo_nijaki">
+        <rdfs:subClassOf rdf:resource="#Genus"/>
+        <dc:language rdf:datatype="&xsd;int">1</dc:language>
+    </owl:Class>
+    
+
+
+    <!-- http://www.analisa.eu/grammatik.owl#m&#281;ski_albo_nijaki -->
+
+    <owl:Class rdf:about="#m&#281;ski_albo_nijaki">
+        <rdfs:subClassOf rdf:resource="#Genus"/>
+        <dc:language rdf:datatype="&xsd;int">1</dc:language>
+    </owl:Class>
+    
+
+
+    <!-- http://www.analisa.eu/grammatik.owl#najnajwy&#380;szy_(elativus)_-_nierozr&#243;&#380;niany_w_polskim -->
+
+    <owl:Class rdf:about="#najnajwy&#380;szy_(elativus)_-_nierozr&#243;&#380;niany_w_polskim">
+        <rdfs:subClassOf rdf:resource="#Steigerung"/>
+        <dc:language rdf:datatype="&xsd;int">1</dc:language>
+    </owl:Class>
+    
+
+
+    <!-- http://www.analisa.eu/grammatik.owl#najwy&#380;szy_(superlativus) -->
+
+    <owl:Class rdf:about="#najwy&#380;szy_(superlativus)">
+        <owl:equivalentClass rdf:resource="#superlativ"/>
+        <rdfs:subClassOf rdf:resource="#Steigerung"/>
+        <dc:language rdf:datatype="&xsd;int">1</dc:language>
+    </owl:Class>
+    
+
+
+    <!-- http://www.analisa.eu/grammatik.owl#narz&#281;dnik_(Instrumentalis) -->
+
+    <owl:Class rdf:about="#narz&#281;dnik_(Instrumentalis)">
+        <rdfs:subClassOf rdf:resource="#Kasus"/>
+        <dc:language rdf:datatype="&xsd;int">1</dc:language>
+        <rdfs:comment rdf:datatype="&xsd;string">z kim? z czym?</rdfs:comment>
+    </owl:Class>
+    
+
+
+    <!-- http://www.analisa.eu/grammatik.owl#nazwa -->
+
+    <owl:Class rdf:about="#nazwa">
+        <rdfs:subClassOf rdf:resource="#Wortunterart"/>
+        <dc:language rdf:datatype="&xsd;int">1</dc:language>
+    </owl:Class>
+    
+
+
+    <!-- http://www.analisa.eu/grammatik.owl#nebenordnend -->
+
+    <owl:Class rdf:about="#nebenordnend">
+        <owl:equivalentClass rdf:resource="#wsp&#243;&#322;rz&#281;dne"/>
+        <rdfs:subClassOf rdf:resource="#Wortunterart"/>
+        <dc:language rdf:datatype="&xsd;int">0</dc:language>
+    </owl:Class>
+    
+
+
+    <!-- http://www.analisa.eu/grammatik.owl#neu -->
+
+    <owl:Class rdf:about="#neu">
+        <owl:equivalentClass rdf:resource="#nowe"/>
+        <rdfs:subClassOf rdf:resource="#Altus"/>
+        <dc:language rdf:datatype="&xsd;int">0</dc:language>
+    </owl:Class>
+    
+
+
+    <!-- http://www.analisa.eu/grammatik.owl#nie_regularny -->
+
+    <owl:Class rdf:about="#nie_regularny">
+        <owl:equivalentClass rdf:resource="#unregelm&#228;ssig"/>
+        <rdfs:subClassOf rdf:resource="#Wortunterart"/>
+        <dc:language rdf:datatype="&xsd;int">1</dc:language>
+    </owl:Class>
+    
+
+
+    <!-- http://www.analisa.eu/grammatik.owl#nieokre&#347;lony -->
+
+    <owl:Class rdf:about="#nieokre&#347;lony">
+        <owl:equivalentClass rdf:resource="#undefiniert"/>
+        <rdfs:subClassOf rdf:resource="#Altus"/>
+        <rdfs:subClassOf rdf:resource="#Kasus"/>
+        <rdfs:subClassOf rdf:resource="#Numerus"/>
+        <rdfs:subClassOf rdf:resource="#Umstand"/>
+        <dc:language rdf:datatype="&xsd;int">1</dc:language>
+    </owl:Class>
+    
+
+
+    <!-- http://www.analisa.eu/grammatik.owl#nieokre&#347;lony_-_tylko_w_niemieckim -->
+
+    <owl:Class rdf:about="#nieokre&#347;lony_-_tylko_w_niemieckim">
+        <rdfs:subClassOf rdf:resource="#Wortunterart"/>
+        <dc:language rdf:datatype="&xsd;int">1</dc:language>
+    </owl:Class>
+    
+
+
+    <!-- http://www.analisa.eu/grammatik.owl#nieokre&#347;lony_Rodzajnik -->
+
+    <owl:Class rdf:about="#nieokre&#347;lony_Rodzajnik">
+        <owl:equivalentClass rdf:resource="#unbestimmt"/>
+        <rdfs:subClassOf rdf:resource="#Wortunterart"/>
+        <dc:language rdf:datatype="&xsd;int">1</dc:language>
+    </owl:Class>
+    
+
+
+    <!-- http://www.analisa.eu/grammatik.owl#nieokre&#347;lony_liczebnik -->
+
+    <owl:Class rdf:about="#nieokre&#347;lony_liczebnik">
+        <owl:equivalentClass rdf:resource="#unbestimmte_Zahlw&#246;rter"/>
+        <rdfs:subClassOf rdf:resource="#Wortunterart"/>
+        <dc:language rdf:datatype="&xsd;int">1</dc:language>
+        <rdfs:comment rdf:datatype="&xsd;string"
+            >niewiele, kilka, kilkadziesi&#261;t, kilkaset, wiele, troch&#281;, du&#380;o, ma&#322;o</rdfs:comment>
+    </owl:Class>
+    
+
+
+    <!-- http://www.analisa.eu/grammatik.owl#nieokre&#347;lony_zaimek -->
+
+    <owl:Class rdf:about="#nieokre&#347;lony_zaimek">
+        <rdfs:subClassOf rdf:resource="#Wortunterart"/>
+        <rdfs:comment rdf:datatype="&xsd;string"
+            >(np. kto&#347;, co&#347;, jaki&#347;, gdzie&#347;, kiedy&#347;, cokolwiek)</rdfs:comment>
+        <dc:language rdf:datatype="&xsd;int">1</dc:language>
+    </owl:Class>
+    
+
+
+    <!-- http://www.analisa.eu/grammatik.owl#nijaki -->
+
+    <owl:Class rdf:about="#nijaki">
+        <owl:equivalentClass rdf:resource="#s&#228;chlich"/>
+        <rdfs:subClassOf rdf:resource="#Genus"/>
+        <dc:language rdf:datatype="&xsd;int">1</dc:language>
+    </owl:Class>
+    
+
+
+    <!-- http://www.analisa.eu/grammatik.owl#nominalisiert -->
+
+    <owl:Class rdf:about="#nominalisiert">
+        <owl:equivalentClass rdf:resource="#rzeczownikowany"/>
+        <rdfs:subClassOf rdf:resource="#Kasus"/>
+        <dc:language rdf:datatype="&xsd;int">0</dc:language>
+    </owl:Class>
+    
+
+
+    <!-- http://www.analisa.eu/grammatik.owl#nominativ -->
+
+    <owl:Class rdf:about="#nominativ">
+        <rdfs:subClassOf rdf:resource="#Kasus"/>
+        <dc:language rdf:datatype="&xsd;int">0</dc:language>
+    </owl:Class>
+    
+
+
+    <!-- http://www.analisa.eu/grammatik.owl#normal -->
+
+    <owl:Class rdf:about="#normal">
+        <owl:equivalentClass rdf:resource="#normalny"/>
+        <rdfs:subClassOf rdf:resource="#Wortunterart"/>
+        <dc:language rdf:datatype="&xsd;int">0</dc:language>
+    </owl:Class>
+    
+
+
+    <!-- http://www.analisa.eu/grammatik.owl#normalny -->
+
+    <owl:Class rdf:about="#normalny">
+        <rdfs:subClassOf rdf:resource="#Wortunterart"/>
+        <dc:language rdf:datatype="&xsd;int">1</dc:language>
+    </owl:Class>
+    
+
+
+    <!-- http://www.analisa.eu/grammatik.owl#nowe -->
+
+    <owl:Class rdf:about="#nowe">
+        <rdfs:subClassOf rdf:resource="#Altus"/>
+        <dc:language rdf:datatype="&xsd;int">1</dc:language>
+    </owl:Class>
+    
+
+
+    <!-- http://www.analisa.eu/grammatik.owl#n&#228;here_Bestimmung -->
+
+    <owl:Class rdf:about="#n&#228;here_Bestimmung">
+        <rdfs:subClassOf rdf:resource="#semantisches_Bezugsobjekt"/>
+        <rdfs:subClassOf>
+            <owl:Restriction>
+                <owl:onProperty rdf:resource="#charakterisiert_durch"/>
+                <owl:someValuesFrom>
+                    <owl:Class>
+                        <owl:unionOf rdf:parseType="Collection">
+                            <rdf:Description rdf:about="#Artikel"/>
+                            <rdf:Description rdf:about="#Pronomen"/>
+                        </owl:unionOf>
+                    </owl:Class>
+                </owl:someValuesFrom>
+            </owl:Restriction>
+        </rdfs:subClassOf>
+    </owl:Class>
+    
+
+
+    <!-- http://www.analisa.eu/grammatik.owl#n&#228;here_Umst&#228;nde -->
+
+    <owl:Class rdf:about="#n&#228;here_Umst&#228;nde">
+        <rdfs:subClassOf rdf:resource="#semantisches_Bezugsobjekt"/>
+        <rdfs:subClassOf>
+            <owl:Restriction>
+                <owl:onProperty rdf:resource="#charakterisiert_durch"/>
+                <owl:someValuesFrom rdf:resource="#Adverb"/>
+            </owl:Restriction>
+        </rdfs:subClassOf>
+    </owl:Class>
+    
+
+
+    <!-- http://www.analisa.eu/grammatik.owl#obligatorische_Er&#228;nzung -->
+
+    <owl:Class rdf:about="#obligatorische_Er&#228;nzung">
+        <rdfs:subClassOf rdf:resource="#Erg&#228;nzung"/>
+        <rdfs:comment
+            >zB Peter beantwortet &gt;Briefe&lt;</rdfs:comment>
+        <rdfs:comment
+            >d&#252;rfen nicht weggelassen werden (ohne das der Satz ungrammatisch wirkt)</rdfs:comment>
+    </owl:Class>
+    
+
+
+    <!-- http://www.analisa.eu/grammatik.owl#okre&#347;lony_-_tylko_w_niemieckim -->
+
+    <owl:Class rdf:about="#okre&#347;lony_-_tylko_w_niemieckim">
+        <owl:equivalentClass rdf:resource="#schwache_Flexion_(mit_bestimmten_Artikel)"/>
+        <rdfs:subClassOf rdf:resource="#Wortunterart"/>
+        <dc:language rdf:datatype="&xsd;int">1</dc:language>
+    </owl:Class>
+    
+
+
+    <!-- http://www.analisa.eu/grammatik.owl#okre&#347;lony_Rodzajnik -->
+
+    <owl:Class rdf:about="#okre&#347;lony_Rodzajnik">
+        <rdfs:subClassOf rdf:resource="#Wortunterart"/>
+        <dc:language rdf:datatype="&xsd;int">1</dc:language>
+    </owl:Class>
+    
+
+
+    <!-- http://www.analisa.eu/grammatik.owl#orzekaj&#261;cy_(oznajmuj&#261;cy) -->
+
+    <owl:Class rdf:about="#orzekaj&#261;cy_(oznajmuj&#261;cy)">
+        <rdfs:subClassOf rdf:resource="#Modus"/>
+        <dc:language rdf:datatype="&xsd;int">1</dc:language>
+    </owl:Class>
+    
+
+
+    <!-- http://www.analisa.eu/grammatik.owl#osobowy -->
+
+    <owl:Class rdf:about="#osobowy">
+        <rdfs:subClassOf rdf:resource="#Wortunterart"/>
+        <rdfs:comment rdf:datatype="&xsd;string"
+            >(np. ja, ty, my, wy, oni, one)</rdfs:comment>
+        <dc:language rdf:datatype="&xsd;int">1</dc:language>
+    </owl:Class>
+    
+
+
+    <!-- http://www.analisa.eu/grammatik.owl#partyku&#322;a_osobista_-_nima_w_polskim -->
+
+    <owl:Class rdf:about="#partyku&#322;a_osobista_-_nima_w_polskim">
+        <rdfs:subClassOf rdf:resource="#Wortunterart"/>
+        <dc:language rdf:datatype="&xsd;int">1</dc:language>
+    </owl:Class>
+    
+
+
+    <!-- http://www.analisa.eu/grammatik.owl#partyku&#322;a_przecz&#261;ca -->
+
+    <owl:Class rdf:about="#partyku&#322;a_przecz&#261;ca">
+        <rdfs:subClassOf rdf:resource="#Wortunterart"/>
+        <dc:language rdf:datatype="&xsd;int">1</dc:language>
+        <rdfs:comment rdf:datatype="&xsd;string"
+            >nie ani (mi si&#281; &#347;ni)</rdfs:comment>
+    </owl:Class>
+    
+
+
+    <!-- http://www.analisa.eu/grammatik.owl#partyku&#322;a_pytaj&#261;ca_-_patrz_te&#380;_zaimki -->
+
+    <owl:Class rdf:about="#partyku&#322;a_pytaj&#261;ca_-_patrz_te&#380;_zaimki">
+        <rdfs:subClassOf rdf:resource="#Wortunterart"/>
+        <dc:language rdf:datatype="&xsd;int">1</dc:language>
+        <rdfs:comment rdf:datatype="&xsd;string"
+            >czy, -li (Znaszli ten kraj? Czy musz&#281; to robi&#263;?)</rdfs:comment>
+    </owl:Class>
+    
+
+
+    <!-- http://www.analisa.eu/grammatik.owl#partyku&#322;a_wyr&#243;&#380;nieniaj&#261;ca -->
+
+    <owl:Class rdf:about="#partyku&#322;a_wyr&#243;&#380;nieniaj&#261;ca">
+        <rdfs:subClassOf rdf:resource="#Wortunterart"/>
+        <dc:language rdf:datatype="&xsd;int">1</dc:language>
+    </owl:Class>
+    
+
+
+    <!-- http://www.analisa.eu/grammatik.owl#partyku&#322;a_&#380;ycz&#261;ca -->
+
+    <owl:Class rdf:about="#partyku&#322;a_&#380;ycz&#261;ca">
+        <rdfs:subClassOf rdf:resource="#Wortunterart"/>
+        <dc:language rdf:datatype="&xsd;int">1</dc:language>
+        <rdfs:comment rdf:datatype="&xsd;string">oby</rdfs:comment>
+    </owl:Class>
+    
+
+
+    <!-- http://www.analisa.eu/grammatik.owl#pierwsza_druga_i_trzecia_osoba -->
+
+    <owl:Class rdf:about="#pierwsza_druga_i_trzecia_osoba">
+        <rdfs:subClassOf rdf:resource="#Person"/>
+        <dc:language rdf:datatype="&xsd;int">1</dc:language>
+    </owl:Class>
+    
+
+
+    <!-- http://www.analisa.eu/grammatik.owl#pierwsza_i_druga_osoba -->
+
+    <owl:Class rdf:about="#pierwsza_i_druga_osoba">
+        <rdfs:subClassOf rdf:resource="#Person"/>
+        <dc:language rdf:datatype="&xsd;int">1</dc:language>
+    </owl:Class>
+    
+
+
+    <!-- http://www.analisa.eu/grammatik.owl#pierwsza_i_trzecia_osoba -->
+
+    <owl:Class rdf:about="#pierwsza_i_trzecia_osoba">
+        <rdfs:subClassOf rdf:resource="#Person"/>
+        <dc:language rdf:datatype="&xsd;int">1</dc:language>
+    </owl:Class>
+    
+
+
+    <!-- http://www.analisa.eu/grammatik.owl#pierwsza_osoba -->
+
+    <owl:Class rdf:about="#pierwsza_osoba">
+        <rdfs:subClassOf rdf:resource="#Person"/>
+        <dc:language rdf:datatype="&xsd;int">1</dc:language>
+    </owl:Class>
+    
+
+
+    <!-- http://www.analisa.eu/grammatik.owl#podrz&#281;dne -->
+
+    <owl:Class rdf:about="#podrz&#281;dne">
+        <owl:equivalentClass rdf:resource="#unterordnend"/>
+        <rdfs:subClassOf rdf:resource="#Wortunterart"/>
+        <dc:language rdf:datatype="&xsd;int">1</dc:language>
+    </owl:Class>
+    
+
+
+    <!-- http://www.analisa.eu/grammatik.owl#porz&#261;dkowy -->
+
+    <owl:Class rdf:about="#porz&#261;dkowy">
+        <rdfs:subClassOf rdf:resource="#Wortunterart"/>
+        <dc:language rdf:datatype="&xsd;int">1</dc:language>
+        <rdfs:comment rdf:datatype="&xsd;string"
+            >pierwszy, setny, tysi&#281;czny...</rdfs:comment>
+    </owl:Class>
+    
+
+
+    <!-- http://www.analisa.eu/grammatik.owl#por&#243;wnawcze_(a==b) -->
+
+    <owl:Class rdf:about="#por&#243;wnawcze_(a==b)">
+        <rdfs:subClassOf rdf:resource="#Wortunterart"/>
+        <dc:language rdf:datatype="&xsd;int">1</dc:language>
+        <rdfs:comment rdf:datatype="&xsd;string">jak</rdfs:comment>
+    </owl:Class>
+    
+
+
+    <!-- http://www.analisa.eu/grammatik.owl#por&#243;wnawczy -->
+
+    <owl:Class rdf:about="#por&#243;wnawczy">
+        <rdfs:subClassOf rdf:resource="#Umstand"/>
+        <dc:language rdf:datatype="&xsd;int">1</dc:language>
+        <rdfs:comment rdf:datatype="&xsd;string"
+            >Upar&#322; si&#281; jak osio&#322;.</rdfs:comment>
+    </owl:Class>
+    
+
+
+    <!-- http://www.analisa.eu/grammatik.owl#positiv -->
+
+    <owl:Class rdf:about="#positiv">
+        <owl:equivalentClass rdf:resource="#r&#243;wny_(equativus)"/>
+        <rdfs:subClassOf rdf:resource="#Steigerung"/>
+        <dc:language rdf:datatype="&xsd;int">0</dc:language>
+    </owl:Class>
+    
+
+
+    <!-- http://www.analisa.eu/grammatik.owl#przeciwstawne2_(ab&#8745;ac) -->
+
+    <owl:Class rdf:about="#przeciwstawne2_(ab&#8745;ac)">
+        <rdfs:subClassOf rdf:resource="#Wortunterart"/>
+        <dc:language rdf:datatype="&xsd;int">1</dc:language>
+        <rdfs:comment rdf:datatype="&xsd;string"
+            >ale, aczkolwiek, lecz</rdfs:comment>
+    </owl:Class>
+    
+
+
+    <!-- http://www.analisa.eu/grammatik.owl#przeciwstawne_(a&#8800;b) -->
+
+    <owl:Class rdf:about="#przeciwstawne_(a&#8800;b)">
+        <rdfs:subClassOf rdf:resource="#Wortunterart"/>
+        <dc:language rdf:datatype="&xsd;int">1</dc:language>
+        <rdfs:comment rdf:datatype="&xsd;string"
+            >np. a, aczkolwiek, ale, jednak, lecz, natomiast, za&#347;</rdfs:comment>
+    </owl:Class>
+    
+
+
+    <!-- http://www.analisa.eu/grammatik.owl#przecz&#261;cy -->
+
+    <owl:Class rdf:about="#przecz&#261;cy">
+        <rdfs:subClassOf rdf:resource="#Wortunterart"/>
+        <rdfs:comment rdf:datatype="&xsd;string"
+            >(np. nic, nikt, &#380;aden, nigdy, nigdzie)</rdfs:comment>
+        <dc:language rdf:datatype="&xsd;int">1</dc:language>
+    </owl:Class>
+    
+
+
+    <!-- http://www.analisa.eu/grammatik.owl#przesz&#322;y_(dawno)_dokonany -->
+
+    <owl:Class rdf:about="#przesz&#322;y_(dawno)_dokonany">
+        <rdfs:subClassOf rdf:resource="#Tempus"/>
+        <dc:language rdf:datatype="&xsd;int">1</dc:language>
+    </owl:Class>
+    
+
+
+    <!-- http://www.analisa.eu/grammatik.owl#przesz&#322;y_dawno_dokonany -->
+
+    <owl:Class rdf:about="#przesz&#322;y_dawno_dokonany">
+        <rdfs:subClassOf rdf:resource="#Tempus"/>
+        <dc:language rdf:datatype="&xsd;int">1</dc:language>
+    </owl:Class>
+    
+
+
+    <!-- http://www.analisa.eu/grammatik.owl#przesz&#322;y_dokonany -->
+
+    <owl:Class rdf:about="#przesz&#322;y_dokonany">
+        <rdfs:subClassOf rdf:resource="#Tempus"/>
+        <dc:language rdf:datatype="&xsd;int">1</dc:language>
+    </owl:Class>
+    
+
+
+    <!-- http://www.analisa.eu/grammatik.owl#przesz&#322;y_dokonany_(lub_grzeczny_bezokolicznik) -->
+
+    <owl:Class rdf:about="#przesz&#322;y_dokonany_(lub_grzeczny_bezokolicznik)">
+        <rdfs:subClassOf rdf:resource="#Tempus"/>
+        <dc:language rdf:datatype="&xsd;int">1</dc:language>
+    </owl:Class>
+    
+
+
+    <!-- http://www.analisa.eu/grammatik.owl#przyczyny -->
+
+    <owl:Class rdf:about="#przyczyny">
+        <rdfs:subClassOf rdf:resource="#Umstand"/>
+        <dc:language rdf:datatype="&xsd;int">1</dc:language>
+        <rdfs:comment rdf:datatype="&xsd;string"
+            >Zm&#281;czy&#322; si&#281; od jazdy.</rdfs:comment>
+    </owl:Class>
+    
+
+
+    <!-- http://www.analisa.eu/grammatik.owl#przypuszczaj&#261;cy -->
+
+    <owl:Class rdf:about="#przypuszczaj&#261;cy">
+        <rdfs:subClassOf rdf:resource="#Modus"/>
+        <dc:language rdf:datatype="&xsd;int">1</dc:language>
+    </owl:Class>
+    
+
+
+    <!-- http://www.analisa.eu/grammatik.owl#przypuszczaj&#261;cy/potencjalny_dokonany_(kiedy&#347;) -->
+
+    <owl:Class rdf:about="#przypuszczaj&#261;cy/potencjalny_dokonany_(kiedy&#347;)">
+        <rdfs:subClassOf rdf:resource="#Modus"/>
+        <dc:language rdf:datatype="&xsd;int">1</dc:language>
+    </owl:Class>
+    
+
+
+    <!-- http://www.analisa.eu/grammatik.owl#przypuszczaj&#261;cy/potencjalny_niedokonany_(teraz) -->
+
+    <owl:Class rdf:about="#przypuszczaj&#261;cy/potencjalny_niedokonany_(teraz)">
+        <rdfs:subClassOf rdf:resource="#Modus"/>
+        <dc:language rdf:datatype="&xsd;int">1</dc:language>
+    </owl:Class>
+    
+
+
+    <!-- http://www.analisa.eu/grammatik.owl#przysy&#322;z_dokonany -->
+
+    <owl:Class rdf:about="#przysy&#322;z_dokonany">
+        <rdfs:subClassOf rdf:resource="#Tempus"/>
+        <dc:language rdf:datatype="&xsd;int">1</dc:language>
+    </owl:Class>
+    
+
+
+    <!-- http://www.analisa.eu/grammatik.owl#przysz&#322;y_niedokonany -->
+
+    <owl:Class rdf:about="#przysz&#322;y_niedokonany">
+        <rdfs:subClassOf rdf:resource="#Tempus"/>
+        <dc:language rdf:datatype="&xsd;int">1</dc:language>
+    </owl:Class>
+    
+
+
+    <!-- http://www.analisa.eu/grammatik.owl#pytaj&#261;cy -->
+
+    <owl:Class rdf:about="#pytaj&#261;cy">
+        <rdfs:subClassOf rdf:resource="#Wortunterart"/>
+        <rdfs:comment rdf:datatype="&xsd;string"
+            >(np. kto? co? jaki? kt&#243;ry? gdzie? kiedy? jak? komu? czemu? kogo?)</rdfs:comment>
+        <dc:language rdf:datatype="&xsd;int">1</dc:language>
+    </owl:Class>
+    
+
+
+    <!-- http://www.analisa.eu/grammatik.owl#rechte_Satzklammer -->
+
+    <owl:Class rdf:about="#rechte_Satzklammer">
+        <rdfs:subClassOf rdf:resource="#topologisches_Modell"/>
+        <rdfs:comment
+            >Pr&#228;dikat (abz&#252;glich finiter Verbform auf erster oder zweiter Position in Verberst- oder Verzeits&#228;tzen.</rdfs:comment>
+    </owl:Class>
+    
+
+
+    <!-- http://www.analisa.eu/grammatik.owl#regelm&#228;ssig -->
+
+    <owl:Class rdf:about="#regelm&#228;ssig">
+        <owl:equivalentClass rdf:resource="#regularny"/>
+        <rdfs:subClassOf rdf:resource="#Wortunterart"/>
+        <dc:language rdf:datatype="&xsd;int">0</dc:language>
+    </owl:Class>
+    
+
+
+    <!-- http://www.analisa.eu/grammatik.owl#regularny -->
+
+    <owl:Class rdf:about="#regularny">
+        <rdfs:subClassOf rdf:resource="#Wortunterart"/>
+        <dc:language rdf:datatype="&xsd;int">1</dc:language>
+    </owl:Class>
+    
+
+
+    <!-- http://www.analisa.eu/grammatik.owl#rozkazuj&#261;cy -->
+
+    <owl:Class rdf:about="#rozkazuj&#261;cy">
+        <rdfs:subClassOf rdf:resource="#Modus"/>
+        <dc:language rdf:datatype="&xsd;int">1</dc:language>
+    </owl:Class>
+    
+
+
+    <!-- http://www.analisa.eu/grammatik.owl#roz&#322;&#261;czne_(a&#8746;b) -->
+
+    <owl:Class rdf:about="#roz&#322;&#261;czne_(a&#8746;b)">
+        <rdfs:subClassOf rdf:resource="#Wortunterart"/>
+        <dc:language rdf:datatype="&xsd;int">1</dc:language>
+        <rdfs:comment rdf:datatype="&xsd;string"
+            >np. albo, b&#261;d&#378;, czy, lub</rdfs:comment>
+    </owl:Class>
+    
+
+
+    <!-- http://www.analisa.eu/grammatik.owl#rzeczownikowany -->
+
+    <owl:Class rdf:about="#rzeczownikowany">
+        <rdfs:subClassOf rdf:resource="#Kasus"/>
+        <dc:language rdf:datatype="&xsd;int">1</dc:language>
+    </owl:Class>
+    
+
+
+    <!-- http://www.analisa.eu/grammatik.owl#r&#243;wny_(equativus) -->
+
+    <owl:Class rdf:about="#r&#243;wny_(equativus)">
+        <rdfs:subClassOf rdf:resource="#Steigerung"/>
+        <dc:language rdf:datatype="&xsd;int">1</dc:language>
+    </owl:Class>
+    
+
+
+    <!-- http://www.analisa.eu/grammatik.owl#schwache_Flexion_(mit_bestimmten_Artikel) -->
+
+    <owl:Class rdf:about="#schwache_Flexion_(mit_bestimmten_Artikel)">
+        <rdfs:subClassOf rdf:resource="#Wortunterart"/>
+        <dc:language rdf:datatype="&xsd;int">0</dc:language>
+    </owl:Class>
+    
+
+
+    <!-- http://www.analisa.eu/grammatik.owl#semantisches_Bezugsobjekt -->
+
+    <owl:Class rdf:about="#semantisches_Bezugsobjekt">
+        <rdfs:subClassOf rdf:resource="#Bezugsobjekt"/>
+    </owl:Class>
+    
+
+
+    <!-- http://www.analisa.eu/grammatik.owl#skr&#243;t -->
+
+    <owl:Class rdf:about="#skr&#243;t">
+        <rdfs:subClassOf rdf:resource="#Wortunterart"/>
+        <dc:language rdf:datatype="&xsd;int">1</dc:language>
+    </owl:Class>
+    
+
+
+    <!-- http://www.analisa.eu/grammatik.owl#skutku -->
+
+    <owl:Class rdf:about="#skutku">
+        <rdfs:subClassOf rdf:resource="#Umstand"/>
+        <dc:language rdf:datatype="&xsd;int">1</dc:language>
+        <rdfs:comment rdf:datatype="&xsd;string"
+            >Bezskutecznie ratowa&#322; psa.</rdfs:comment>
+    </owl:Class>
+    
+
+
+    <!-- http://www.analisa.eu/grammatik.owl#sposobu -->
+
+    <owl:Class rdf:about="#sposobu">
+        <rdfs:subClassOf rdf:resource="#Umstand"/>
+        <dc:language rdf:datatype="&xsd;int">1</dc:language>
+        <rdfs:comment rdf:datatype="&xsd;string"
+            >M&#243;wi&#322; z zaanga&#380;owaniem.</rdfs:comment>
+    </owl:Class>
+    
+
+
+    <!-- http://www.analisa.eu/grammatik.owl#starke_Flexion_(ohne_Artikel) -->
+
+    <owl:Class rdf:about="#starke_Flexion_(ohne_Artikel)">
+        <rdfs:subClassOf rdf:resource="#Wortunterart"/>
+        <dc:language rdf:datatype="&xsd;int">0</dc:language>
+    </owl:Class>
+    
+
+
+    <!-- http://www.analisa.eu/grammatik.owl#staro&#347;wieckie -->
+
+    <owl:Class rdf:about="#staro&#347;wieckie">
+        <rdfs:subClassOf rdf:resource="#Altus"/>
+        <dc:language rdf:datatype="&xsd;int">1</dc:language>
+    </owl:Class>
+    
+
+
+    <!-- http://www.analisa.eu/grammatik.owl#stopnia -->
+
+    <owl:Class rdf:about="#stopnia">
+        <rdfs:subClassOf rdf:resource="#Umstand"/>
+        <dc:language rdf:datatype="&xsd;int">1</dc:language>
+        <rdfs:comment rdf:datatype="&xsd;string"
+            >Bardzo podoba&#322; mi si&#281; ten film.</rdfs:comment>
+    </owl:Class>
+    
+
+
+    <!-- http://www.analisa.eu/grammatik.owl#stop&#324;owane_cechy_czynnos&#347;ci -->
+
+    <owl:Class rdf:about="#stop&#324;owane_cechy_czynnos&#347;ci">
+        <rdfs:subClassOf rdf:resource="#Wortunterart"/>
+        <dc:language rdf:datatype="&xsd;int">1</dc:language>
+        <rdfs:comment rdf:datatype="&xsd;string"
+            >w niemieckim partyku&#322;a tutaj naszcz&#281;&#347;cie i tak zaliczane do przys&#322;&#243;wk&#243;w</rdfs:comment>
+    </owl:Class>
+    
+
+
+    <!-- http://www.analisa.eu/grammatik.owl#superlativ -->
+
+    <owl:Class rdf:about="#superlativ">
+        <rdfs:subClassOf rdf:resource="#Steigerung"/>
+        <dc:language rdf:datatype="&xsd;int">0</dc:language>
+    </owl:Class>
+    
+
+
+    <!-- http://www.analisa.eu/grammatik.owl#s&#228;chlich -->
+
+    <owl:Class rdf:about="#s&#228;chlich">
+        <rdfs:subClassOf rdf:resource="#Genus"/>
+        <dc:language rdf:datatype="&xsd;int">0</dc:language>
+    </owl:Class>
+    
+
+
+    <!-- http://www.analisa.eu/grammatik.owl#temporale -->
+
+    <owl:Class rdf:about="#temporale">
+        <rdfs:subClassOf rdf:resource="#Umstand"/>
+        <dc:language rdf:datatype="&xsd;int">0</dc:language>
+    </owl:Class>
+    
+
+
+    <!-- http://www.analisa.eu/grammatik.owl#tera&#380;niejszy_niedokonany -->
+
+    <owl:Class rdf:about="#tera&#380;niejszy_niedokonany">
+        <rdfs:subClassOf rdf:resource="#Tempus"/>
+        <dc:language rdf:datatype="&xsd;int">1</dc:language>
+    </owl:Class>
+    
+
+
+    <!-- http://www.analisa.eu/grammatik.owl#topologisches_Modell -->
+
+    <owl:Class rdf:about="#topologisches_Modell">
+        <rdfs:comment>Duden 1349</rdfs:comment>
+        <rdfs:comment
+            >toplogisch = auf die Wortstellung bezogen</rdfs:comment>
+    </owl:Class>
+    
+
+
+    <!-- http://www.analisa.eu/grammatik.owl#trzecia_osoba -->
+
+    <owl:Class rdf:about="#trzecia_osoba">
+        <rdfs:subClassOf rdf:resource="#Person"/>
+        <dc:language rdf:datatype="&xsd;int">1</dc:language>
+    </owl:Class>
+    
+
+
+    <!-- http://www.analisa.eu/grammatik.owl#unbestimmt -->
+
+    <owl:Class rdf:about="#unbestimmt">
+        <rdfs:subClassOf rdf:resource="#Wortunterart"/>
+        <dc:language rdf:datatype="&xsd;int">0</dc:language>
+    </owl:Class>
+    
+
+
+    <!-- http://www.analisa.eu/grammatik.owl#unbestimmte_Zahlw&#246;rter -->
+
+    <owl:Class rdf:about="#unbestimmte_Zahlw&#246;rter">
+        <rdfs:subClassOf rdf:resource="#Wortunterart"/>
+        <dc:language rdf:datatype="&xsd;int">0</dc:language>
+        <rdfs:comment
+            >zB einige Ritter, manche H&#252;hner, alle Menschen, eine ganze Stadt</rdfs:comment>
+    </owl:Class>
+    
+
+
+    <!-- http://www.analisa.eu/grammatik.owl#undefiniert -->
+
+    <owl:Class rdf:about="#undefiniert">
+        <rdfs:subClassOf rdf:resource="#Altus"/>
+        <rdfs:subClassOf rdf:resource="#Kasus"/>
+        <rdfs:subClassOf rdf:resource="#Numerus"/>
+        <rdfs:subClassOf rdf:resource="#Umstand"/>
+        <dc:language rdf:datatype="&xsd;int">0</dc:language>
+    </owl:Class>
+    
+
+
+    <!-- http://www.analisa.eu/grammatik.owl#unregelm&#228;ssig -->
+
+    <owl:Class rdf:about="#unregelm&#228;ssig">
+        <rdfs:subClassOf rdf:resource="#Wortunterart"/>
+        <dc:language rdf:datatype="&xsd;int">0</dc:language>
+    </owl:Class>
+    
+
+
+    <!-- http://www.analisa.eu/grammatik.owl#unterordnend -->
+
+    <owl:Class rdf:about="#unterordnend">
+        <rdfs:subClassOf rdf:resource="#Wortunterart"/>
+        <dc:language rdf:datatype="&xsd;int">0</dc:language>
+    </owl:Class>
+    
+
+
+    <!-- http://www.analisa.eu/grammatik.owl#upowszechniaj&#261;cy -->
+
+    <owl:Class rdf:about="#upowszechniaj&#261;cy">
+        <rdfs:subClassOf rdf:resource="#Wortunterart"/>
+        <rdfs:comment rdf:datatype="&xsd;string"
+            >(np. wszyscy, zawsze)</rdfs:comment>
+        <dc:language rdf:datatype="&xsd;int">1</dc:language>
+    </owl:Class>
+    
+
+
+    <!-- http://www.analisa.eu/grammatik.owl#u&#322;amkowe -->
+
+    <owl:Class rdf:about="#u&#322;amkowe">
+        <rdfs:subClassOf rdf:resource="#Wortunterart"/>
+        <dc:language rdf:datatype="&xsd;int">1</dc:language>
+        <rdfs:comment rdf:datatype="&xsd;string"
+            >&#263;wier&#263;, p&#243;&#322;, p&#243;&#322;tora, jedna druga, trzy czwarte</rdfs:comment>
+    </owl:Class>
+    
+
+
+    <!-- http://www.analisa.eu/grammatik.owl#warunku -->
+
+    <owl:Class rdf:about="#warunku">
+        <rdfs:subClassOf rdf:resource="#Umstand"/>
+        <dc:language rdf:datatype="&xsd;int">1</dc:language>
+        <rdfs:comment rdf:datatype="&xsd;string"
+            >Przy szcz&#281;&#347;ciu mo&#380;e to uczyni&#281;.</rdfs:comment>
+    </owl:Class>
+    
+
+
+    <!-- http://www.analisa.eu/grammatik.owl#weiblich -->
+
+    <owl:Class rdf:about="#weiblich">
+        <owl:equivalentClass rdf:resource="#&#380;e&#324;ski"/>
+        <rdfs:subClassOf rdf:resource="#Genus"/>
+        <dc:language rdf:datatype="&xsd;int">0</dc:language>
+    </owl:Class>
+    
+
+
+    <!-- http://www.analisa.eu/grammatik.owl#wielocz&#281;stny -->
+
+    <owl:Class rdf:about="#wielocz&#281;stny">
+        <rdfs:subClassOf rdf:resource="#Wortunterart"/>
+        <dc:language rdf:datatype="&xsd;int">1</dc:language>
+    </owl:Class>
+    
+
+
+    <!-- http://www.analisa.eu/grammatik.owl#wielorakie -->
+
+    <owl:Class rdf:about="#wielorakie">
+        <rdfs:subClassOf rdf:resource="#Wortunterart"/>
+        <dc:language rdf:datatype="&xsd;int">1</dc:language>
+        <rdfs:comment rdf:datatype="&xsd;string"
+            >dwojaki, trojaki</rdfs:comment>
+    </owl:Class>
+    
+
+
+    <!-- http://www.analisa.eu/grammatik.owl#wo&#322;acz -->
+
+    <owl:Class rdf:about="#wo&#322;acz">
+        <owl:equivalentClass rdf:resource="#wo&#322;acz_-_nicht_in_GER"/>
+        <rdfs:subClassOf rdf:resource="#Kasus"/>
+        <dc:language rdf:datatype="&xsd;int">1</dc:language>
+        <rdfs:comment rdf:datatype="&xsd;string">O...!</rdfs:comment>
+    </owl:Class>
+    
+
+
+    <!-- http://www.analisa.eu/grammatik.owl#wo&#322;acz_-_nicht_in_GER -->
+
+    <owl:Class rdf:about="#wo&#322;acz_-_nicht_in_GER">
+        <rdfs:subClassOf rdf:resource="#Kasus"/>
+        <dc:language rdf:datatype="&xsd;int">0</dc:language>
+    </owl:Class>
+    
+
+
+    <!-- http://www.analisa.eu/grammatik.owl#wskazuj&#261;cy -->
+
+    <owl:Class rdf:about="#wskazuj&#261;cy">
+        <rdfs:subClassOf rdf:resource="#Wortunterart"/>
+        <rdfs:comment rdf:datatype="&xsd;string"
+            >(np. ten, ta, to, tamten, tam, tu, &#243;w, t&#281;dy, taki, ci, tamci, owi)</rdfs:comment>
+        <dc:language rdf:datatype="&xsd;int">1</dc:language>
+    </owl:Class>
+    
+
+
+    <!-- http://www.analisa.eu/grammatik.owl#wsp&#243;&#322;rz&#281;dne -->
+
+    <owl:Class rdf:about="#wsp&#243;&#322;rz&#281;dne">
+        <rdfs:subClassOf rdf:resource="#Wortunterart"/>
+        <dc:language rdf:datatype="&xsd;int">1</dc:language>
+    </owl:Class>
+    
+
+
+    <!-- http://www.analisa.eu/grammatik.owl#wyja&#347;niaj&#261;ce_(a&#8660;b) -->
+
+    <owl:Class rdf:about="#wyja&#347;niaj&#261;ce_(a&#8660;b)">
+        <rdfs:subClassOf rdf:resource="#Wortunterart"/>
+        <dc:language rdf:datatype="&xsd;int">1</dc:language>
+        <rdfs:comment rdf:datatype="&xsd;string"
+            >np. czyli, mianowicie</rdfs:comment>
+    </owl:Class>
+    
+
+
+    <!-- http://www.analisa.eu/grammatik.owl#wynikowe_(a&#8658;b) -->
+
+    <owl:Class rdf:about="#wynikowe_(a&#8658;b)">
+        <rdfs:subClassOf rdf:resource="#Wortunterart"/>
+        <dc:language rdf:datatype="&xsd;int">1</dc:language>
+        <rdfs:comment rdf:datatype="&xsd;string"
+            >np. dlatego, i, przeto, tedy, wi&#281;c, zatem</rdfs:comment>
+    </owl:Class>
+    
+
+
+    <!-- http://www.analisa.eu/grammatik.owl#wy&#380;szy_(comparativus) -->
+
+    <owl:Class rdf:about="#wy&#380;szy_(comparativus)">
+        <rdfs:subClassOf rdf:resource="#Steigerung"/>
+        <dc:language rdf:datatype="&xsd;int">1</dc:language>
+    </owl:Class>
+    
+
+
+    <!-- http://www.analisa.eu/grammatik.owl#wzgl&#281;dny -->
+
+    <owl:Class rdf:about="#wzgl&#281;dny">
+        <rdfs:subClassOf rdf:resource="#Wortunterart"/>
+        <rdfs:comment rdf:datatype="&xsd;string"
+            >(np. kto, co, komu - bez znaku zapytania; &#322;&#261;cz&#261; zdanie nadrz&#281;dne z podrz&#281;dnym)</rdfs:comment>
+        <dc:language rdf:datatype="&xsd;int">1</dc:language>
+    </owl:Class>
+    
+
+
+    <!-- http://www.analisa.eu/grammatik.owl#wzgl&#281;du_(jako&#347;&#263;) -->
+
+    <owl:Class rdf:about="#wzgl&#281;du_(jako&#347;&#263;)">
+        <rdfs:subClassOf rdf:resource="#Umstand"/>
+        <dc:language rdf:datatype="&xsd;int">1</dc:language>
+        <rdfs:comment rdf:datatype="&xsd;string"
+            >Jako&#347;ciowo jest on tragiczny.</rdfs:comment>
+    </owl:Class>
+    
+
+
+    <!-- http://www.analisa.eu/grammatik.owl#z_powodu -->
+
+    <owl:Class rdf:about="#z_powodu">
+        <rdfs:subClassOf rdf:resource="#Umstand"/>
+        <dc:language rdf:datatype="&xsd;int">1</dc:language>
+        <rdfs:comment rdf:datatype="&xsd;string"
+            >Poniewa&#380; on to i ja</rdfs:comment>
+    </owl:Class>
+    
+
+
+    <!-- http://www.analisa.eu/grammatik.owl#zbiorowe -->
+
+    <owl:Class rdf:about="#zbiorowe">
+        <rdfs:subClassOf rdf:resource="#Wortunterart"/>
+        <dc:language rdf:datatype="&xsd;int">1</dc:language>
+        <rdfs:comment rdf:datatype="&xsd;string"
+            >dwoje, troje, czworo, pi&#281;cioro, sze&#347;cioro, siedmioro, o&#347;mioro, dziewi&#281;cioro, dziesi&#281;cioro</rdfs:comment>
+    </owl:Class>
+    
+
+
+    <!-- http://www.analisa.eu/grammatik.owl#zweite_Person -->
+
+    <owl:Class rdf:about="#zweite_Person">
+        <rdfs:subClassOf rdf:resource="#Person"/>
+        <dc:language rdf:datatype="&xsd;int">0</dc:language>
+    </owl:Class>
+    
+
+
+    <!-- http://www.analisa.eu/grammatik.owl#zweite_und_dritte_Person -->
+
+    <owl:Class rdf:about="#zweite_und_dritte_Person">
+        <rdfs:subClassOf rdf:resource="#Person"/>
+        <dc:language rdf:datatype="&xsd;int">0</dc:language>
+    </owl:Class>
+    
+
+
+    <!-- http://www.analisa.eu/grammatik.owl#zwrotny -->
+
+    <owl:Class rdf:about="#zwrotny">
+        <rdfs:subClassOf rdf:resource="#Wortunterart"/>
+        <rdfs:comment rdf:datatype="&xsd;string"
+            >(np. se, si&#281;, siebie, sobie)</rdfs:comment>
+        <dc:language rdf:datatype="&xsd;int">1</dc:language>
+    </owl:Class>
+    
+
+
+    <!-- http://www.analisa.eu/grammatik.owl#&#322;&#261;czne_(a&#8745;b) -->
+
+    <owl:Class rdf:about="#&#322;&#261;czne_(a&#8745;b)">
+        <rdfs:subClassOf rdf:resource="#Wortunterart"/>
+        <dc:language rdf:datatype="&xsd;int">1</dc:language>
+        <rdfs:comment rdf:datatype="&xsd;string"
+            >np. a, i, oraz, tudzie&#380;</rdfs:comment>
+    </owl:Class>
+    
+
+
+    <!-- http://www.analisa.eu/grammatik.owl#&#380;e&#324;ski -->
+
+    <owl:Class rdf:about="#&#380;e&#324;ski">
+        <rdfs:subClassOf rdf:resource="#Genus"/>
+        <dc:language rdf:datatype="&xsd;int">1</dc:language>
+    </owl:Class>
+    
+
+
+    <!-- http://www.w3.org/2002/07/owl#Thing -->
+
+    <owl:Class rdf:about="&owl;Thing"/>
+</rdf:RDF>
+
+
+
+<!-- Generated by the OWL API (version 2.2.1.1138) http://owlapi.sourceforge.net -->
+
